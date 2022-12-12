@@ -34,10 +34,10 @@ export default {
           
           appEvents.on('page:changed', data => {
             console.log(data);
-            //var urlPrefix = "/t/"; //modal in topics
-            var urlPrefix = "/"; //modal in home
+            var urlPrefix = "/t/"; //modal in topics
+            
             var pattern = new RegExp('^' + urlPrefix);
-            var hasPrefix = pattern.test(data.url);
+            var hasPrefix = !pattern.test(data.url);
             if(hasPrefix) {              
                 showGate('guest-gate');
             }
