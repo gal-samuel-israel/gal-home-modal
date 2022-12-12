@@ -55,7 +55,7 @@ export default {
           });
         }
       } else {
-        console.login(api.getCurrentUser());
+        console.log(api.getCurrentUser());
       }
     });
   }
