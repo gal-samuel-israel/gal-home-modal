@@ -1,9 +1,11 @@
 enable_debug_for_admins:
   type: bool
   default: true
+  description: ""
 enable_debug_for_all:
   type: bool
   default: false
+  description: ""
 enable_only_for_admins:
   type: bool
   default: true
