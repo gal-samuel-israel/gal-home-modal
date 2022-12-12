@@ -11,7 +11,8 @@ export default {
 
   initialize(container) {
     withPluginApi("0.8.31", api => {
-      if (!api.getCurrentUser()) {
+      if (api.getCurrentUser()) {
+        console.log(api.getCurrentUser());
         if (settings.gate_show_when_thumbnail_clicked) {
           $("body").on("click", "a.lightbox", function() {
             showGate('guest-gate');
@@ -54,9 +55,7 @@ export default {
             }
           });
         }
-      } else {
-        console.log(api.getCurrentUser());
-      }
+      } 
     });
   }
 };
