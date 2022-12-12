@@ -49,8 +49,8 @@ export default {
             var pattern = new RegExp('^' + urlPrefix);
             var hasPrefix = pattern.test(data.url);
             */ 
-            const currentURL = new URL(data.url);
-            var isHome = (currentURL.pathname==='/') ? true:false;
+            
+            var isHome = (window.location.pathname==='/') ? true:false;
             if(debug){
               console.log('url: ' + data.url + 'isHome : '+ isHome);
             }        
