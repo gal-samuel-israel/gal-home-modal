@@ -13,6 +13,7 @@ export default {
 
       const siteSettings = api.container.lookup("site-settings:main");
       console.log(siteSettings);
+      console.log(setting);
 
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()
