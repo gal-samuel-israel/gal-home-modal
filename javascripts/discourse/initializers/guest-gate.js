@@ -12,14 +12,18 @@ export default {
   initialize(container) {
     withPluginApi("0.8.31", api => {
       if (api.getCurrentUser()) {
-        console.log(api.getCurrentUser());       
+        const currentUser = api.getCurrentUser()
+        console.log(currentUser);       
+        console.log(currentUser.id);
+        console.log(currentUser.admin); 
 
-        if (settings.gate_show_when_thumbnail_clicked) {
+        /*
           $("body").on("click", "a.lightbox", function() {
             showGate('guest-gate');
             $.magnificPopup.instance.close();
           });
-        } else {
+        */
+
           var pageView = 0;
           // Tell our AJAX system to track a page transition
           const router = container.lookup('router:main');
@@ -27,35 +31,18 @@ export default {
 
           let appEvents = container.lookup('service:app-events');
           startPageTracking(router, appEvents);
-          var gateShownOnce = false;
-
-
+          
           appEvents.on('page:changed', data => {
-
-            var urlPrefix = "/t/";
-
+            console.log(data);
+            //var urlPrefix = "/t/"; //modal in topics
+            var urlPrefix = "/"; //modal in home
             var pattern = new RegExp('^' + urlPrefix);
             var hasPrefix = pattern.test(data.url);
-            if(hasPrefix) {
-              var isBot = false;
-              var re = new RegExp(botPattern, 'i');
-              if (re.test(navigator.userAgent)) {
-                isBot = true;
-              }
-              var maxViews = parseInt(settings.max_guest_topic_views);
-              pageView++;     
-              var hitMaxViews = pageView >= maxViews;
-              var showGateBool = true; //hitMaxViews && !isBot && !gateShownOnce /*&& !api.getCurrentUser()*/;
-              if (showGateBool) {
-                if (settings.gate_show_only_once) {
-                  gateShownOnce = true;
-                }
-                pageView = getRandomInt(0, maxViews + 1);
+            if(hasPrefix) {              
                 showGate('guest-gate');
-              }          
             }
           });
-        }
+        
       } 
     });
   }

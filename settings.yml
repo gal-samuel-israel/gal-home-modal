@@ -1,19 +1,11 @@
-max_guest_topic_views:
+max_modal_views:
   type: string
-  default: "1"
-  description: "Number of topic views until gate displays. After the gate first appears, it appears randomly between 1 and this number."
+  default: "5"
+  description: "Number of times the modal will show."
 dismissable_false:
   type: bool
   default: false
   description: "Removes the close button, which prevents visitors from closing it."
-gate_show_only_once:
-  type: bool
-  default: false
-  description: "Guest Gate modal show only once per session."
-gate_show_when_thumbnail_clicked:
-  type: bool
-  default: false
-  description: "Guest Gate modal show only when visitor clicks lightbox image thumbnail. It prevents visitors to view the full resolution image without Log In or Sign Up."
 use_gate_buttons:
   type: bool
   default: false
