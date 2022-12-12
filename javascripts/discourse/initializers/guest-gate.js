@@ -12,6 +12,7 @@ export default {
     withPluginApi("0.8.31", api => {
 
       const siteSettings = api.container.lookup("site-settings:main");
+      console.log(siteSettings);
 
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()
