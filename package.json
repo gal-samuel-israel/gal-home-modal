@@ -1,0 +1,10 @@
+{
+  "name": "gal-home-modal",
+  "version": "1.0.0",
+  "repository": "https://github.com/gal-samuel-israel/gal-home-modal",
+  "author": "Gal Samuel",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "eslint-config-discourse": "^3.1.0"
+  }
+}
