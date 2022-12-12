@@ -1,7 +1,6 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { startPageTracking } from 'discourse/lib/page-tracker';
 import { viewTrackingRequired } from 'discourse/lib/ajax';
-import { setting } from 'discourse/lib/computed';
 import showGate from '../lib/custom-modal';
 
 export default {
@@ -10,16 +9,12 @@ export default {
 
   initialize(container) {
     withPluginApi("0.8.31", api => {
-
-      const siteSettings = api.container.lookup("site-settings:main");
-      console.log(siteSettings);
-      console.log(setting('enable_debug_for_admins'));
-
+      
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()
 
-        var debug = currentUser.admin && siteSettings.enable_debug_for_admins;
-        var debug4All = siteSettings.enable_debug_for_all;
+        var debug = currentUser.admin && settings.enable_debug_for_admins;
+        var debug4All = settings.enable_debug_for_all;
         if(debug4All){ debug = true; }
         
         if(debug){
@@ -28,7 +23,7 @@ export default {
           console.log(currentUser.admin); 
         }
 
-        var showOnlyToAdmins = siteSettings.enable_only_for_admins; //make this false to enable component all users
+        var showOnlyToAdmins = settings.enable_only_for_admins; //make this false to enable component all users
         var isAdmin = (currentUser.admin)        
         var blockModal = (showOnlyToAdmins && !isAdmin);
 
