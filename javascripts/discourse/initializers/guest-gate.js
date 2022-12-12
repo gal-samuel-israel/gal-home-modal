@@ -13,7 +13,7 @@ export default {
 
       const siteSettings = api.container.lookup("site-settings:main");
       console.log(siteSettings);
-      console.log(setting);
+      console.log(setting('enable_debug_for_admins'));
 
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()
