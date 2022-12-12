@@ -1,6 +1,6 @@
 en:
   guest_gate:
-    title: "The Title"
+    title: "The Modal Title"
     sign_up_email: "Sign Up with Email"
     sign_up: "Sign Up"
     log_in: "I already have an account"

@@ -2,14 +2,6 @@ max_modal_views:
   type: string
   default: "5"
   description: "Number of times the modal will show."
-dismissable_false:
-  type: bool
-  default: false
-  description: "Removes the close button, which prevents visitors from closing it."
-use_gate_buttons:
-  type: bool
-  default: false
-  description: "Use buttons on modal footer instead of links."
 login_button_style:
   type: enum
   default: btn-primary
@@ -35,26 +27,6 @@ svg_icons:
   type: "list"
   list_type: "compact"
   description: "List of FontAwesome 5 icons used in this theme component"
-custom_url_enabled:
-  type: bool
-  default: false
-  description: "Enable the custom login url and custom signup url options. The normal behaviour (if you leave this option unchecked) is for the Login or Sign Up modal to appear on the current topic page."
-custom_login_url:
-  type: string
-  default: "/login"
-  description: "For example, /login is the home page with the “Login” modal displayed."
-custom_signup_url:
-  type: string
-  default: "/signup"
-  description: "For example, /signup is the home page with the “Sign Up” modal displayed."
-enable_discourse_connect_signup:
-  type: bool
-  default: false
-  description: "Add a Sign Up button to Discourse Connect. With this you can add a different external url for registration etc." 
-discourse_connect_signup_url:
-  type: string
-  default: ""
-  description: "Paste a URL for Discourse Connect Sign Up button."
 gate_footer_position:
   default: center
   type: enum
@@ -62,10 +34,6 @@ gate_footer_position:
     - left
     - right
   description: "Footer buttons/links position."
-custom_gate_enabled:
-  type: bool
-  default: false
-  description: "Enable it if you want to customize the modal."
 custom_gate_image:
   type: upload
   default: ""
