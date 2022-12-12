@@ -54,6 +54,8 @@ export default {
             }
           });
         }
+      } else {
+        console.login(api.getCurrentUser());
       }
     });
   }
