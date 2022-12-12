@@ -48,8 +48,12 @@ export default {
             var urlPrefix = "/t/"; // NOTE: "/t/" is for topic "/c/" is for category
             var pattern = new RegExp('^' + urlPrefix);
             var hasPrefix = pattern.test(data.url);
-            */           
+            */ 
             var isHome = (data.url==='/') ? true:false;
+            if(debug){
+              console.log('url: ' + data.url + 'isHome : '+ isHome);
+            }        
+            
             if(isHome && !blockModal) {              
                 showGate('guest-gate');
             }
