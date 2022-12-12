@@ -1,0 +1,121 @@
+max_guest_topic_views:
+  type: string
+  default: "1"
+  description: "Number of topic views until gate displays. After the gate first appears, it appears randomly between 1 and this number."
+dismissable_false:
+  type: bool
+  default: false
+  description: "Removes the close button, which prevents visitors from closing it."
+gate_show_only_once:
+  type: bool
+  default: false
+  description: "Guest Gate modal show only once per session."
+gate_show_when_thumbnail_clicked:
+  type: bool
+  default: false
+  description: "Guest Gate modal show only when visitor clicks lightbox image thumbnail. It prevents visitors to view the full resolution image without Log In or Sign Up."
+use_gate_buttons:
+  type: bool
+  default: false
+  description: "Use buttons on modal footer instead of links."
+login_button_style:
+  type: enum
+  default: btn-primary
+  choices:
+    - btn-default
+  description: "Guest Gate Login button style. btn-primary is a blue (tertiary) colored button by default. btn-default is a grey (primary-low) colored button by default."
+signup_button_style:
+  type: enum
+  default: btn-default
+  choices:
+    - btn-primary
+  description: "Guest Gate Signup button style. btn-primary is a blue (tertiary) colored button by default. btn-default is a grey (primary-low) colored button by default."
+login_icon:
+  type: string
+  default: "user"
+  description: "Add icon to Log In button."
+signup_icon:
+  type: string
+  default: "sign-in-alt"
+  description: "Add icon to Sign Up button."
+svg_icons: 
+  default: ""
+  type: "list"
+  list_type: "compact"
+  description: "List of FontAwesome 5 icons used in this theme component"
+custom_url_enabled:
+  type: bool
+  default: false
+  description: "Enable the custom login url and custom signup url options. The normal behaviour (if you leave this option unchecked) is for the Login or Sign Up modal to appear on the current topic page."
+custom_login_url:
+  type: string
+  default: "/login"
+  description: "For example, /login is the home page with the “Login” modal displayed."
+custom_signup_url:
+  type: string
+  default: "/signup"
+  description: "For example, /signup is the home page with the “Sign Up” modal displayed."
+enable_discourse_connect_signup:
+  type: bool
+  default: false
+  description: "Add a Sign Up button to Discourse Connect. With this you can add a different external url for registration etc." 
+discourse_connect_signup_url:
+  type: string
+  default: ""
+  description: "Paste a URL for Discourse Connect Sign Up button."
+gate_footer_position:
+  default: center
+  type: enum
+  choices:
+    - left
+    - right
+  description: "Footer buttons/links position."
+custom_gate_enabled:
+  type: bool
+  default: false
+  description: "Enable it if you want to customize the modal."
+custom_gate_image:
+  type: upload
+  default: ""
+  description: "Upload an image to display at the top of the modal."
+custom_gate_image_width:
+  type: string
+  default: "150px"
+  description: "The uploaded image width. You can use px, % etc, e.g. 100% will add a full modal width (minus padding) image."
+custom_gate_image_position:
+  default: center
+  type: enum
+  choices:
+    - left
+    - right
+  description: "Custom gate image position."
+custom_gate_big_text_position:
+  default: center
+  type: enum
+  choices:
+    - left
+    - right
+  description: "Custom gate big text (h2) position."
+custom_gate_little_text_position:
+  default: center
+  type: enum
+  choices:
+    - left
+    - right
+  description: "Custom gate little text (p) position."
+custom_gate_big_text_color:
+  type: string
+  default: "var(--primary)"
+  description: "The “big text” appears below the image. You can set the color of the text."
+custom_gate_little_text_color:
+  type: string
+  default: "var(--primary)"
+  description: "The “little text” appears below the big text. You can set the color of the text."
+custom_gate_background_color:
+  type: string
+  default: "var(--secondary)"
+  description: "Change the modal background color."
+custom_gate_link_color:
+  type: string
+  default: "var(--primary-medium)"
+  description: "Change the footer link color. This applies if the use gate buttons setting is disabled and you have set up a custom gate."

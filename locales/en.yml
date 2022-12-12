@@ -1,0 +1,12 @@
+en:
+  guest_gate:
+    title: "The Title"
+    sign_up_email: "Sign Up with Email"
+    sign_up: "Sign Up"
+    log_in: "I already have an account"
+    sso_log_in: "Log In"
+    sso_sign_up: "Sign Up"
+    or: "or"
+  custom_gate:
+    big_text: "Custom Big text"
+    little_text: "Custom Little text"
