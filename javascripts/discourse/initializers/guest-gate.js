@@ -13,6 +13,9 @@ export default {
     withPluginApi("0.8.31", api => {
       if (api.getCurrentUser()) {
         console.log(api.getCurrentUser());
+
+        showGate('guest-gate');
+
         if (settings.gate_show_when_thumbnail_clicked) {
           $("body").on("click", "a.lightbox", function() {
             showGate('guest-gate');
