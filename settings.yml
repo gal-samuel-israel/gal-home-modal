@@ -6,7 +6,7 @@ enable_debug_for_all:
   type: bool
   default: false
   description: ""
-enable_only_for_admins:
+enable_modal_only_for_admins:
   type: bool
   default: true
   description: disable to make this component visible to Non Admins (All users)

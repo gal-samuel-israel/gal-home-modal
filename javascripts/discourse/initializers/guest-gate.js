@@ -23,7 +23,7 @@ export default {
           console.log(currentUser.admin); 
         }
 
-        var showOnlyToAdmins = settings.enable_only_for_admins; //make this false to enable component all users
+        var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
         var isAdmin = (currentUser.admin)        
         var blockModal = (showOnlyToAdmins && !isAdmin);
 
@@ -50,7 +50,7 @@ export default {
             var hasPrefix = pattern.test(data.url);
             */           
             var isHome = (data.url==='/') ? true:false;
-            if(isHome) {              
+            if(isHome && !blockModal) {              
                 showGate('guest-gate');
             }
           });
