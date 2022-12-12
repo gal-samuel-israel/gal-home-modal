@@ -7,12 +7,8 @@ export default function(name, opts) {
   const route = container.lookup('route:application');
   const modalController = route.controllerFor('modal');
 
-  modalController.set('modalClass', 'gate');
+  modalController.set('modalClass', 'custom-welcome-modal');
   
-  if (settings.custom_gate_enabled) {
-    modalController.set('modalClass', 'gate custom-gate');
-  }
-
   const controllerName = opts.admin ? `modals/${name}` : name;
 
   const viewClass = container.factoryFor('view:' + name);

@@ -10,84 +10,28 @@ enable_modal_only_for_admins:
   type: bool
   default: true
   description: disable to make this component visible to Non Admins (All users)
-max_modal_views:
-  type: string
-  default: "5"
-  description: "Number of times the modal will show."
-login_button_style:
+button_style:
   type: enum
   default: btn-primary
   choices:
     - btn-default
   description: "Guest Gate Login button style. btn-primary is a blue (tertiary) colored button by default. btn-default is a grey (primary-low) colored button by default."
-signup_button_style:
-  type: enum
-  default: btn-default
-  choices:
-    - btn-primary
-  description: "Guest Gate Signup button style. btn-primary is a blue (tertiary) colored button by default. btn-default is a grey (primary-low) colored button by default."
-login_icon:
+button_icon:
   type: string
   default: "user"
-  description: "Add icon to Log In button."
-signup_icon:
-  type: string
-  default: "sign-in-alt"
-  description: "Add icon to Sign Up button."
-svg_icons: 
-  default: ""
-  type: "list"
-  list_type: "compact"
-  description: "List of FontAwesome 5 icons used in this theme component"
-gate_footer_position:
-  default: center
-  type: enum
-  choices:
-    - left
-    - right
-  description: "Footer buttons/links position."
-custom_gate_image:
+  description: "Add icon to Log In button. (FontAwesome 5 icons)"
+custom_image:
   type: upload
   default: ""
-  description: "Upload an image to display at the top of the modal."
-custom_gate_image_width:
+  description: "Upload an image"
+custom_image_width:
   type: string
-  default: "150px"
+  default: "auto"
   description: "The uploaded image width. You can use px, % etc, e.g. 100% will add a full modal width (minus padding) image."
-custom_gate_image_position:
+custom_image_position:
   default: center
   type: enum
   choices:
     - left
     - right
-  description: "Custom gate image position."
-custom_gate_big_text_position:
-  default: center
-  type: enum
-  choices:
-    - left
-    - right
-  description: "Custom gate big text (h2) position."
-custom_gate_little_text_position:
-  default: center
-  type: enum
-  choices:
-    - left
-    - right
-  description: "Custom gate little text (p) position."
-custom_gate_big_text_color:
-  type: string
-  default: "var(--primary)"
-  description: "The “big text” appears below the image. You can set the color of the text."
-custom_gate_little_text_color:
-  type: string
-  default: "var(--primary)"
-  description: "The “little text” appears below the big text. You can set the color of the text."
-custom_gate_background_color:
-  type: string
-  default: "var(--secondary)"
-  description: "Change the modal background color."
-custom_gate_link_color:
-  type: string
-  default: "var(--primary-medium)"
-  description: "Change the footer link color. This applies if the use gate buttons setting is disabled and you have set up a custom gate."
+  description: "Custom image position."

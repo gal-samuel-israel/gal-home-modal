@@ -6,31 +6,34 @@ import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
 
-  login: Ember.inject.controller(),
+  //login: Ember.inject.controller(),
 
-  ssoEnabled: setting('enable_discourse_connect'),
+  //ssoEnabled: setting('enable_discourse_connect'),
 
+  /*
   actions: {
     externalLogin(provider) {
       this.get('login').send('externalLogin', provider);
     }
   },
-  
+  */
+
   @action
-  showLoginGate(event) {    
+  showLogin(event) {    
     event?.preventDefault();
-    console.log('action: showLoginGate');
-    showModal("login");
+    console.log('action: showLogin');
+    //showModal("login");
   },
     
   @action
   ssoLoginGate(event) {
     event?.preventDefault();
     console.log('action: ssoLoginGate');
-    const returnPath = encodeURIComponent(window.location.pathname);
-    window.location = getURL("/session/sso?return_path=" + returnPath);
+    //const returnPath = encodeURIComponent(window.location.pathname);
+    //window.location = getURL("/session/sso?return_path=" + returnPath);
   },
-    
+
+  /*  
   @action
   showCreateAccountGate(event) {
     event?.preventDefault();
@@ -39,4 +42,5 @@ export default Ember.Controller.extend(ModalFunctionality, {
       modalClass: "create-account",
     });
   },
+  */
 });

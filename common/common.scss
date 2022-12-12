@@ -1,29 +1,28 @@
-#discourse-modal.gate {
-  // if custom gate enabled
-  &.custom-gate {
+#discourse-modal {
+  &.custom-welcome-modal {
     .modal-inner-container {
-      background-color: #{$custom_gate_background_color};
+      background-color: var(--secondary);
     }
     .modal-footer {
-      color: #{$custom_gate_link_color};
+      color: var(--primary-medium);
       a {
-       color: #{$custom_gate_link_color};
+       color: var(--primary-medium);
       }
     }
-    .custom-gate-content {
-      text-align: #{$custom_gate_image_position};
+    .modal-content {
+      text-align: left;
       img {
-        width: #{$custom_gate_image_width};
+        width: #{$custom_image_width};
         height: auto;
         margin-bottom: 0.75em;
       }
       h2 {
-        color: #{$custom_gate_big_text_color};
-        text-align: #{$custom_gate_big_text_position};
+        color: var(--primary);
+        text-align: left;
       }
       p {
-        color: #{$custom_gate_little_text_color};
-        text-align: #{$custom_gate_little_text_position};
+        color: var(--primary);
+        text-align: left;
       }
     }
   }
@@ -38,32 +37,11 @@
   }
   .modal-footer {
     color: var(--primary-medium);
-    justify-content: #{$gate_footer_position};
+    justify-content: left;
     a {
       color: var(--primary-medium);
       outline: none;
       margin: 0 0.25em;
     }
-  }
-  #login-buttons {
-    margin-bottom: 0.75em;
-    text-align: center;
-    .btn-social {
-      margin: 0.25em;
-      .mobile-view & {
-        width: 100%;
-      }
-      &:focus,
-      &:hover {
-        background: var(--secondary);
-        color: var(--primary);
-        .d-icon {
-          color: var(--primary);
-        }
-      }
-    }
-    .mobile-view & {
-      width: 100%;
-    }
-  }
+  }  
 }

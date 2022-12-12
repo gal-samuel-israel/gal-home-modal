@@ -1,13 +1,12 @@
-<DModalBody @title={{theme-prefix "guest_gate.title"}}> 
-    <div class="custom-gate-content">
-      <img src="{{theme-setting 'custom_gate_image'}}"/>
-      <h2>{{theme-i18n "custom_gate.big_text"}}</h2>
-      <p>{{theme-i18n "custom_gate.little_text"}}</p>
-    </div>      
-  {{login-buttons externalLogin=(action "externalLogin")}}
+<DModalBody @title={{theme-prefix "modal_data.title"}}> 
+    <div class="modal-content">
+      <img src="{{theme-setting 'custom_image'}}"/>
+      <h2>{{theme-i18n "modal_data.big_text"}}</h2>
+      <p>{{theme-i18n "modal_data.little_text"}}</p>
+    </div>  
 </DModalBody>
 
 <div class="modal-footer">     
-      <DButton @class={{theme-setting "login_button_style"}} @icon={{theme-setting "login_icon"}} @label='Button Label' @action={{"showLogin"}} />            
+      <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @label='Button Label' @action={{"showLogin"}} />            
       <a href {{on "click" this.ssoLoginGate}}>Some Link</a>  
 </div>
