@@ -12,9 +12,7 @@ export default {
   initialize(container) {
     withPluginApi("0.8.31", api => {
       if (api.getCurrentUser()) {
-        console.log(api.getCurrentUser());
-
-        showGate('guest-gate');
+        console.log(api.getCurrentUser());       
 
         if (settings.gate_show_when_thumbnail_clicked) {
           $("body").on("click", "a.lightbox", function() {
@@ -47,7 +45,7 @@ export default {
               var maxViews = parseInt(settings.max_guest_topic_views);
               pageView++;     
               var hitMaxViews = pageView >= maxViews;
-              var showGateBool = hitMaxViews && !isBot && !gateShownOnce && !api.getCurrentUser();
+              var showGateBool = true; //hitMaxViews && !isBot && !gateShownOnce /*&& !api.getCurrentUser()*/;
               if (showGateBool) {
                 if (settings.gate_show_only_once) {
                   gateShownOnce = true;
