@@ -52,7 +52,7 @@ export default {
             
             var isHome = (window.location.pathname==='/') ? true:false;
             if(debug){
-              console.log('url: ' + data.url + 'isHome : '+ isHome);
+              console.log('url: ' + window.location.pathname + 'isHome : '+ isHome);
             }        
             
             if(isHome && !blockModal) {              
