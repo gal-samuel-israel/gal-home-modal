@@ -1,3 +1,7 @@
+enable_only_for_admins:
+  type: boolean
+  default: true
+  description: disable to make this component visible to Non Admins (All users)
 max_modal_views:
   type: string
   default: "5"

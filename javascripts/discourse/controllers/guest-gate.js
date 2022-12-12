@@ -5,7 +5,10 @@ import showModal from "discourse/lib/show-modal";
 import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
+
   login: Ember.inject.controller(),
+
+  ssoEnabled: setting('enable_discourse_connect'),
 
   actions: {
     externalLogin(provider) {
@@ -14,14 +17,16 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
   
   @action
-  showLoginGate(event) {
+  showLoginGate(event) {    
     event?.preventDefault();
+    console.log('action: showLoginGate');
     showModal("login");
   },
     
   @action
   ssoLoginGate(event) {
     event?.preventDefault();
+    console.log('action: ssoLoginGate');
     const returnPath = encodeURIComponent(window.location.pathname);
     window.location = getURL("/session/sso?return_path=" + returnPath);
   },
@@ -29,6 +34,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @action
   showCreateAccountGate(event) {
     event?.preventDefault();
+    console.log('action: showCreateAccountGate');
     showModal("createAccount", {
       modalClass: "create-account",
     });
