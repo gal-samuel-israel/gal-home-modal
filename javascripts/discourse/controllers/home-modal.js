@@ -8,8 +8,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   //login: Ember.inject.controller(),
 
-  steps: Ember.inject.controller(),
-
   //ssoEnabled: setting('enable_discourse_connect'),
 
   /*

@@ -11,6 +11,9 @@ export default class Steps extends Component {
 
   };
 
+  didInsertElement(){
+    console.log('didInsert');
+  }
   willDestroy() {
     this.steps = null;
   }
