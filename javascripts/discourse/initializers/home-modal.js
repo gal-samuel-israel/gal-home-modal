@@ -4,7 +4,7 @@ import { viewTrackingRequired } from 'discourse/lib/ajax';
 import showGate from '../lib/custom-modal';
 
 export default {
-  name: "guest-gate",
+  name: "home-modal",
   after: 'inject-objects',
 
   initialize(container) {
@@ -29,7 +29,7 @@ export default {
 
         /*
           $("body").on("click", "a.lightbox", function() {
-            showGate('guest-gate');
+            showGate('home-modal');
             $.magnificPopup.instance.close();
           });
         */
@@ -56,7 +56,7 @@ export default {
             }        
             
             if(isHome && !blockModal) {              
-                showGate('guest-gate');
+                showGate('home-modal');
             }
           });
         
