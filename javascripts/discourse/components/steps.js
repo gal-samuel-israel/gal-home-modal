@@ -1,6 +1,7 @@
 import Component from "@glimmer/component";
 import { ajax } from "discourse/lib/ajax";
 import { tracked } from "@glimmer/tracking";
+import { getOwner } from "@ember/application";
 
 export default class Steps extends Component {
   @tracked steps = [];
