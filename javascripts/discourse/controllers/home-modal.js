@@ -8,6 +8,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   //login: Ember.inject.controller(),
 
+  steps: Ember.inject.controller(),
+
   //ssoEnabled: setting('enable_discourse_connect'),
 
   /*
@@ -31,7 +33,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     console.log('action: ssoLoginGate');
     //const returnPath = encodeURIComponent(window.location.pathname);
     //window.location = getURL("/session/sso?return_path=" + returnPath);
-  },
+  }
 
   /*  
   @action
