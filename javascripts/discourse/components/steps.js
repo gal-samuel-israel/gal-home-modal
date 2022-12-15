@@ -10,6 +10,7 @@ export default class Steps extends Component {
     super(...arguments);
 
     const count = this.args?.params?.count || 5;
+    var stepsArray = [];
 
     /*
     ajax(`/directory_items.json?period=yearly&order=likes_received`).then(
@@ -17,10 +18,12 @@ export default class Steps extends Component {
         this.topContributors = data.directory_items.slice(0, count);
       }
     );
-    */
+    */  
 
     if (getOwner(this).hasRegistration(`component:steps`)) {
       console.log('hasRegistration');
+      stepsArray = [{id:'step-1',content:'<p>Step 1</p>'},{id:'step-2',content:'<p>Step 2</p>'}];
+
     } else {
       // eslint-disable-next-line no-console
       console.warn(
@@ -28,7 +31,7 @@ export default class Steps extends Component {
       );
     }
 
-    this.steps = [{id:'step-1',content:'<p>Step 1</p>'},{id:'step-2',content:'<p>Step 2</p>'}];
+    this.steps = stepsArray;
 
   };
 
