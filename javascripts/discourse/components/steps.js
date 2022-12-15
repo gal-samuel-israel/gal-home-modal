@@ -18,8 +18,21 @@ export default class Steps extends Component {
     );
     */
 
-    this.steps = [{id:'step-1',content:'<p>Step 1</p>'},{id:'step-2',content:'<p>Step 2</p>'}]
-  }
+    if (getOwner(this).hasRegistration(`component:steps`)) {
+      console.log('hasRegistration');
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `The component was not found`
+      );
+    }
+
+    this.steps = [{id:'step-1',content:'<p>Step 1</p>'},{id:'step-2',content:'<p>Step 2</p>'}];
+
+  };
+
+  
+  
 
   willDestroy() {
     this.steps = null;
