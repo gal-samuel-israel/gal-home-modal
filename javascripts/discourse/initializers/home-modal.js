@@ -18,10 +18,10 @@ export default {
         if(debug4All){ debug = true; }
         
         if(debug){
-          console.log(this);
+          //console.log(this);
           console.log(currentUser);       
-          console.log(currentUser.id);
-          console.log(currentUser.admin); 
+          //console.log(currentUser.id);
+          //console.log(currentUser.admin); 
         }
 
         var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
