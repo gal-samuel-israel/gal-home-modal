@@ -33,7 +33,7 @@
           </div>
           
           
-          <SaveControls @model={{this.currentUser}} @action={{action "saveUserName"}} @saved={{this.saved}} />
+          <SaveControls @disabled={{this.saved}} @model={{this.currentUser}} @action={{action "saveUserName"}} @saved={{this.saved}} />
 
         </div>
         <div id="step-2" class="step">Step 2</div>
