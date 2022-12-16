@@ -30,10 +30,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({ user });
   },
+  @action
+  testAction(){
+    console.log('testAction');
+  },
   actions: {
-    testAction(){
-      console.log('testAction');
-    },
+    
     saveUserName() {
       this.set("saved", false);
       this.currentUser.setProperties({
