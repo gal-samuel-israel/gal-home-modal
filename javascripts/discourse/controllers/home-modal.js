@@ -5,6 +5,11 @@ import showModal from "discourse/lib/show-modal";
 import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
+  /* Object local params */
+  debugForAdmins: setting("enable_debug_for_admins"), //from settings.yml
+  canEditName: setting("allow_user_to_edit_name"), //from settings.yml
+  canSaveUser: true,
+  newNameInput: null,
 
   init() {
     this._super(...arguments);
@@ -13,17 +18,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
     ];
     this.set("revoking", {});
 
-    this.newNameInput = currentUser.name
-    //console.log(this);
-    //console.log(arguments);
+    this.newNameInput = currentUser.name;
+    if(this.debugForAdmins){
+      console.log(this);
+      console.log(arguments);
+    }
   },
 
-  /*
-  params and actions for Avatar and name change
-  */
-  canEditName: setting("allow_user_to_edit_name"), //from settings.yml
-  canSaveUser: true,
-  newNameInput: null,
+  /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({ user });
