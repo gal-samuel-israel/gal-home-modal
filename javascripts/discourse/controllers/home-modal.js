@@ -19,6 +19,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
   */
 
   @action
+  showAvatarSelector(user) {
+    showModal("avatar-selector").setProperties({ user });
+  },
+  
+  @action
   showLogin(event) {    
     event?.preventDefault();
     console.log('action: showLogin');

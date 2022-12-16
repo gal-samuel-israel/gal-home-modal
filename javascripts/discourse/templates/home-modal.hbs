@@ -7,7 +7,9 @@
       <div class="modal-steps">        
         <div id="step-1" class="step active">
           <UserProfileAvatar @user={{this.currentUser}} @tagName="" />
-          <div>Change your Avatar: {{avatar-uploader}}</div>
+          <div>
+            <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @label='Change Avatar' @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}} />  
+          </div>
         </div>
         <div id="step-2" class="step">Step 2</div>
         <div id="step-3" class="step">Step 3</div>
