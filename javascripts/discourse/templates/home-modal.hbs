@@ -11,7 +11,9 @@
             <UserProfileAvatar @user={{this.currentUser}} />
           </div>
           <div>
-            <DButton @class="btn-default pad-right" @icon="pencil-alt" @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}}>Change your Avatar</DButton>
+            <DButton @class="btn-default pad-right" @icon="pencil-alt" @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}}>
+              <span style="padding-left: 1em;">Change your Avatar</span>
+            </DButton>
           </div>
         </div>
         <div id="step-2" class="step">Step 2</div>
