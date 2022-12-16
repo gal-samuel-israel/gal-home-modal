@@ -27,13 +27,6 @@ export default {
         var isAdmin = (currentUser.admin)        
         var blockModal = (showOnlyToAdmins && !isAdmin);
 
-        /*
-          $("body").on("click", "a.lightbox", function() {
-            showGate('home-modal');
-            $.magnificPopup.instance.close();
-          });
-        */
-
           var pageView = 0;
           // Tell our AJAX system to track a page transition
           const router = container.lookup('router:main');

@@ -5,12 +5,12 @@
       <p>{{theme-i18n "modal_data.little_text"}}</p>
       
       <div class="modal-steps">        
-        <div id="step-1" class="step active">
+        <div id="step-1" class="step">
           <h3>Step 1</h3>
           <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
             <UserProfileAvatar @user={{this.currentUser}} />
           </div>
-          <div>
+          <div class="avatar-change-button-wrapper">
             <DButton
               @class="btn-default pad-right"
               @icon="pencil-alt"
@@ -21,6 +21,21 @@
               <span style="padding-left: 0.5em;">Change your Avatar</span>
             </DButton>
           </div>
+          {{#if this.canEditName}}
+            <div class="control-group pref-name">
+              <label class="control-label">{{i18n "modal.name_edit_field_title"}}</label>
+              <div class="controls">
+                {{#if this.currentUser.can_edit_name}}
+                  <TextField @value={{this.newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
+                {{else}}
+                  <span class="static">{{this.currentUser.name}}</span>
+                {{/if}}
+              </div>
+              <div class="instructions">
+                {{this.nameInstructions}}
+              </div>
+            </div>
+          {{/if}}
         </div>
         <div id="step-2" class="step">Step 2</div>
         <div id="step-3" class="step">Step 3</div>

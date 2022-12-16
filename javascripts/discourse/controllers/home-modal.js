@@ -6,23 +6,38 @@ import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
 
-  //login: Ember.inject.controller(),
-
-  //ssoEnabled: setting('enable_discourse_connect'),
+  init() {
+    this._super(...arguments);
+    this.saveAttrNames = [
+      "name",      
+    ];
+    this.set("revoking", {});
+  },
 
   /*
-  actions: {
-    externalLogin(provider) {
-      this.get('login').send('externalLogin', provider);
-    }
-  },
+  params and actions for Avatar and name change
   */
-
+  canEditName: setting("enable_names"),
+  canSaveUser: true,
+  newNameInput: null,
   @action
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({ user });
   },
-  
+  actions: {
+    saveUserName() {
+      this.set("saved", false);
+      this.currentUser.setProperties({
+        name: this.newNameInput,        
+      });
+      return this.currentUser
+        .save(this.saveAttrNames)
+        .then(() => this.set("saved", true))
+        .catch(popupAjaxError);
+    },
+  },
+
+  /* Test actions */
   @action
   showLogin(event) {    
     event?.preventDefault();

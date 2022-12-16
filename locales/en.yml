@@ -3,3 +3,5 @@ en:
     title: "The Modal Title"    
     big_text: "Custom Big text"
     little_text: "Custom Little text"
+  modal:
+    name_edit_field_tile: "Your Full Name"
