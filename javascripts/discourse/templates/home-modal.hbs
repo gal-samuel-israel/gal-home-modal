@@ -25,13 +25,15 @@
           <div class="control-group pref-name">
             <label class="control-label">Your Full Name</label>
             <div class="controls">            
-              <TextField @value={{this.currentUser.name}} @classNames="input-xlarge" @maxlength="255" />             
+              <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
             </div>
             <div class="instructions">
               Your Full Name (optional)
             </div>
           </div>
           
+          <PluginOutlet @name="user-preferences-account" @tagName="span" @connectorTagName="div" @args={{hash model=this.currentUser save=(action "testAction")}} />
+
         </div>
         <div id="step-2" class="step">Step 2</div>
         <div id="step-3" class="step">Step 3</div>
