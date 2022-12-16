@@ -10,32 +10,32 @@
           <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
             <UserProfileAvatar @user={{this.currentUser}} />
           </div>
-          <div class="avatar-change-button-wrapper">
+          <div class="control-group avatar-change-button-wrapper">
+            <label class="control-label">{{i18n "modal.avatar_edit_title"}}</label>
             <DButton
               @class="btn-default pad-right"
               @icon="pencil-alt"
               @action={{"showAvatarSelector"}}
               @actionParam={{this.currentUser}}
-              @computedLabel="Change your Avatar"
-              >
+              @computedLabel="Change your Avatar">
               <span style="padding-left: 0.5em;">Change your Avatar</span>
             </DButton>
           </div>
-          {{#if canEditName}}
-            <div class="control-group pref-name">
-              <label class="control-label">{{i18n "modal.name_edit_field_title"}}</label>
-              <div class="controls">
-                {{#if this.currentUser.can_edit_name}}
-                  <TextField @value={{newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
-                {{else}}
-                  <span class="static">{{this.currentUser.name}}</span>
-                {{/if}}
-              </div>
-              <div class="instructions">
-                {{this.nameInstructions}}
-              </div>
+          
+          <div class="control-group pref-name">
+            <label class="control-label">{{i18n "modal.name_edit_field_title"}}</label>
+            <div class="controls">
+              {{#if this.currentUser.can_edit_name}}
+                <TextField @value={{newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
+              {{else}}
+                <span class="static">{{this.currentUser.name}}</span>
+              {{/if}}
             </div>
-          {{/if}}
+            <div class="instructions">
+              {{this.nameInstructions}}
+            </div>
+          </div>
+          
         </div>
         <div id="step-2" class="step">Step 2</div>
         <div id="step-3" class="step">Step 3</div>
@@ -47,5 +47,6 @@
 
 <div class="modal-footer">     
       <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @label='Button Label' @action={{"showLogin"}} />            
-      <a href {{on "click" this.ssoLoginGate}}>Some Link</a>  
+      <a href {{on "click" this.ssoLoginGate}}>Some Link</a> | 
+      <a href {{on "click" this.testAction}}>TestAction</a> 
 </div>
