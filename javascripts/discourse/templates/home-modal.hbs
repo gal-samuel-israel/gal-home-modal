@@ -7,11 +7,11 @@
       <div class="modal-steps">        
         <div id="step-1" class="step active">
           <h3>Step 1</h3>
-          <div>
-            <UserProfileAvatar @user={{this.currentUser}} @tagName="div" @action={{"showAvatarSelector"}} />
+          <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
+            <UserProfileAvatar @user={{this.currentUser}} />
           </div>
           <div>
-            <DButton @class="btn-default pad-left" @icon="pencil-alt"  @label="Change your Avatar" @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}} />  
+            <DButton @class="btn-default pad-left" @icon="pencil-alt" @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}}>Change your Avatar</DButton>
           </div>
         </div>
         <div id="step-2" class="step">Step 2</div>
