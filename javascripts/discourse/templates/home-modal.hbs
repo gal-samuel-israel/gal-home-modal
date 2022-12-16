@@ -6,7 +6,7 @@
       
       <div class="modal-steps">        
         <div id="step-1" class="step active">
-          <div class="user-profile-image" style={{this.model.profileBackgroundUrl}}></div>
+          <UserProfileAvatar @user={{this.currentUser}} @tagName="" />
           <div>Change your Avatar: {{avatar-uploader}}</div>
         </div>
         <div id="step-2" class="step">Step 2</div>
