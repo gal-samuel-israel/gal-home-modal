@@ -13,8 +13,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
     ];
     this.set("revoking", {});
 
-    console.log(this);
-    console.log(arguments);
+    this.newNameInput = currentUser.name
+    //console.log(this);
+    //console.log(arguments);
   },
 
   /*
