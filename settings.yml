@@ -9,7 +9,11 @@ enable_debug_for_all:
 enable_modal_only_for_admins:
   type: bool
   default: true
-  description: disable to make this component visible to Non Admins (All users)
+  description: "disable to make this component visible to Non Admins (All users)"
+allow_user_to_edit_name:
+  type: bool
+  default: true
+  description: "Allow Full Name edit"
 button_style:
   type: enum
   default: btn-primary

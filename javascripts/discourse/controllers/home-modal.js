@@ -17,7 +17,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /*
   params and actions for Avatar and name change
   */
-  canEditName: true,
+  canEditName: setting("allow_user_to_edit_name"), //from settings.yml
   canSaveUser: true,
   newNameInput: null,
   @action
