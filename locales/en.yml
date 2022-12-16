@@ -3,6 +3,6 @@ en:
     title: "The Modal Title"    
     big_text: "Custom Big text"
     little_text: "Custom Little text"
-  modal:
+  modal_steps_user:
     name_edit_field_tile: "Your Full Name"
     avatar_edit_title: "Your Avatar"

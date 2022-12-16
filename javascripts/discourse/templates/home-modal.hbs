@@ -11,7 +11,7 @@
             <UserProfileAvatar @user={{this.currentUser}} />
           </div>
           <div class="control-group avatar-change-button-wrapper">
-            <label class="control-label">{{i18n "modal.avatar_edit_title"}}</label>
+            <label class="control-label">{{theme-i18n "modal_steps_user.avatar_edit_title"}}</label>
             <DButton
               @class="btn-default pad-right"
               @icon="pencil-alt"
@@ -23,13 +23,9 @@
           </div>
           
           <div class="control-group pref-name">
-            <label class="control-label">{{i18n "modal.name_edit_field_title"}}</label>
-            <div class="controls">
-              {{#if this.currentUser.can_edit_name}}
-                <TextField @value={{newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
-              {{else}}
-                <span class="static">{{this.currentUser.name}}</span>
-              {{/if}}
+            <label class="control-label">{{theme-i18n "modal_steps_user.name_edit_field_title"}}</label>
+            <div class="controls">            
+              <TextField @value={{newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
             </div>
             <div class="instructions">
               {{this.nameInstructions}}
