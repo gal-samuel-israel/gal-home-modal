@@ -6,9 +6,12 @@
       
       <div class="modal-steps">        
         <div id="step-1" class="step active">
-          <UserProfileAvatar @user={{this.currentUser}} @tagName="" />
+          <h3>Step 1</h3>
           <div>
-            <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @label='Change Avatar' @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}} />  
+            <UserProfileAvatar @user={{this.currentUser}} @tagName={{this.currentUser.name}} @action={{"showAvatarSelector"}} />
+          </div>
+          <div>
+            <DButton @class="btn-default pad-left" @icon="pencil-alt"  @label="Change your Avatar" @action={{"showAvatarSelector"}} @actionParam={{this.currentUser}} />  
           </div>
         </div>
         <div id="step-2" class="step">Step 2</div>
