@@ -19,7 +19,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   */
   canEditName: setting("allow_user_to_edit_name"), //from settings.yml
   canSaveUser: true,
-  newNameInput: this.currentUser.name,
+  newNameInput: null,
   @action
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({ user });

@@ -18,6 +18,7 @@ export default {
         if(debug4All){ debug = true; }
         
         if(debug){
+          console.log(this);
           console.log(currentUser);       
           console.log(currentUser.id);
           console.log(currentUser.admin); 
@@ -48,7 +49,8 @@ export default {
               console.log('url: ' + window.location.pathname + ' | isHome : '+ isHome);
             }        
             
-            if(isHome && !blockModal) {              
+            if(isHome && !blockModal) {
+                this.newNameInput = currentUser.name,          
                 showGate('home-modal');
             }
           });
