@@ -31,22 +31,24 @@ export default Ember.Controller.extend(ModalFunctionality, {
     showModal("avatar-selector").setProperties({ user });
   },
   @action
-  testAction(){
+  saveUserName() {
+    event?.preventDefault();
+    this.set("saved", false);
+    this.currentUser.setProperties({
+      name: this.newNameInput,        
+    });
+    return this.currentUser
+      .save(this.saveAttrNames)
+      .then(() => this.set("saved", true))
+      .catch(popupAjaxError);
+  },
+  @action
+  testAction(event){
+    event?.preventDefault();
     console.log('testAction');
   },
-  actions: {
-    
-    saveUserName() {
-      this.set("saved", false);
-      this.currentUser.setProperties({
-        name: this.newNameInput,        
-      });
-      return this.currentUser
-        .save(this.saveAttrNames)
-        .then(() => this.set("saved", true))
-        .catch(popupAjaxError);
-    },
-  },
+ 
+  
 
   /* Test actions */
   @action
