@@ -21,12 +21,12 @@
               <span style="padding-left: 0.5em;">Change your Avatar</span>
             </DButton>
           </div>
-          {{#if this.canEditName}}
+          {{#if canEditName}}
             <div class="control-group pref-name">
               <label class="control-label">{{i18n "modal.name_edit_field_title"}}</label>
               <div class="controls">
                 {{#if this.currentUser.can_edit_name}}
-                  <TextField @value={{this.newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
+                  <TextField @value={{newNameInput}} @classNames="input-xxlarge" @maxlength="255" />
                 {{else}}
                   <span class="static">{{this.currentUser.name}}</span>
                 {{/if}}
