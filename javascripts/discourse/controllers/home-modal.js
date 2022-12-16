@@ -12,6 +12,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
       "name",      
     ];
     this.set("revoking", {});
+
+    console.log(this);
+    console.log(arguments);
   },
 
   /*

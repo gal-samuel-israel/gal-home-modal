@@ -49,8 +49,7 @@ export default {
               console.log('url: ' + window.location.pathname + ' | isHome : '+ isHome);
             }        
             
-            if(isHome && !blockModal) {
-                this.newNameInput = currentUser.name,          
+            if(isHome && !blockModal) {                          
                 showGate('home-modal');
             }
           });
