@@ -46,6 +46,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   testAction(event){
     event?.preventDefault();
     console.log('testAction');
+    this.set("saved", true);
   },
  
   

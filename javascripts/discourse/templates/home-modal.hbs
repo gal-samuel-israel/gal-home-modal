@@ -33,6 +33,7 @@
           </div>
           
           <PluginOutlet @name="user-preferences-account" @tagName="span" @connectorTagName="div" @args={{hash model=this.currentUser save=(action "testAction")}} />
+          <SaveControls @model={{this.currentUser}} @action={{action "testAction"}} @saved={{this.saved}} />
 
         </div>
         <div id="step-2" class="step">Step 2</div>
