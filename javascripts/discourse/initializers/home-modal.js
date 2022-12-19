@@ -57,6 +57,7 @@ export default {
             } else {
               userHidePreference = localStorage.getItem("homeModalHide");
             }
+            
             if(debug){
               console.log('homeModalHide: ' + userHidePreference);
             }

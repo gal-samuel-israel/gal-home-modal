@@ -11,7 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   canEditName: setting("allow_user_to_edit_name"), //from settings.yml
   canSaveUser: true,
   newNameInput: null,
-  hideModalNextTime: false,
+  hideModalNextTime: null,
 
   init() {
     this._super(...arguments);
@@ -26,7 +26,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(arguments);
     }
 
-    this.hideModalNextTime = (localStorage.getItem("homeModalHide") === null) ? false : localStorage.getItem("homeModalHide"),
+    this.hideModalNextTime = (localStorage.getItem("homeModalHide") === null) ? false : localStorage.getItem("homeModalHide");
   },
 
   /* actions for Avatar and name change */  
@@ -57,7 +57,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @action
   toggleHideNextTime(event){
     event?.preventDefault();
-    console.log('toggleHideNextTime');
+    console.log('toggleHideNextTime:');
+    console.log('was')
     this.set("hideModalNextTime", !this.hideModalNextTime);
     localStorage.setItem("homeModalHide", this.hideModalNextTime);
   },
