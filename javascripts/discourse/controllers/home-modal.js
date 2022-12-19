@@ -11,6 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   canEditName: null,
   canSaveUser: true,
   newNameInput: null,
+  newBioRawInput: null,
   hideModalNextTime: null,
 
   init() {
@@ -22,11 +23,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.canEditName = setting("allow_user_to_edit_name"); //from settings.yml
 
     this.saveAttrNames = [
-      "name",      
+      "name",
+      "bio_raw",  
     ];
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;
+    this.newBioRawInput = this.currentUser.bio_raw;
 
     if(this.debugForAdmins){
       console.log(this);
@@ -49,11 +52,20 @@ export default Ember.Controller.extend(ModalFunctionality, {
     event?.preventDefault();
     this.set("saved", false);
     this.currentUser.setProperties({
-      name: this.newNameInput,        
+      name: this.newNameInput,
+      bio_raw: this.newBioRawInput,        
     });
     return this.currentUser
       .save(this.saveAttrNames)
-      .then(() => this.set("saved", true))
+      .then(() => {
+        
+        cookAsync(this.currentUser.get("bio_raw"))
+            .then(() => {
+              this.currentUser.set("bio_cooked");
+              this.set("saved", true);
+            })
+            .catch(popupAjaxError);
+      })
       .catch(popupAjaxError);
   },
   @action
