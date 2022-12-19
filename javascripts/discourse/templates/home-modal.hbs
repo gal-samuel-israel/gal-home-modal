@@ -7,11 +7,23 @@
       <div class="modal-steps">        
         <div id="step-1" class="step">
           <h3>Step 1</h3>
-          <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
-            <UserProfileAvatar @user={{this.currentUser}} />
-          </div>
+          
           <div class="control-group avatar-change-button-wrapper">
+
+            <div class="control-group pref-name">
+              <label class="control-label">Your Full Name</label>
+              <div class="controls">            
+                <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
+              </div>
+              <div class="instructions">
+                Your Full Name (optional)
+              </div>
+            </div>
+
             <label class="control-label">Your Avatar</label>
+            <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
+              <UserProfileAvatar @user={{this.currentUser}} />
+            </div>
             <DButton
               @class="btn-default pad-right"
               @icon="pencil-alt"
@@ -20,18 +32,7 @@
               @computedLabel="Change your Avatar">
               <span style="padding-left: 0.5em;">Change your Avatar</span>
             </DButton>
-          </div>
-          
-          <div class="control-group pref-name">
-            <label class="control-label">Your Full Name</label>
-            <div class="controls">            
-              <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
-            </div>
-            <div class="instructions">
-              Your Full Name (optional)
-            </div>
-          </div>
-          
+          </div>                              
           
           <SaveControls @model={{this.currentUser}} @action={{action "saveUserName"}} @saved={{this.saved}} />
 
