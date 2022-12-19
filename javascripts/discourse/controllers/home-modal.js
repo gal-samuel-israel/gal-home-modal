@@ -7,16 +7,19 @@ import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   /* Object local params */
-  debugForAdmins: setting("enable_debug_for_admins"), //from settings.yml
-  canEditName: setting("allow_user_to_edit_name"), //from settings.yml
+  debugForAdmins: null,
+  canEditName: null,
   canSaveUser: true,
   newNameInput: null,
-  hideModalNextTime: localStorage.getItem("homeModalHide"),
+  hideModalNextTime: null,
 
   init() {
     this._super(...arguments);
 
     console.log('extend init start:');
+
+    this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
+    this.canEditName = setting("allow_user_to_edit_name"); //from settings.yml
 
     this.saveAttrNames = [
       "name",      
@@ -30,6 +33,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(arguments);
     }
     
+    this.hideModalNextTime = localStorage.getItem("homeModalHide");
+
     console.log('extend init end:');
     console.log(this);
 
