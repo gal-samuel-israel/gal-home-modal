@@ -25,6 +25,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(this);
       console.log(arguments);
     }
+
+    this.hideModalNextTime = (localStorage.getItem("homeModalHide") === null) ? false : localStorage.getItem("homeModalHide"),
   },
 
   /* actions for Avatar and name change */  
