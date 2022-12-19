@@ -33,10 +33,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(arguments);
     }
     
-    this.hideModalNextTime = localStorage.getItem("homeModalHide");
+    this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
-    console.log('extend init end:');
-    console.log(this);
+    console.log('extend init end:');   
 
   },
 

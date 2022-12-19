@@ -56,7 +56,7 @@ export default {
               userHidePreference = false;
               localStorage.setItem("homeModalHide", false);
             } else {
-              userHidePreference = localStorage.getItem("homeModalHide");
+              userHidePreference = JSON.parse(localStorage.getItem("homeModalHide"));
             }
 
             if(debug){
