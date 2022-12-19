@@ -11,6 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   canEditName: setting("allow_user_to_edit_name"), //from settings.yml
   canSaveUser: true,
   newNameInput: null,
+  hideModalNextTime: false,
 
   init() {
     this._super(...arguments);
@@ -50,7 +51,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("saved", true);
   },
  
-  
+  /* Hide Modal actions */
+  @action
+  toggleHideNextTime(event){
+    event?.preventDefault();
+    console.log('toggleHideNextTime');
+    this.set("hideModalNextTime", !this.hideModalNextTime);
+    localStorage.setItem("homeModalHide", this.hideModalNextTime);
+  },
 
   /* Test actions */
   @action
