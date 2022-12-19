@@ -64,7 +64,7 @@ export default {
             }
             
             if(isHome && !blockModal) {                          
-                showGate('home-modal');
+                if(!userHidePreference) { showGate('home-modal'); }
             }
           });
         
