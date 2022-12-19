@@ -52,6 +52,6 @@
       <a href {{on "click" this.testAction}}>TestAction</a> 
       {{#if (this.debug)}}
       <hr>
-      hideModalNextTime: {{this.hideModalNextTime.toString()}} <br>
+      hideModalNextTime: {{#if (this.hideModalNextTime)}}True{{else}}False{{/if}}<br>
       {{/if}}
 </div>
