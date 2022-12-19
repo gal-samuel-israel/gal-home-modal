@@ -19,6 +19,7 @@ export default {
         
         if(debug){
           //console.log(this);
+          console.log('initializer:');  
           console.log(currentUser);       
           console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
@@ -46,7 +47,7 @@ export default {
             
             var isHome = (window.location.pathname==='/') ? true:false;
             if(debug){
-              console.log('url: ' + window.location.pathname + ' | isHome : '+ isHome);
+              console.log('initializer | url: ' + window.location.pathname + ' | isHome : '+ isHome);
             }        
             
 
@@ -57,9 +58,9 @@ export default {
             } else {
               userHidePreference = localStorage.getItem("homeModalHide");
             }
-            
+
             if(debug){
-              console.log('homeModalHide: ' + userHidePreference);
+              console.log('initializer | homeModalHide: ' + userHidePreference);
             }
             
             if(isHome && !blockModal) {                          

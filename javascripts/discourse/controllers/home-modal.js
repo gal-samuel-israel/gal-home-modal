@@ -15,6 +15,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   init() {
     this._super(...arguments);
+
+    console.log('extend init start:');
+
     this.saveAttrNames = [
       "name",      
     ];
@@ -27,6 +30,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(arguments);
     }
     
+    console.log('extend init end:');
+    console.log(this);
+
   },
 
   /* actions for Avatar and name change */  
