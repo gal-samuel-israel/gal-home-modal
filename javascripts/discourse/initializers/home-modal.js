@@ -49,6 +49,18 @@ export default {
               console.log('url: ' + window.location.pathname + ' | isHome : '+ isHome);
             }        
             
+
+            var userHidePreference;
+            if (localStorage.getItem("homeModalHide") === null) {
+              userHidePreference = false;
+              localStorage.setItem("homeModalHide", false);
+            } else {
+              userHidePreference = localStorage.getItem("homeModalHide");
+            }
+            if(debug){
+              console.log('homeModalHide: ' + userHidePreference);
+            }
+            
             if(isHome && !blockModal) {                          
                 showGate('home-modal');
             }
