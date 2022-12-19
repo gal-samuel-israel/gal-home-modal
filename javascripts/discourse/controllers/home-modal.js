@@ -30,7 +30,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;
-    this.newBioRawInput = this.currentUser.userOption('bio_raw');
+    this.newBioRawInput = this.currentUser.get('bio_raw');
 
     if(this.debugForAdmins){
       console.log(this);
