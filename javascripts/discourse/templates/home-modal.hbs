@@ -50,8 +50,14 @@
       <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @label='Button Label' @action={{"showLogin"}} />            
       <a href {{on "click" this.ssoLoginGate}}>Some Link</a> | 
       <a href {{on "click" this.testAction}}>TestAction</a> 
-      {{#if (this.debugForAdmins)}}
+      {{#if this.debugForAdmins}}
       <hr>
-      hideModalNextTime: {{#if (this.hideModalNextTime)}}True{{else}}False{{/if}}<br>
+      hideModalNextTime: 
+        {{#if this.hideModalNextTime}}
+        True
+        {{else}}
+        False
+        {{/if}}
+      <br>
       {{/if}}
 </div>
