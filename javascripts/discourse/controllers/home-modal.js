@@ -1,7 +1,9 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import { setting } from 'discourse/lib/computed';
 import { action } from "@ember/object";
 import showModal from "discourse/lib/show-modal";
+import getURL from "discourse-common/lib/get-url";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   /* Object local params */
@@ -16,8 +18,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     console.log('extend init start:');
 
-    this.debugForAdmins = this.siteSettings.enable_debug_for_admins; //from settings.yml
-    this.canEditName = this.siteSettings.allow_user_to_edit_name; //from settings.yml
+    this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
+    this.canEditName = setting("allow_user_to_edit_name"); //from settings.yml
 
     this.saveAttrNames = [
       "name",      
