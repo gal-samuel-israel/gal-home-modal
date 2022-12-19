@@ -1,5 +1,6 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
 import { action } from "@ember/object";
 import showModal from "discourse/lib/show-modal";
@@ -29,7 +30,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;
-    this.newBioRawInput = this.currentUser.bio_raw;
+    this.newBioRawInput = this.currentUser.userOption('bio_raw');
 
     if(this.debugForAdmins){
       console.log(this);
