@@ -30,7 +30,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;
-    this.newBioRawInput = this.currentUser.get('bio_raw');
+    this.newBioRawInput = this.currentUser.get("bio_raw");
 
     if(this.debugForAdmins){
       console.log(this);
@@ -59,8 +59,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
     return this.currentUser
       .save(this.saveAttrNames)
       .then(() => {
-        
-        cookAsync(this.currentUser.get("bio_raw"))
+        console.log('saved name');
+        cookAsync(this.newBioRawInput)
             .then(() => {
               this.currentUser.set("bio_cooked");
               this.set("saved", true);
