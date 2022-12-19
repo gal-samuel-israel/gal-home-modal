@@ -20,7 +20,7 @@ export default {
         if(debug){
           //console.log(this);
           console.log(currentUser);       
-          //console.log(currentUser.id);
+          console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
         }
 
