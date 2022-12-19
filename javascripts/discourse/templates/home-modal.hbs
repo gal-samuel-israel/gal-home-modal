@@ -51,13 +51,13 @@
       <a href {{on "click" this.ssoLoginGate}}>Some Link</a> | 
       <a href {{on "click" this.testAction}}>TestAction</a> 
       {{#if this.debugForAdmins}}
-      <hr>
-      hideModalNextTime: 
-        {{#if this.hideModalNextTime}}
-        True
-        {{else}}
-        False
-        {{/if}}
-      <br>
+        <div class="debug">
+          hideModalNextTime: 
+            {{#if this.hideModalNextTime}}
+            True
+            {{else}}
+            False
+            {{/if}}<br>
+        <div>
       {{/if}}
 </div>
