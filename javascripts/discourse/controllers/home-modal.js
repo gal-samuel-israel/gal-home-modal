@@ -2,9 +2,9 @@ import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
-import { action } from "@ember/object";
 import showModal from "discourse/lib/show-modal";
 import getURL from "discourse-common/lib/get-url";
+import { action } from "@ember/object";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   /* Object local params */
@@ -16,10 +16,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   hideModalNextTime: null,
 
   init() {
-    this._super(...arguments);
-
-    console.log('extend init start:');
-
+    this._super(...arguments);    
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
     this.canEditName = setting("allow_user_to_edit_name"); //from settings.yml
 
@@ -30,16 +27,16 @@ export default Ember.Controller.extend(ModalFunctionality, {
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;
-    this.newBioRawInput = this.currentUser.get("bio_raw");
+    this.newBioRawInput = this.currentUser.bio_raw;
 
-    if(this.debugForAdmins){
-      console.log(this);
-      console.log(arguments);
-    }
-    
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
-    console.log('extend init end:');   
+    if(this.debugForAdmins){
+      console.log('extend init start:');
+      console.log(this);
+      console.log(arguments);
+      console.log('extend init end:');
+    }
 
   },
 
