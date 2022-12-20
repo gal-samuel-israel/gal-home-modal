@@ -11,7 +11,7 @@ export default {
   initialize(container) {
     withPluginApi("0.8.31", api => {
       
-      const discourseUser = User.current();
+      const discourseUser = User.findDetails('bio_raw');
       console.log(discourseUser);
 
       if (api.getCurrentUser()) {
@@ -24,8 +24,8 @@ export default {
         if(debug){
           //console.log(this);
           console.log('initializer:');  
-          console.log(currentUser);       
-          console.log(currentUser.user_option);
+          //console.log(currentUser);       
+          //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
         }
 
