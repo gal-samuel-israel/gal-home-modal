@@ -1,6 +1,7 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { startPageTracking } from 'discourse/lib/page-tracker';
 import { viewTrackingRequired } from 'discourse/lib/ajax';
+import User from "discourse/models/user";
 import showGate from '../lib/custom-modal';
 
 export default {
@@ -9,6 +10,9 @@ export default {
 
   initialize(container) {
     withPluginApi("0.8.31", api => {
+      
+      const discourseUser = User.getCurrentUser();
+      console.log(discourseUser);
       
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()
