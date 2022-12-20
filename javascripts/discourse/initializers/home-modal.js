@@ -21,7 +21,7 @@ export default {
           //console.log(this);
           console.log('initializer:');  
           console.log(currentUser);       
-          console.log(currentUser.user_option);
+          //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
         }
 
@@ -73,8 +73,10 @@ export default {
   }
 };
 
+/*
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+*
