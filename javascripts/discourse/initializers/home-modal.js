@@ -10,9 +10,6 @@ export default {
 
   initialize(container) {
     withPluginApi("0.8.31", api => {
-      
-      const discourseUser = User.findDetails('bio_raw');
-      console.log(discourseUser);
 
       if (api.getCurrentUser()) {
         const currentUser = api.getCurrentUser()

@@ -2,9 +2,11 @@ import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
-import { action } from "@ember/object";
 import showModal from "discourse/lib/show-modal";
+import discourseComputed from "discourse-common/utils/decorators";
 import getURL from "discourse-common/lib/get-url";
+import { action } from "@ember/object";
+import { readOnly } from "@ember/object/computed";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   /* Object local params */
@@ -14,6 +16,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   newNameInput: null,
   newBioRawInput: null,
   hideModalNextTime: null,
+  canChangeBio: readOnly("model.can_change_bio"),
 
   init() {
     this._super(...arguments);
@@ -43,11 +46,50 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   },
 
+  @discourseComputed("model.user_fields.@each.value")
+  userFields() {
+    let siteUserFields = this.site.user_fields;
+    if (isEmpty(siteUserFields)) {
+      return;
+    }
+
+    // Staff can edit fields that are not `editable`
+    if (!this.currentUser.staff) {
+      siteUserFields = siteUserFields.filterBy("editable", true);
+    }
+
+    return siteUserFields.sortBy("position").map((field) => {
+      const value = this.model.user_fields?.[field.id.toString()];
+      return EmberObject.create({ field, value });
+    });
+  },
+
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({ user });
   },
+
+  _updateUserFields() {
+    const model = this.currentUser,
+      userFields = this.userFields;
+
+      console.log('in _updateUserFields:');
+      console.log(userFields);
+      
+    if (!isEmpty(userFields)) {
+      const modelFields = model.get("user_fields");
+      if (!isEmpty(modelFields)) {
+        userFields.forEach(function (uf) {
+          const value = uf.get("value");
+          modelFields[uf.get("field.id").toString()] = isEmpty(value)
+            ? null
+            : value;
+        });
+      }
+    }
+  },
+
   @action
   saveUserName() {
     event?.preventDefault();
