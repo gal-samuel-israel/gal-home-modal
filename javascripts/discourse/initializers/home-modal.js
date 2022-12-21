@@ -18,8 +18,7 @@ export default {
         if(debug4All){ debug = true; }
         
         if(debug){          
-          console.log('initializer:');  
-          console.log(model);
+          console.log('initializer:');
           console.log(currentUser);       
           //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
