@@ -38,12 +38,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
 
-        this.newBioRawInput = this.currentUser.bio_raw;
-        let deditor = query("textarea.d-editor-input");
-        let deditor_value = deditor?.value;
-        if(deditor_value === 'undefined' || deditor_value===''){
-          $(deditor).val(this.user.bio_raw);
-        }
+        this.newBioRawInput = this.currentUser.bio_raw;        
       }
     ).catch(popupAjaxError);
 
