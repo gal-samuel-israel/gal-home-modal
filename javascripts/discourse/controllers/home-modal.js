@@ -5,8 +5,10 @@ import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
 /*import getURL from "discourse-common/lib/get-url";*/
 import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 
 export default Ember.Controller.extend(ModalFunctionality, {
+  dialog: service(),
   /* Object local params */
   debugForAdmins: null,
   canEditName: null,
