@@ -31,7 +31,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
-    let getUser = `${getURL("/u/")}${this.currentUser.username}.json`;
+    let getUser = getURL(`/u/${this.currentUser.username}.json`);
 
     /*
     cookAsync(this.currentUser.get("bio_raw"))
