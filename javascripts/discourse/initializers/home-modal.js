@@ -17,9 +17,9 @@ export default {
         var debug4All = settings.enable_debug_for_all;
         if(debug4All){ debug = true; }
         
-        if(debug){
-          //console.log(this);
+        if(debug){          
           console.log('initializer:');  
+          console.log(model);
           console.log(currentUser);       
           //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
