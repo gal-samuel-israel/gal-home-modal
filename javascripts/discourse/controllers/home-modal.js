@@ -42,8 +42,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }
     ).catch(popupAjaxError);
     */
-   
-    const data = await ajax(`/u/${this.currentUser.username}.json`);
+
+    const data = ajax(`/u/${this.currentUser.username}.json`);
     this.currentUser.set("bio_raw", data.user.bio_raw); 
     this.currentUser.set("bio_cooked", data.user.bio_cooked); 
     this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
