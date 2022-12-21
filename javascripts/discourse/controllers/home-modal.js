@@ -103,6 +103,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
       .catch(popupAjaxError);
   },
   @action
+  biosUpdate(event),{
+    event.preventDefault();
+    this.currentUser.set("bio_raw", event.target.value); 
+  },
+  @action
   testAction(event){
     event?.preventDefault();
     console.log('testAction');
