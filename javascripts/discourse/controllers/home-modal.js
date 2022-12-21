@@ -84,6 +84,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
       .save(this.saveAttrNames)
       .then(() => {
         console.log('saved name');
+        console.log(this.currentUser);
+        this.set("saved", true);
+        /*
         cookAsync(this.currentUser.get("bio_raw"))
             .then((cooked) => {
               this.currentUser.set("bio_cooked",cooked);
@@ -95,6 +98,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
             })
             .catch(popupAjaxError);
+            */
       })
       .catch(popupAjaxError);
   },
