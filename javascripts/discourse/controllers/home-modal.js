@@ -5,6 +5,7 @@ import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
 /*import getURL from "discourse-common/lib/get-url";*/
 import { action } from "@ember/object";
+import { readOnly } from "@ember/object/computed";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   
@@ -15,6 +16,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   newNameInput: null,
   newBioRawInput: null,
   hideModalNextTime: null,
+  canChangeBio: readOnly("model.can_change_bio"),
 
   init() {
     this._super(...arguments);    
