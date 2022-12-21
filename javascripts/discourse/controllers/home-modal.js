@@ -44,6 +44,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     */
 
     const data = ajax(`/u/${this.currentUser.username}.json`);
+    console.log(data);
     this.currentUser.set("bio_raw", data.user.bio_raw); 
     this.currentUser.set("bio_cooked", data.user.bio_cooked); 
     this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
