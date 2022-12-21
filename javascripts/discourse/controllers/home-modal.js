@@ -24,6 +24,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.saveAttrNames = [
       "name",
       "bio_raw",  
+      "bio_cooked", 
+      "bio_excerpt",
     ];
     //this.set("revoking", {});
 
