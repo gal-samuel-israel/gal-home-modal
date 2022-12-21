@@ -105,7 +105,18 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @action
   biosUpdate(event){
     event.preventDefault();
-    this.currentUser.set("bio_raw", event.target.value); 
+    this.currentUser.setProperties({
+      name: this.newNameInput,
+      bio_raw: this.newBioRawInput,        
+    });
+    
+    console.log('target value:');
+    console.log(event.target.value);
+    console.log('this.newBioRawInput:');
+    console.log(this.newBioRawInput);
+    console.log('this.currentUser.bio_raw:');
+    console.log(this.currentUser.bio_raw);
+    //this.currentUser.set("bio_raw", event.target.value); 
   },
   @action
   testAction(event){
