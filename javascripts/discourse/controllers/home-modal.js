@@ -29,8 +29,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     this.newNameInput = this.currentUser.name;        
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-
-    /*
+    
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
         //console.log(data);        
@@ -41,15 +40,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.newBioRawInput = this.currentUser.bio_raw;        
       }
     ).catch(popupAjaxError);
-    */
+    
 
-    const data = ajax(`/u/${this.currentUser.username}.json`);
-    console.log(data);
-    this.currentUser.set("bio_raw", data._result.user.bio_raw); 
-    this.currentUser.set("bio_cooked", data._result.user.bio_cooked); 
-    this.currentUser.set("bio_excerpt", data._result.user.bio_excerpt); 
-
-    this.newBioRawInput = this.currentUser.bio_raw; 
+    
 
     /*
     cookAsync(this.currentUser.get("bio_raw"))
