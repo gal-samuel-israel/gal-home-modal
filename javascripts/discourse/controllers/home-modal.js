@@ -50,8 +50,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log('extend init start:');
       //console.log(this);
       //console.log(arguments);
-      //console.log(this.currentUser);
-      console.log(getUser);
+      console.log(this.currentUser);      
       console.log('extend init end:');
     }
 
