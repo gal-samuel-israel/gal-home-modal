@@ -17,11 +17,11 @@ export default {
         var debug4All = settings.enable_debug_for_all;
         if(debug4All){ debug = true; }
         
-        const user = container.lookup("service:current-user");
+        //const user = container.lookup("service:current-user");
 
         if(debug){          
           console.log('initializer:');
-          console.log(user);
+          //console.log(user);
           //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
         }
