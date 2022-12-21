@@ -3,7 +3,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
-import getURL from "discourse-common/lib/get-url";
+//import getURL from "discourse-common/lib/get-url";
 import { action } from "@ember/object";
 
 export default Ember.Controller.extend(ModalFunctionality, {
@@ -31,7 +31,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
-    let getUser = getURL(`/u/${this.currentUser.username}.json`);
+    ajax(`/u/${this.currentUser.username}.json`)
+    .then((data) => {        
+        console.log(data);
+      }
+    );
 
     /*
     cookAsync(this.currentUser.get("bio_raw"))
