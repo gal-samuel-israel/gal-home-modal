@@ -27,10 +27,16 @@ export default Ember.Controller.extend(ModalFunctionality, {
     ];
     //this.set("revoking", {});
 
-    this.newNameInput = this.currentUser.name;
-    this.newBioRawInput = this.currentUser.bio_raw;
+    this.newNameInput = this.currentUser.name;    
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
+
+    cookAsync(this.currentUser.get("bio_raw"))
+      .then(() => {
+        this.newBioRawInput = this.currentUser.bio_raw;
+        this.currentUser.set("bio_cooked");        
+      })
+      .catch(popupAjaxError);
 
     if(this.debugForAdmins){
       console.log('extend init start:');
