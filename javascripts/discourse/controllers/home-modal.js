@@ -103,10 +103,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
       .catch(popupAjaxError);
   },
   @action
-  biosUpdate(fieldId, event){
+  biosUpdate(event, element){
     event.preventDefault();
-    console.log('tfieldId:');
-    console.log(fieldId);
+    console.log('element:');
+    console.log(element);
     console.log('target value:');
     console.log(event.target.value);
     console.log('this.newBioRawInput:');
