@@ -1,5 +1,6 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import { ajax } from "discourse/lib/ajax";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
@@ -35,7 +36,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     .then((data) => {        
         console.log(data);
       }
-    );
+    ).catch(popupAjaxError);
 
     /*
     cookAsync(this.currentUser.get("bio_raw"))
