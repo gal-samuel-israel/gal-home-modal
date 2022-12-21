@@ -55,7 +55,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     if(this.debugForAdmins){
       console.log('extend init start:');
-      //console.log(this);
+      console.log(this);
       //console.log(arguments);
       console.log(this.currentUser);      
       console.log('extend init end:');
