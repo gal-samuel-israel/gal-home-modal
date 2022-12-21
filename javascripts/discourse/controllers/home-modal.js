@@ -33,7 +33,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        console.log(data);        
+        //console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
