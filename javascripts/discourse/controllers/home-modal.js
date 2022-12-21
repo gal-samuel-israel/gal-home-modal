@@ -29,13 +29,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
     //this.set("revoking", {});
 
     this.newNameInput = this.currentUser.name;    
-
+    this.newBioRawInput = this.user.bio_raw;
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        console.log(data);
-        this.newBioRawInput = data.user.bio_raw;
+        console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
