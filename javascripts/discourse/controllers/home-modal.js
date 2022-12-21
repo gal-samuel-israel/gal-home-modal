@@ -32,8 +32,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
     cookAsync(this.currentUser.get("bio_raw"))
-      .then(() => {
-        this.newBioRawInput = this.currentUser.bio_raw;
+      .then((data) => {
+        this.newBioRawInput = data;
         this.currentUser.set("bio_cooked");        
       })
       .catch(popupAjaxError);
