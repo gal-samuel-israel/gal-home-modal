@@ -39,6 +39,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
+        //query("textarea.d-editor-input").value
       }
     ).catch(popupAjaxError);
 
@@ -67,7 +68,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     showModal("avatar-selector").setProperties({ user });
   },
   @action
-  saveUserName() {
+  saveUserInfo() {
     event?.preventDefault();
     this.set("saved", false);
     this.currentUser.setProperties({

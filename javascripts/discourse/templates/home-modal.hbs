@@ -41,13 +41,13 @@
               <div class="control-group pref-bio">
                 <label class="control-label">Your personal bio</label>
                 <div class="controls bio-composer input-xxlarge">
-                  <DEditor @value={{this.currentUser.newBioRawInput}} />
+                  <DEditor @value={{this.newBioRawInput}} />
                 </div>
               </div>
 
           </div>                              
           
-          <SaveControls @model={{this.currentUser}} @action={{action "saveUserName"}} @saved={{this.saved}} />
+          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} />
 
         </div>
         
