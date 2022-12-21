@@ -41,8 +41,8 @@
               <div class="control-group pref-bio">
                 <label class="control-label">Your personal bio</label>
                 <div class="controls bio-composer input-xxlarge">
-                  <DEditor id='user-profile' @loading={{this.composer.loading}} @change{{ action "testAction"}}>
-                    {{this.newBioRawInput}}X
+                  <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change{{action "testAction"}}>
+                   
                   </DEditor>
                 </div>
               </div>
