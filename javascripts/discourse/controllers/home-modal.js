@@ -11,17 +11,16 @@ export default Ember.Controller.extend(ModalFunctionality, {
   
   /* Object local params */
   debugForAdmins: null,
-  canEditName: null,
-  canSaveUser: true,
+    
   newNameInput: null,
   newBioRawInput: null,
+
   hideModalNextTime: null,
   
   init() {
     this._super(...arguments);    
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
-    this.canEditName = setting("allow_user_to_edit_name"); //from settings.yml
-
+    
     this.saveAttrNames = [
       "name",
       "bio_raw",  
@@ -31,6 +30,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.newNameInput = this.currentUser.name;        
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
+    /*
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
         //console.log(data);        
@@ -41,6 +41,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.newBioRawInput = this.currentUser.bio_raw;        
       }
     ).catch(popupAjaxError);
+    */
+   
+    const data = await ajax(`/u/${this.currentUser.username}.json`);
+    this.currentUser.set("bio_raw", data.user.bio_raw); 
+    this.currentUser.set("bio_cooked", data.user.bio_cooked); 
+    this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
+
+    this.newBioRawInput = this.currentUser.bio_raw; 
 
     /*
     cookAsync(this.currentUser.get("bio_raw"))
@@ -70,18 +78,25 @@ export default Ember.Controller.extend(ModalFunctionality, {
   saveUserInfo() {
     event?.preventDefault();
     this.set("saved", false);
+
     this.currentUser.setProperties({
       name: this.newNameInput,
       bio_raw: this.newBioRawInput,        
     });
+
     return this.currentUser
       .save(this.saveAttrNames)
       .then(() => {
         console.log('saved name');
         cookAsync(this.currentUser.get("bio_raw"))
-            .then(() => {
-              this.currentUser.set("bio_cooked");
+            .then((cooked) => {
+              this.currentUser.set("bio_cooked",cooked);
               this.set("saved", true);
+
+              if(this.debugForAdmins){
+                console.log(this.currentUser);
+              }
+
             })
             .catch(popupAjaxError);
       })
