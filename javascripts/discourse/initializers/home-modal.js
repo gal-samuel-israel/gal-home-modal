@@ -19,7 +19,7 @@ export default {
         
         if(debug){          
           console.log('initializer:');
-          console.log(currentUser);       
+          //console.log(currentUser);       
           //console.log(currentUser.user_option);
           //console.log(currentUser.admin); 
         }
