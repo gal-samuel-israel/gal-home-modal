@@ -109,9 +109,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
       name: this.newNameInput,
       bio_raw: this.newBioRawInput,        
     });
-    
+
     console.log('target value:');
-    console.log(event.target.value);
+    console.log(event.target);
     console.log('this.newBioRawInput:');
     console.log(this.newBioRawInput);
     console.log('this.currentUser.bio_raw:');
