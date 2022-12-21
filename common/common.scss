@@ -42,6 +42,16 @@
         max-width: 100%;
         flex-direction: column;
       }
+      img.emoji {
+        height: 1.2em !important;
+        width: 1.2em !important;
+        line-height: 1em !important;
+        vertical-align: text-bottom;
+        margin-bottom: 0 !important;
+      }
+      .d-editor-preview-wrapper {
+        margin: 0.5em 0.6em !important;
+      }
     }
   }
   .modal-inner-container {
