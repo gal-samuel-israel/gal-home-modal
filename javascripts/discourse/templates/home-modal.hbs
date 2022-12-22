@@ -9,9 +9,7 @@
           <div id="step-1" class="step">
               <h3>Step 1</h3>
               <p> Step 1 text</p>
-              <DButton @class={{theme-setting "button_style"}}                    
-                    @action={{action "handleStep1NextButton"}}                  
-                    @translatedLabel="Next >>" />
+              <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
           </div>
         {{/if}}
         {{#if this.currentStep2}}
@@ -52,7 +50,8 @@
               
           </div>                              
           
-          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/>
+          <!-- SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/-->
+          <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
 
         </div>
         {{/if}}
