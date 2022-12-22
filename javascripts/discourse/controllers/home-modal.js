@@ -68,7 +68,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
-    this.set("newBioCooked", this.currentUser.bio_cooked);
+    //this.set("newBioCooked", this.currentUser.bio_cooked);
 
     document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
     let firedEvent = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'));
