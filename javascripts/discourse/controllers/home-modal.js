@@ -93,8 +93,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
-    const panels = ['panel1'];
-    showModal("avatar-selector").setProperties({ user, panels});
+    showModal("avatar-selector").setProperties({ user})
+    .then(()=>{
+      console.log('callback');
+    });
   },
   @action
   saveUserInfo() {
