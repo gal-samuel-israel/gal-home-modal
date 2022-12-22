@@ -30,44 +30,44 @@ export default {
         var isAdmin = (currentUser.admin)        
         var blockModal = (showOnlyToAdmins && !isAdmin);
 
-          var pageView = 0;
-          // Tell our AJAX system to track a page transition
-          const router = container.lookup('router:main');
-          router.on('willTransition', viewTrackingRequired);
+        var pageView = 0;
+        // Tell our AJAX system to track a page transition
+        const router = container.lookup('router:main');
+        router.on('willTransition', viewTrackingRequired);
 
-          let appEvents = container.lookup('service:app-events');
-          startPageTracking(router, appEvents);
+        let appEvents = container.lookup('service:app-events');
+        startPageTracking(router, appEvents);
+        
+        appEvents.on('page:changed', data => {
+          /*
+          console.log(data);
+          var urlPrefix = "/t/"; // NOTE: "/t/" is for topic "/c/" is for category
+          var pattern = new RegExp('^' + urlPrefix);
+          var hasPrefix = pattern.test(data.url);
+          */ 
           
-          appEvents.on('page:changed', data => {
-            /*
-            console.log(data);
-            var urlPrefix = "/t/"; // NOTE: "/t/" is for topic "/c/" is for category
-            var pattern = new RegExp('^' + urlPrefix);
-            var hasPrefix = pattern.test(data.url);
-            */ 
-            
-            var isHome = (window.location.pathname==='/') ? true:false;
-            if(debug){
-              console.log('initializer | url: ' + window.location.pathname + ' | isHome : '+ isHome);
-            }        
-            
+          var isHome = (window.location.pathname==='/') ? true:false;
+          if(debug){
+            console.log('initializer | url: ' + window.location.pathname + ' | isHome : '+ isHome);
+          }        
+          
 
-            var userHidePreference;
-            if (localStorage.getItem("homeModalHide") === null) {
-              userHidePreference = false;
-              localStorage.setItem("homeModalHide", false);
-            } else {
-              userHidePreference = JSON.parse(localStorage.getItem("homeModalHide"));
-            }
+          var userHidePreference;
+          if (localStorage.getItem("homeModalHide") === null) {
+            userHidePreference = false;
+            localStorage.setItem("homeModalHide", false);
+          } else {
+            userHidePreference = JSON.parse(localStorage.getItem("homeModalHide"));
+          }
 
-            if(debug){
-              console.log('initializer | homeModalHide: ' + userHidePreference);
-            }
-            
-            if(isHome && !blockModal) {                          
-                if(!userHidePreference) { showGate('home-modal'); }
-            }
-          });
+          if(debug){
+            console.log('initializer | homeModalHide: ' + userHidePreference);
+          }
+          
+          if(isHome && !blockModal) {                          
+              if(!userHidePreference) { showGate('home-modal'); }
+          }
+        });
         
       } 
     });

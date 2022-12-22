@@ -4,7 +4,6 @@ import { ajax } from "discourse/lib/ajax";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
-import {showModal as anotherModal} from "discourse/lib/show-modal";
 //import getURL from "discourse-common/lib/get-url";
 import { action } from "@ember/object";
 
@@ -64,8 +63,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   handleStep1NextButton(event){
     event?.preventDefault();
 
-    this.set("currentStep1", false);
     this.set("currentStep2", true);
+    this.set("currentStep1", false);    
 
     //this.set("newNameInput", this.currentUser.name);
     //this.set("newBioRawInput", this.currentUser.bio_raw);
@@ -94,7 +93,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
-    anotherModal("avatar-selector").setProperties({ user });
+    showModal("avatar-selector").setProperties({ user });
   },
   @action
   saveUserInfo() {
