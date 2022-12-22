@@ -23,6 +23,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
   currentStep2: null,
   currentStep3: null,
   currentStep4: null,
+
+  beforeClose(){
+    console.log('beforeClose');
+  },
   
   init() {
     this._super(...arguments);
