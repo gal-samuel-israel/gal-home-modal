@@ -93,7 +93,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
-    showModal("avatar-selector").setProperties({ user });
+    showModal("avatar-selector").setProperties({ user, onclose: {()=>{ alert('oh');}} });
   },
   @action
   saveUserInfo() {
