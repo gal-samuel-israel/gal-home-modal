@@ -58,9 +58,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
           this.currentUser.set("bio_cooked");        
         })
         .catch(popupAjaxError);
-        }
+        
         */
-    ).catch(popupAjaxError);
+      }).catch(popupAjaxError);
     
 
     
