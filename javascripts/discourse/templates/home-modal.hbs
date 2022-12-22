@@ -10,12 +10,10 @@
             <h3>Step 1</h3>
             <p> Step 1 text</p>
             <DButton
-                  @class="btn-default pad-right"
+                  @class={{theme-setting "button_style"}}
                   @icon="fa-solid fa-arrow-right"
                   @action={{"handleStep1NextButton"}}                  
-                  @computedLabel="Next">
-                  <span style="padding-left: 0.5em;">Next >></span>
-                </DButton>
+                  @translatedLabel="Next" />
         </div>
         {{/if}}
         {{#if currentStep2}}
