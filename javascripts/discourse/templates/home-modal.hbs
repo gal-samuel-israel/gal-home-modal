@@ -76,16 +76,17 @@
           </div>
         {{/if}}
 
-        <div class="hide-this-wrapper">
-          <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
-        </div>
-
+        
       </div>      
 
     </div>  
 </DModalBody>
 
 <div class="modal-footer">
+    <div class="hide-this-wrapper">
+      <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
+    </div>
+
     {{#if this.debugFooter}}  
       <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"showLogin"}} />
       <div class="break"></div> <!-- break -->      
