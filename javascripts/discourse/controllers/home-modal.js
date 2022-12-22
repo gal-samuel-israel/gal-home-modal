@@ -26,10 +26,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
   currentStep4: false,
   
   init() {
-    this._super(...arguments);    
+    this._super(...arguments);
+    let dfa = setting("enable_debug_for_admins");
+    let mfid = setting("enable_modal_footer_internal_debug");
+    console.log('dfa: ' + dfa + ' | mfid: ' + mfid);
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
     if(this.debugForAdmins){
-      this.set("debugFooter", setting("enable_modal_footer_internal_debug"));
+      this.set("debugFooter", mfid);
     }
 
     this.saveAttrNames = [
