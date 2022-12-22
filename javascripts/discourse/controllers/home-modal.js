@@ -11,6 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   
   /* Object local params */
   debugForAdmins: null,
+  debugFooter: null,
     
   newNameInput: null,
   newBioRawInput: null,
@@ -27,6 +28,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   init() {
     this._super(...arguments);    
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
+    this.debugFooter = this.debugForAdmins && setting("enable_modal_footer_internal_debug");
     
     this.saveAttrNames = [
       "name",

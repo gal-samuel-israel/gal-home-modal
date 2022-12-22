@@ -86,7 +86,7 @@
 </DModalBody>
 
 <div class="modal-footer">
-    {{#if this.debugForAdmins}}  
+    {{#if this.debugFooter}}  
       <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"showLogin"}} />
       <div class="break"></div> <!-- break -->      
       <a href {{on "click" this.ssoLoginGate}}>Some Link</a>

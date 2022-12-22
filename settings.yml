@@ -10,6 +10,10 @@ enable_modal_only_for_admins:
   type: bool
   default: true
   description: "disable to make this component visible to Non Admins (All users)"
+enable_modal_footer_internal_debug:
+  type: bool
+  default: false
+  description: "enable for debug info in the modal footer (seen only by admins)"
 button_style:
   type: enum
   default: btn-primary
