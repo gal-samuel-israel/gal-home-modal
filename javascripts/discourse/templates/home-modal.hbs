@@ -9,10 +9,9 @@
           <div id="step-1" class="step">
               <h3>Step 1</h3>
               <p> Step 1 text</p>
-              <DButton  @class={{theme-setting "button_style"}}
-                    @icon="fa-solid fa-arrow-right"
+              <DButton @class={{theme-setting "button_style"}}                    
                     @action={{action "handleStep1NextButton"}}                  
-                    @translatedLabel="Next" />
+                    @translatedLabel="Next >>" />
           </div>
         {{/if}}
         {{#if this.currentStep2}}
@@ -54,7 +53,7 @@
               {{/if}}
           </div>                              
           
-          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @icon="arrow-right-alt"/>
+          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/>
 
         </div>
         {{/if}}
@@ -64,11 +63,8 @@
           <p> Step 3 text</p>
           <DButton
                   @class="btn-default pad-right"
-                  @icon="arrow-right-alt"
                   @action={{action "handleStep3NextButton"}}                  
-                  @computedLabel="Next">
-                  <span style="padding-left: 0.5em;">Next >></span>
-                </DButton>
+                  @translatedLabel="Next >>" />
         </div>
         {{/if}}
         {{#if this.currentStep4}}
@@ -76,18 +72,11 @@
             <h3>Step 4</h3>
             <p> Step 4 text</p>            
 
-            <DButton
-                  @class="btn-default pad-right"
-                  @icon="arrow-right-alt"
-                  @action={{action "handleStep4FinishButton"}}                  
-                  @computedLabel="Finish">
-                  <span style="padding-left: 0.5em;">Finish</span>
-                </DButton>
-
+            <DButton @class="btn-default pad-right" @icon="arrow-right-alt" @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
           </div>
         {{/if}}
 
-        <div>
+        <div class="hide-this-wrapper">
           <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
         </div>
 
