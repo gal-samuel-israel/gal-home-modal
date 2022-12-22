@@ -76,10 +76,7 @@
         {{#if this.currentStep4}}
           <div id="step-4" class="step">
             <h3>Step 4</h3>
-            <p> Step 4 text</p>
-            <div>
-              <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Next Time
-            </div>
+            <p> Step 4 text</p>            
 
             <DButton
                   @class="btn-default pad-right"
@@ -91,6 +88,11 @@
 
           </div>
         {{/if}}
+
+        <div>
+          <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
+        </div>
+
       </div>      
 
     </div>  

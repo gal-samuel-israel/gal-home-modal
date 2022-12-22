@@ -47,11 +47,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).catch(popupAjaxError);
     
     if(this.debugForAdmins){
-      console.log('extend init start:');
+      console.log('init start:');
       console.log(this);
       //console.log(arguments);
       //console.log(this.currentUser);      
-      console.log('extend init end:');
+      console.log('init end:');
     }
 
   },
