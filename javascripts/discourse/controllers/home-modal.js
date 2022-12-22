@@ -103,8 +103,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
     let $deditor = $(deditor);
 
     if(this.debugForAdmins){
-      console.log('$deditor.value:');
-      console.log($deditor.value);
+      console.log('deditor.value:');
+      console.log(deditor.value);
     }
 
     return this.currentUser
