@@ -39,8 +39,15 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
 
-        this.newBioRawInput = this.currentUser.bio_raw;        
-      }
+        this.newBioRawInput = this.currentUser.bio_raw;
+        
+        cookAsync(this.newBioRawInput)
+        .then((data) => {
+          this.newBioRawInput = data;
+          this.currentUser.set("bio_cooked");        
+        })
+        .catch(popupAjaxError);
+        }
     ).catch(popupAjaxError);
     
 
@@ -63,6 +70,17 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log('extend init end:');
     }
 
+  },
+  didInsertElement() {
+    this._super(...arguments);    
+
+    this._textarea = this.element.querySelector("textarea.d-editor-input");
+    this._$textarea = $(this._textarea);
+
+    if(this.debugForAdmins){
+      console.log('didInsertElement');
+      console.log(this._$textarea);
+    }
   },
 
   /* actions for Avatar and name change */  
