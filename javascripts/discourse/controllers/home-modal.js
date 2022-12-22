@@ -14,6 +14,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     
   newNameInput: null,
   newBioRawInput: null,
+  newBioCooked: null,
 
   hideModalNextTime: null,
   
@@ -40,7 +41,17 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
 
         this.newBioRawInput = this.currentUser.bio_raw;
-        
+        this.newBioCooked = this.currentUser.bio_cooked;
+
+        this._textarea = querySelector("textarea.d-editor-input");
+        this._$textarea = $(this._textarea);
+
+        if(this.debugForAdmins){
+          console.log('_$textarea:');
+          console.log(this._$textarea);
+        }
+
+        /*
         cookAsync(this.newBioRawInput)
         .then((data) => {
           this.newBioRawInput = data;
@@ -48,6 +59,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         })
         .catch(popupAjaxError);
         }
+        */
     ).catch(popupAjaxError);
     
 
@@ -71,17 +83,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
     }
 
   },
-  didInsertElement() {
-    this._super(...arguments);    
-
-    this._textarea = this.element.querySelector("textarea.d-editor-input");
-    this._$textarea = $(this._textarea);
-
-    if(this.debugForAdmins){
-      console.log('didInsertElement');
-      console.log(this._$textarea);
-    }
-  },
 
   /* actions for Avatar and name change */  
   @action
@@ -98,11 +99,21 @@ export default Ember.Controller.extend(ModalFunctionality, {
       bio_raw: this.newBioRawInput,        
     });
 
+    let deditor = querySelector("textarea.d-editor-input");
+    let $deditor = $(deditor);
+
+    if(this.debugForAdmins){
+      console.log('$deditor:');
+      console.log($deditor);
+    }
+
     return this.currentUser
       .save(this.saveAttrNames)
       .then(() => {
-        console.log('saved name');
-        console.log(this.currentUser);
+        if(this.debugForAdmins){
+          console.log('saved name');
+          console.log(this.currentUser);
+        }
         this.set("saved", true);
         /*
         cookAsync(this.currentUser.get("bio_raw"))
