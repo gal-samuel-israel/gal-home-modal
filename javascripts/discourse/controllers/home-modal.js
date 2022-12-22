@@ -66,12 +66,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("currentStep1", false);
     this.set("currentStep2", true);
 
-    this.newNameInput = this.currentUser.name;            
-    this.newBioRawInput = this.currentUser.bio_raw;
-    this.newBioCooked = this.currentUser.bio_cooked;
+    this.set("newNameInput", this.currentUser.name);
+    this.set("newBioRawInput", this.currentUser.bio_raw);
+    this.set("newBioCooked", this.currentUser.bio_cooked);
     document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
-    this.bioEditorPreviewUpdated = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'))
-
+    let firedEvent = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'));
+    this.set("bioEditorPreviewUpdated", firedEvent);
   },
 
   @action
