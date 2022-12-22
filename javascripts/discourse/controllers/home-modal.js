@@ -16,7 +16,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
   newNameInput: null,
   newBioRawInput: null,
   newBioCooked: null,
-  bioEditorPreviewUpdated: false,
 
   hideModalNextTime: null,
 
@@ -63,15 +62,19 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @action
   handleStep1NextButton(event){
     event?.preventDefault();
+
     this.set("currentStep1", false);
     this.set("currentStep2", true);
 
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked);
+
     document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
     let firedEvent = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'));
-    this.set("bioEditorPreviewUpdated", firedEvent);
+    if(this.debugForAdmins){
+      console.log('updated d-editor-input: '+firedEvent);
+    }
   },
 
   @action

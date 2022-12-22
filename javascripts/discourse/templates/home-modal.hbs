@@ -42,15 +42,14 @@
                   @actionParam={{this.currentUser}}
                   @translatedLabel="Change your Avatar" />
               </div>
-
-              {{#if this.bioEditorPreviewUpdated}}
-                <div class="control-group pref-bio">
-                  <label class="control-label">Your personal bio</label>
-                  <div class="controls bio-composer input-xxlarge">
-                    <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
-                  </div>
+              
+              <div class="control-group pref-bio">
+                <label class="control-label">Your personal bio</label>
+                <div class="controls bio-composer input-xxlarge">
+                  <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
                 </div>
-              {{/if}}
+              </div>
+              
           </div>                              
           
           <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/>
