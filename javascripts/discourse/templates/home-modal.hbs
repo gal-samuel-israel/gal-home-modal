@@ -5,18 +5,17 @@
       <p>{{theme-i18n "modal_data.little_text"}}</p>
       
       <div class="modal-steps">
-        {{#if currentStep1}}
-        <div id="step-1" class="step">
-            <h3>Step 1</h3>
-            <p> Step 1 text</p>
-            <DButton
-                  @class={{theme-setting "button_style"}}
-                  @icon="fa-solid fa-arrow-right"
-                  @action={{"handleStep1NextButton"}}                  
-                  @translatedLabel="Next" />
-        </div>
+        {{#if this.currentStep1}}
+          <div id="step-1" class="step">
+              <h3>Step 1</h3>
+              <p> Step 1 text</p>
+              <DButton  @class={{theme-setting "button_style"}}
+                    @icon="fa-solid fa-arrow-right"
+                    @action={{action "handleStep1NextButton"}}                  
+                    @translatedLabel="Next" />
+          </div>
         {{/if}}
-        {{#if currentStep2}}
+        {{#if this.currentStep2}}
         <div id="step-2" class="step">
           <h3>Step 2</h3>
           <p> Step 2 text</p>
@@ -61,20 +60,20 @@
 
         </div>
         {{/if}}
-        {{#if currentStep3}}
+        {{#if this.currentStep3}}
         <div id="step-3" class="step">
           <h3>Step 3</h3>
           <p> Step 3 text</p>
           <DButton
                   @class="btn-default pad-right"
                   @icon="arrow-right-alt"
-                  @action={{"handleStep3NextButton"}}                  
+                  @action={{action "handleStep3NextButton"}}                  
                   @computedLabel="Next">
                   <span style="padding-left: 0.5em;">Next >></span>
                 </DButton>
         </div>
         {{/if}}
-        {{#if currentStep4}}
+        {{#if this.currentStep4}}
           <div id="step-4" class="step">
             <h3>Step 4</h3>
             <p> Step 4 text</p>
@@ -85,7 +84,7 @@
             <DButton
                   @class="btn-default pad-right"
                   @icon="arrow-right-alt"
-                  @action={{"handleStep4FinishButton"}}                  
+                  @action={{action "handleStep4FinishButton"}}                  
                   @computedLabel="Finish">
                   <span style="padding-left: 0.5em;">Finish</span>
                 </DButton>
