@@ -68,7 +68,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* next buttons handlers */
   @action
   handleStep1NextButton(event){
-    event.preventDefault();
+    event?.preventDefault();
     this.set("currentStep1", false);
     this.set("currentStep2", true);
 
@@ -91,15 +91,17 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).catch(popupAjaxError);
 
   },
+
   @action
   handleStep3NextButton(event){
-    event.preventDefault();
+    event?.preventDefault();
     this.set("currentStep3", false);
     this.set("currentStep4", true);
   },
+
   @action
   handleStep4FinishButton(event){
-    event.preventDefault();
+    event?.preventDefault();
     this.send("closeModal");
   },
 
@@ -132,7 +134,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
   @action
   biosUpdate(event){
-    event.preventDefault();
+    event?.preventDefault();
     if(this.debugForAdmins){ 
       console.log('target value:');
       console.log(event.target.value);
