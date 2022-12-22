@@ -29,7 +29,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this._super(...arguments);    
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
     if(this.debugForAdmins){
-      this.debugFooter = setting("enable_modal_footer_internal_debug");
+      this.set(debugFooter, setting("enable_modal_footer_internal_debug"));
     }
 
     this.saveAttrNames = [
