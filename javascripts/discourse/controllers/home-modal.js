@@ -34,27 +34,18 @@ export default Ember.Controller.extend(ModalFunctionality, {
       "bio_cooked", 
       "bio_excerpt",
     ];
-    //this.set("revoking", {});
 
-    /*
-    this.newNameInput = this.currentUser.name;        
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-    
+
+    /* prep the user bios */
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
         //console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
-        this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
-
-        this.newBioRawInput = this.currentUser.bio_raw;
-        this.newBioCooked = this.currentUser.bio_cooked;
-
-        document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
-        this.bioEditorPreviewUpdated = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'))
-        
+        this.currentUser.set("bio_excerpt", data.user.bio_excerpt);                
       }).catch(popupAjaxError);
-    */
+    
     if(this.debugForAdmins){
       console.log('extend init start:');
       console.log(this);
@@ -72,23 +63,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("currentStep1", false);
     this.set("currentStep2", true);
 
-    this.newNameInput = this.currentUser.name;        
-    this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-    
-    ajax(`/u/${this.currentUser.username}.json`)
-    .then((data) => {        
-        //console.log(data);        
-        this.currentUser.set("bio_raw", data.user.bio_raw); 
-        this.currentUser.set("bio_cooked", data.user.bio_cooked); 
-        this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
-
-        this.newBioRawInput = this.currentUser.bio_raw;
-        this.newBioCooked = this.currentUser.bio_cooked;
-
-        document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
-        this.bioEditorPreviewUpdated = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'))
-        
-      }).catch(popupAjaxError);
+    this.newNameInput = this.currentUser.name;            
+    this.newBioRawInput = this.currentUser.bio_raw;
+    this.newBioCooked = this.currentUser.bio_cooked;
+    document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
+    this.bioEditorPreviewUpdated = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'))
 
   },
 
