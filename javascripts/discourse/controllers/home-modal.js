@@ -43,7 +43,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.newBioRawInput = this.currentUser.bio_raw;
         this.newBioCooked = this.currentUser.bio_cooked;
 
-        this._textarea = querySelector("textarea.d-editor-input");
+        this._textarea = document.querySelector("textarea.d-editor-input");
         this._$textarea = $(this._textarea);
 
         if(this.debugForAdmins){
@@ -99,7 +99,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       bio_raw: this.newBioRawInput,        
     });
 
-    let deditor = querySelector("textarea.d-editor-input");
+    let deditor = document.querySelector("textarea.d-editor-input");
     let $deditor = $(deditor);
 
     if(this.debugForAdmins){
