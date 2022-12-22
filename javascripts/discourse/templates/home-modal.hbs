@@ -1,4 +1,4 @@
-<DModalBody @title={{theme-prefix "modal_data.title"}} @dismissable={{false}} @onclose={{this.onclose}}> 
+<DModalBody @title={{theme-prefix "modal_data.title"}} @dismissable={{false}} > 
     <div class="modal-content">
       <img src="{{theme-setting 'custom_image'}}"/>
       <h2>{{theme-i18n "modal_data.big_text"}}</h2>
@@ -60,7 +60,7 @@
           <h3>Step 3</h3>
           <p> Step 3 text</p>
           <DButton
-                  @class="btn-default pad-right"
+                  @class={{theme-setting "button_style"}} 
                   @action={{action "handleStep3NextButton"}}                  
                   @translatedLabel="Next >>" />
         </div>
@@ -70,7 +70,7 @@
             <h3>Step 4</h3>
             <p> Step 4 text</p>            
 
-            <DButton @class="btn-default pad-right" @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
+            <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
           </div>
         {{/if}}
 
