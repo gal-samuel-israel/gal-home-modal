@@ -27,7 +27,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   beforeClose(){
     console.log('beforeClose');
   },
-  
+
   init() {
     this._super(...arguments);
 
@@ -97,10 +97,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
-    showModal("avatar-selector").setProperties({ user})
-    .then(()=>{
-      console.log('callback');
-    });
+    showModal("avatar-selector").setProperties({user});    
   },
   @action
   saveUserInfo() {
