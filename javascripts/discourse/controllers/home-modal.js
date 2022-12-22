@@ -39,7 +39,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt); 
 
-        this.newBioRawInput = this.currentUser.bio_raw;        
+        this.newBioRawInput.set(this.currentUser.bio_raw);        
       }
     ).catch(popupAjaxError);
     
