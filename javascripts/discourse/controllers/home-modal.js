@@ -19,10 +19,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   hideModalNextTime: null,
 
-  currentStep1: true,
-  currentStep2: false,
-  currentStep3: false,
-  currentStep4: false,
+  currentStep1: null,
+  currentStep2: null,
+  currentStep3: null,
+  currentStep4: null,
   
   init() {
     this._super(...arguments);
@@ -30,6 +30,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
     
+    this.set("currentStep1", true);
+    this.set("currentStep2", false);
+    this.set("currentStep3", false);
+    this.set("currentStep4", false);
+
     this.saveAttrNames = [
       "name",
       "bio_raw",  
@@ -70,7 +75,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked);
 
-    let d_editor = document.querySelector("textarea.d-editor-input");
+    const d_editor = document.querySelector("textarea.d-editor-input");
     d_editor?.value = this.currentUser.bio_raw;
     let firedEvent = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'));
     if(this.debugForAdmins){
