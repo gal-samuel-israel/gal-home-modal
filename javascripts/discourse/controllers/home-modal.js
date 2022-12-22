@@ -4,6 +4,7 @@ import { ajax } from "discourse/lib/ajax";
 import { cookAsync } from "discourse/lib/text";
 import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
+import {showModal as anotherModal} from "discourse/lib/show-modal";
 //import getURL from "discourse-common/lib/get-url";
 import { action } from "@ember/object";
 
@@ -93,7 +94,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
-    showModal("avatar-selector").setProperties({ user });
+    anotherModal("avatar-selector").setProperties({ user });
   },
   @action
   saveUserInfo() {
