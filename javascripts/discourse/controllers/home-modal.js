@@ -15,8 +15,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
   newNameInput: null,
   newBioRawInput: null,
   newBioCooked: null,
+  bioEditorPreviewUpdated: false,
 
   hideModalNextTime: null,
+
+  currentStep1 = true,
+  currentStep2 = false,
+  currentStep3 = false,
+  currentStep4 = false,
   
   init() {
     this._super(...arguments);    
@@ -44,45 +50,35 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.newBioCooked = this.currentUser.bio_cooked;
 
         document.querySelector("textarea.d-editor-input").value = this.currentUser.bio_raw;
-        document.querySelector("textarea.d-editor-input").change();
+        this.bioEditorPreviewUpdated = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'))
         
-        if(this.debugForAdmins){
-          //console.log('d-editor-input set ok');          
-        }
-
-        /*
-        cookAsync(this.newBioRawInput)
-        .then((data) => {
-          this.newBioRawInput = data;
-          this.currentUser.set("bio_cooked");        
-        })
-        .catch(popupAjaxError);
-        
-        */
       }).catch(popupAjaxError);
-    
-
-    
-
-    /*
-    cookAsync(this.currentUser.get("bio_raw"))
-      .then((data) => {
-        this.newBioRawInput = data;
-        this.currentUser.set("bio_cooked");        
-      })
-      .catch(popupAjaxError);
-    */
 
     if(this.debugForAdmins){
       console.log('extend init start:');
       console.log(this);
       //console.log(arguments);
-      console.log(this.currentUser);      
+      //console.log(this.currentUser);      
       console.log('extend init end:');
     }
 
   },
 
+  /* next buttons handlers */
+  @action
+  handleStep1NextButton(){
+    this.set("currentStep1", false);
+    this.set("currentStep2", true);
+  },
+  @action
+  handleStep3NextButton(){
+    this.set("currentStep3", false);
+    this.set("currentStep4", true);
+  },
+  @action
+  handleStep4FinishButton(){
+    this.send("closeModal");
+  },
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
@@ -98,54 +94,37 @@ export default Ember.Controller.extend(ModalFunctionality, {
       bio_raw: this.newBioRawInput,        
     });
 
-    let deditor = document.querySelector("textarea.d-editor-input");
-    let $deditor = $(deditor);
-
-    if(this.debugForAdmins){
-      console.log('deditor.value:');
-      console.log(deditor.value);
-    }
-
     return this.currentUser
       .save(this.saveAttrNames)
       .then(() => {
         if(this.debugForAdmins){
-          console.log('saved name');
-          console.log(this.currentUser);
+          console.log('user info saved');
         }
         this.set("saved", true);
-        /*
-        cookAsync(this.currentUser.get("bio_raw"))
-            .then((cooked) => {
-              this.currentUser.set("bio_cooked",cooked);
-              this.set("saved", true);
-
-              if(this.debugForAdmins){
-                console.log(this.currentUser);
-              }
-
-            })
-            .catch(popupAjaxError);
-            */
+        this.set("currentStep2", false);
+        this.set("currentStep3", true);
       })
       .catch(popupAjaxError);
   },
   @action
   biosUpdate(event){
-    event.preventDefault();    
-    console.log('target value:');
-    console.log(event.target.value);
-    console.log('this.newBioRawInput:');
-    console.log(this.newBioRawInput);
-    console.log('this.currentUser.bio_raw:');
-    console.log(this.currentUser.bio_raw);
-    //this.currentUser.set("bio_raw", event.target.value); 
+    event.preventDefault();
+    if(this.debugForAdmins){ 
+      console.log('target value:');
+      console.log(event.target.value);
+      console.log('this.newBioRawInput:');
+      console.log(this.newBioRawInput);
+      console.log('this.currentUser.bio_raw:');
+      console.log(this.currentUser.bio_raw);
+    }    
   },
   @action
   testAction(event){
     event?.preventDefault();
-    console.log('testAction');
-    console.log(event);
+    if(this.debugForAdmins){
+      console.log('testAction');
+      console.log(event);
+    }
     //this.set("saved", true);
   },
  
@@ -153,11 +132,15 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @action
   toggleHideNextTime(event){
     event?.preventDefault();
-    console.log('toggleHideNextTime:');
-    console.log('was : ' + this.hideModalNextTime);
+    if(this.debugForAdmins){
+      console.log('toggleHideNextTime:');
+      console.log('was : ' + this.hideModalNextTime);
+    }
     this.set("hideModalNextTime", !this.hideModalNextTime);
     localStorage.setItem("homeModalHide", this.hideModalNextTime);
-    console.log('now : ' + this.hideModalNextTime);
+    if(this.debugForAdmins){
+      console.log('now : ' + this.hideModalNextTime);
+    }
   },
 
   /* Test actions */

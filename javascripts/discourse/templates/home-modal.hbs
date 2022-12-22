@@ -5,12 +5,23 @@
       <p>{{theme-i18n "modal_data.little_text"}}</p>
       
       <div class="modal-steps">
+        {{#if currentStep1}}
         <div id="step-1" class="step">
             <h3>Step 1</h3>
-        </div>    
+            <p> Step 1 text</p>
+            <DButton
+                  @class="btn-default pad-right"
+                  @icon="pencil-alt"
+                  @action={{"handleStep1NextButton"}}                  
+                  @computedLabel="Next">
+                  <span style="padding-left: 0.5em;">Next >></span>
+                </DButton>
+        </div>
+        {{/if}}
+        {{#if currentStep2}}
         <div id="step-2" class="step">
           <h3>Step 2</h3>
-          
+          <p> Step 2 text</p>
           <div class="control-group avatar-change-button-wrapper">
 
               <div class="control-group pref-name">
@@ -38,23 +49,51 @@
                 </DButton>
               </div>
 
-              <div class="control-group pref-bio">
-                <label class="control-label">Your personal bio</label>
-                <div class="controls bio-composer input-xxlarge">
-                  <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
+              {{#if this.bioEditorPreviewUpdated}}
+                <div class="control-group pref-bio">
+                  <label class="control-label">Your personal bio</label>
+                  <div class="controls bio-composer input-xxlarge">
+                    <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
+                  </div>
                 </div>
-              </div>
-
+              {{/if}}
           </div>                              
           
           <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} />
 
         </div>
-        
-        <div id="step-3" class="step">Step 3</div>
-        <div id="step-4" class="step"><h3>Step 4</h3>
-          <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Next Time
+        {{/if}}
+        {{#if currentStep3}}
+        <div id="step-3" class="step">
+          <h3>Step 3</h3>
+          <p> Step 3 text</p>
+          <DButton
+                  @class="btn-default pad-right"
+                  @icon="pencil-alt"
+                  @action={{"handleStep3NextButton"}}                  
+                  @computedLabel="Next">
+                  <span style="padding-left: 0.5em;">Next >></span>
+                </DButton>
         </div>
+        {{/if}}
+        {{#if currentStep4}}
+          <div id="step-4" class="step">
+            <h3>Step 4</h3>
+            <p> Step 4 text</p>
+            <div>
+              <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Next Time
+            </div>
+
+            <DButton
+                  @class="btn-default pad-right"
+                  @icon="pencil-alt"
+                  @action={{"handleStep4FinishButton"}}                  
+                  @computedLabel="Finish">
+                  <span style="padding-left: 0.5em;">Finish</span>
+                </DButton>
+
+          </div>
+        {{/if}}
       </div>      
 
     </div>  
