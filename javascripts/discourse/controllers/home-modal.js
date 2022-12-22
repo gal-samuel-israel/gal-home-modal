@@ -27,8 +27,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   
   init() {
     this._super(...arguments);
-    let dfa = setting("enable_debug_for_admins");
-    let mfid = setting("enable_modal_footer_internal_debug");
+    let dfa = settings?.enable_debug_for_admins;
+    let mfid = settings?.enable_modal_footer_internal_debug;
     console.log('dfa: ' + dfa + ' | mfid: ' + mfid);
     this.debugForAdmins = setting("enable_debug_for_admins"); //from settings.yml
     if(this.debugForAdmins){
