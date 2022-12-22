@@ -47,8 +47,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this._$textarea = $(this._textarea);
 
         if(this.debugForAdmins){
-          console.log('_$textarea:');
-          console.log(this._$textarea);
+          console.log('_$textarea.value:');
+          console.log(this._$textarea.value);
         }
 
         /*
@@ -103,8 +103,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
     let $deditor = $(deditor);
 
     if(this.debugForAdmins){
-      console.log('$deditor:');
-      console.log($deditor);
+      console.log('$deditor.value:');
+      console.log($deditor.value);
     }
 
     return this.currentUser
@@ -132,10 +132,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       .catch(popupAjaxError);
   },
   @action
-  biosUpdate(event, element){
-    event.preventDefault();
-    console.log('element:');
-    console.log(element);
+  biosUpdate(event){
+    event.preventDefault();    
     console.log('target value:');
     console.log(event.target.value);
     console.log('this.newBioRawInput:');
