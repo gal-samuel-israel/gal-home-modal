@@ -76,7 +76,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("newBioCooked", this.currentUser.bio_cooked);
 
     
-    document.querySelector("textarea.d-editor-input").value = this.get("currentUser.bio_raw");
+    document.querySelector("textarea.d-editor-input")[0].value = this.get("currentUser.bio_raw");
     let firedEvent = document.querySelector("textarea.d-editor-input").dispatchEvent(new Event('change'));
     if(this.debugForAdmins){
       console.log('updated d-editor-input: '+firedEvent);
