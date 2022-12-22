@@ -19,10 +19,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   hideModalNextTime: null,
 
-  currentStep1 = true,
-  currentStep2 = false,
-  currentStep3 = false,
-  currentStep4 = false,
+  currentStep1: true,
+  currentStep2: false,
+  currentStep3: false,
+  currentStep4: false,
   
   init() {
     this._super(...arguments);    
@@ -66,19 +66,23 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   /* next buttons handlers */
   @action
-  handleStep1NextButton(){
+  handleStep1NextButton(event){
+    event.preventDefault();
     this.set("currentStep1", false);
     this.set("currentStep2", true);
   },
   @action
-  handleStep3NextButton(){
+  handleStep3NextButton(event){
+    event.preventDefault();
     this.set("currentStep3", false);
     this.set("currentStep4", true);
   },
   @action
-  handleStep4FinishButton(){
+  handleStep4FinishButton(event){
+    event.preventDefault();
     this.send("closeModal");
   },
+
   /* actions for Avatar and name change */  
   @action
   showAvatarSelector(user) {
