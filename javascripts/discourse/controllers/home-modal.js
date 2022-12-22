@@ -78,10 +78,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
     let deditor = document.querySelector("textarea.d-editor-input");
     $(deditor).ready(function(){
       //deditor.value = this.get("currentUser.bio_raw");
-      let firedEvent = $(this).dispatchEvent(new Event('change'));
-      if(this.debugForAdmins){
-        console.log('updated d-editor-input: '+firedEvent);
-      }
+      //let firedEvent = $(this).dispatchEvent(new Event('change'));
+      //if(this.debugForAdmins){
+      //  console.log('updated d-editor-input: '+firedEvent);
+      //}
     });
     
   },
