@@ -11,7 +11,7 @@
             <p> Step 1 text</p>
             <DButton
                   @class="btn-default pad-right"
-                  @icon="pencil-alt"
+                  @icon="arrow-right-alt"
                   @action={{"handleStep1NextButton"}}                  
                   @computedLabel="Next">
                   <span style="padding-left: 0.5em;">Next >></span>
@@ -59,7 +59,7 @@
               {{/if}}
           </div>                              
           
-          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} />
+          <SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @icon="arrow-right-alt"/>
 
         </div>
         {{/if}}
@@ -69,7 +69,7 @@
           <p> Step 3 text</p>
           <DButton
                   @class="btn-default pad-right"
-                  @icon="pencil-alt"
+                  @icon="arrow-right-alt"
                   @action={{"handleStep3NextButton"}}                  
                   @computedLabel="Next">
                   <span style="padding-left: 0.5em;">Next >></span>
@@ -86,7 +86,7 @@
 
             <DButton
                   @class="btn-default pad-right"
-                  @icon="pencil-alt"
+                  @icon="arrow-right-alt"
                   @action={{"handleStep4FinishButton"}}                  
                   @computedLabel="Finish">
                   <span style="padding-left: 0.5em;">Finish</span>
