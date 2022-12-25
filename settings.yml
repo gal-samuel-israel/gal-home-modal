@@ -1,5 +1,5 @@
 plugin_outlet:
-  default: "above-main-container"
+  default: "below-site-header"
   type: enum
   choices:
     - above-main-container
