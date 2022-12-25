@@ -83,6 +83,7 @@ export default Component.extend({
   @discourseComputed()
   displayForUser() {   
     console.log('X-displayForUser');
+    
     if (!this.blockModal) {
       return true;
     } 
@@ -95,6 +96,7 @@ export default Component.extend({
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
   displayChanged() {
+
     console.log('X-displayChanged');
     if(this.debugForAdmins){
       console.log('displayChanged');
@@ -103,7 +105,8 @@ export default Component.extend({
 
   didInsertElement() {      
     this._super(...arguments);
-            
+
+    console.log('X-didInsertElement');            
     this.displayChanged();
 
   },
