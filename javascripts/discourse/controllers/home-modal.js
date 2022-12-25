@@ -7,8 +7,16 @@ import showModal from "discourse/lib/show-modal";
 //import getURL from "discourse-common/lib/get-url";
 import { action } from "@ember/object";
 
-export default Ember.Controller.extend(ModalFunctionality, {
-  
+import Component from "@ember/component";
+import { inject as service } from "@ember/service";
+import { defaultHomepage } from "discourse/lib/utilities";
+import { and } from "@ember/object/computed";
+import discourseComputed, { observes } from "discourse-common/utils/decorators";
+
+export default Component.extend({
+  router: service(),
+  tagName: "",
+
   /* Object local params */
   debugForAdmins: null,
   debugFooter: false,
@@ -62,6 +70,49 @@ export default Ember.Controller.extend(ModalFunctionality, {
     }
 
   },
+
+  @discourseComputed("router.currentRouteName")
+  displayForRoute(currentRouteName) {    
+    return currentRouteName === `discovery.${defaultHomepage()}`;    
+  },
+
+  @discourseComputed()
+  displayForUser() {   
+    if (!this.blockModal) {
+      return true;
+    } 
+    return false;
+  },
+
+  shouldDisplay: and("displayForUser", "displayForRoute"),
+
+  // Setting a class on <html> from a component is not great
+  // but we need it for backwards compatibility
+  @observes("shouldDisplay")
+  displayChanged() {
+    if(this.debugForAdmins){
+      console.log('displayChanged');
+    }    
+  },
+
+  didInsertElement() {      
+    this._super(...arguments);
+            
+    this.displayChanged();
+
+  },
+  didRender(){
+    this._super(...arguments);
+    
+    if(this.debugForAdmins){
+      console.log('didRender');
+    }
+  },
+
+  didDestroyElement() {
+    document.documentElement.classList.remove("custom-home-modal-widget");
+  },
+ 
 
   /* next buttons handlers */
   @action
@@ -129,16 +180,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       console.log(this.currentUser.bio_raw);
     }    
   },
-  @action
-  testAction(event){
-    event?.preventDefault();
-    if(this.debugForAdmins){
-      console.log('testAction');
-      console.log(event);
-    }
-    //this.set("saved", true);
-  },
- 
+   
   /* Hide Modal actions */
   @action
   toggleHideNextTime(event){
@@ -156,28 +198,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   /* Test actions */
   @action
-  showLogin(event) {    
+  testAction(event){
     event?.preventDefault();
-    console.log('action: showLogin');
-    //showModal("login");
+    if(this.debugForAdmins){
+      console.log('testAction');
+      console.log(event);
+    }
+    //this.set("objVarX", true);
   },
-    
-  @action
-  ssoLoginGate(event) {
-    event?.preventDefault();
-    console.log('action: ssoLoginGate');
-    //const returnPath = encodeURIComponent(window.location.pathname);
-    //window.location = getURL("/session/sso?return_path=" + returnPath);
-  }
 
-  /*  
-  @action
-  showCreateAccountGate(event) {
-    event?.preventDefault();
-    console.log('action: showCreateAccountGate');
-    showModal("createAccount", {
-      modalClass: "create-account",
-    });
-  },
-  */
 });
