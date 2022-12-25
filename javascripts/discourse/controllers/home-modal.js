@@ -35,6 +35,8 @@ export default Component.extend({
   init() {
     this._super(...arguments);
 
+    console.log('X-init'); 
+
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
     
@@ -72,12 +74,15 @@ export default Component.extend({
   },
 
   @discourseComputed("router.currentRouteName")
-  displayForRoute(currentRouteName) {    
+  displayForRoute(currentRouteName) {  
+    console.log('X-displayForRoute:');  
+    console.log(currentRouteName);
     return currentRouteName === `discovery.${defaultHomepage()}`;    
   },
 
   @discourseComputed()
   displayForUser() {   
+    console.log('X-displayForUser');
     if (!this.blockModal) {
       return true;
     } 
@@ -90,6 +95,7 @@ export default Component.extend({
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
   displayChanged() {
+    console.log('X-displayChanged');
     if(this.debugForAdmins){
       console.log('displayChanged');
     }    
@@ -103,7 +109,7 @@ export default Component.extend({
   },
   didRender(){
     this._super(...arguments);
-    
+    console.log('X-didRender');
     if(this.debugForAdmins){
       console.log('didRender');
     }
