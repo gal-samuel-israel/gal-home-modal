@@ -10,8 +10,8 @@ export default apiInitializer("0.8", (api) => {
     },
   });
   
-  api.createWidget("custom-home-modal-widget", {
-    tagName: "div.custom-home-modal-widget",
+  api.createWidget("home-modal-widget", {
+    tagName: "div.home-modal-widget",
   });
 
   if (api.getCurrentUser()) {
