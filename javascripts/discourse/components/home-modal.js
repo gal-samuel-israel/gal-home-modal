@@ -159,7 +159,10 @@ export default Component.extend({
 
     this.displayChanged(); 
     
-    this.trapFocus(document.querySelector('dialog#welcome-modal'));    
+    var element = document.querySelector('#welcome-modal');
+    if(element !== 'undefined')
+      this.trapFocus(element);
+    }
 
   },
 
