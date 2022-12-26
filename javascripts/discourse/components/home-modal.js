@@ -114,6 +114,10 @@ export default Component.extend({
       "home-modal",
       this.shouldDisplay
     ); 
+
+    if(!this.shouldDisplay){
+      this.remove();
+    }
   },
 
   didInsertElement() {      
@@ -132,6 +136,7 @@ export default Component.extend({
 
     if(this.debugForAdmins){
       console.log('didRender');
+      console.log('this.shouldDisplay: '+ this.shouldDisplay);
     }
   },
 

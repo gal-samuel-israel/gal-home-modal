@@ -1,118 +1,116 @@
-{{#if shouldDisplay}}
-    <div id="welcome-modal" class="custom-home-modal">
-    <div class="modal-background">
-      <div class="modal-pop">
-        <div class="modal-title">
-          <h1>{{theme-i18n "modal_data.title"}}</h1>
-        </div>
-        <div class="modal-content">
-          <img src="{{theme-setting 'custom_image'}}"/>
-          <h2>{{theme-i18n "modal_data.big_text"}}</h2>
-          <p>{{theme-i18n "modal_data.little_text"}}</p>
-          
-          <div class="modal-steps">
-            {{#if this.currentStep1}}
-              <div id="step-1" class="step">
-                  <h3>Step 1</h3>
-                  <p> Step 1 text</p>
-                  <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
-              </div>
-            {{/if}}
-            {{#if this.currentStep2}}
-            <div id="step-2" class="step">
-              <h3>Step 2</h3>
-              <p> Step 2 text</p>
-              <div class="control-group avatar-change-button-wrapper">
-
-                  <div class="control-group pref-name">
-                    <label class="control-label">Your Full Name</label>
-                    <div class="controls">            
-                      <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
-                    </div>
-                    <div class="instructions">
-                      Your Full Name (optional)
-                    </div>
-                  </div>
-
-                  <div class="control-group pref-avatar">
-                    <label class="control-label">Your Avatar</label>
-                    <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
-                      <UserProfileAvatar @user={{this.currentUser}} />
-                    </div>
-                    <DButton
-                      @class="btn-default pad-right"
-                      @icon="pencil-alt"
-                      @action={{"showAvatarSelector"}}
-                      @actionParam={{this.currentUser}}
-                      @translatedLabel="Change your Avatar" />
-                  </div>
-                  
-                  <div class="control-group pref-bio">
-                    <label class="control-label">Your personal bio</label>
-                    <div class="controls bio-composer input-xxlarge">
-                      <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
-                    </div>
-                  </div>
-                  
-              </div>                              
-              
-              <!-- SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/-->
-              <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
-
+<div id="welcome-modal" class="custom-home-modal">
+  <div class="modal-background">
+    <div class="modal-pop">
+      <div class="modal-title">
+        <h1>{{theme-i18n "modal_data.title"}}</h1>
+      </div>
+      <div class="modal-content">
+        <img src="{{theme-setting 'custom_image'}}"/>
+        <h2>{{theme-i18n "modal_data.big_text"}}</h2>
+        <p>{{theme-i18n "modal_data.little_text"}}</p>
+        
+        <div class="modal-steps">
+          {{#if this.currentStep1}}
+            <div id="step-1" class="step">
+                <h3>Step 1</h3>
+                <p> Step 1 text</p>
+                <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
             </div>
-            {{/if}}
-            {{#if this.currentStep3}}
-            <div id="step-3" class="step">
-              <h3>Step 3</h3>
-              <p> Step 3 text</p>
-              <DButton
-                      @class={{theme-setting "button_style"}} 
-                      @action={{action "handleStep3NextButton"}}                  
-                      @translatedLabel="Next >>" />
-            </div>
-            {{/if}}
-            {{#if this.currentStep4}}
-              <div id="step-4" class="step">
-                <h3>Step 4</h3>
-                <p> Step 4 text</p>            
+          {{/if}}
+          {{#if this.currentStep2}}
+          <div id="step-2" class="step">
+            <h3>Step 2</h3>
+            <p> Step 2 text</p>
+            <div class="control-group avatar-change-button-wrapper">
 
-                <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
-              </div>
-            {{/if}}
-
-            
-          </div>      
-
-        </div>  
-
-
-        <div class="modal-footer">
-            <div class="hide-this-wrapper">
-              <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
-            </div>
-
-            {{#if this.debugFooter}}  
-              <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"testAction"}} />
-              <div class="break"></div> <!-- break -->      
-              <a href {{on "click" this.testAction}}>Some Link</a>
-              <div class="break"></div> <!-- break -->
-              <a href {{on "click" this.testAction}}>TestAction</a> 
-              
-                <div class="break"></div> <!-- break -->
-                <div class="debug">
-                  hideModalNextTime: 
-                    {{#if this.hideModalNextTime}}
-                    True
-                    {{else}}
-                    False
-                    {{/if}}
-                    <div class="break"></div> <!-- break -->
-                    {{this.newBioRawInput}}
-                    <div class="break"></div> <!-- break -->
+                <div class="control-group pref-name">
+                  <label class="control-label">Your Full Name</label>
+                  <div class="controls">            
+                    <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
+                  </div>
+                  <div class="instructions">
+                    Your Full Name (optional)
+                  </div>
                 </div>
-            {{/if}}
-        </div>
-      </div> 
-    </div>
+
+                <div class="control-group pref-avatar">
+                  <label class="control-label">Your Avatar</label>
+                  <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
+                    <UserProfileAvatar @user={{this.currentUser}} />
+                  </div>
+                  <DButton
+                    @class="btn-default pad-right"
+                    @icon="pencil-alt"
+                    @action={{"showAvatarSelector"}}
+                    @actionParam={{this.currentUser}}
+                    @translatedLabel="Change your Avatar" />
+                </div>
+                
+                <div class="control-group pref-bio">
+                  <label class="control-label">Your personal bio</label>
+                  <div class="controls bio-composer input-xxlarge">
+                    <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
+                  </div>
+                </div>
+                
+            </div>                              
+            
+            <!-- SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/-->
+            <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
+
+          </div>
+          {{/if}}
+          {{#if this.currentStep3}}
+          <div id="step-3" class="step">
+            <h3>Step 3</h3>
+            <p> Step 3 text</p>
+            <DButton
+                    @class={{theme-setting "button_style"}} 
+                    @action={{action "handleStep3NextButton"}}                  
+                    @translatedLabel="Next >>" />
+          </div>
+          {{/if}}
+          {{#if this.currentStep4}}
+            <div id="step-4" class="step">
+              <h3>Step 4</h3>
+              <p> Step 4 text</p>            
+
+              <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
+            </div>
+          {{/if}}
+
+          
+        </div>      
+
+      </div>  
+
+
+      <div class="modal-footer">
+          <div class="hide-this-wrapper">
+            <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
+          </div>
+
+          {{#if this.debugFooter}}  
+            <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"testAction"}} />
+            <div class="break"></div> <!-- break -->      
+            <a href {{on "click" this.testAction}}>Some Link</a>
+            <div class="break"></div> <!-- break -->
+            <a href {{on "click" this.testAction}}>TestAction</a> 
+            
+              <div class="break"></div> <!-- break -->
+              <div class="debug">
+                hideModalNextTime: 
+                  {{#if this.hideModalNextTime}}
+                  True
+                  {{else}}
+                  False
+                  {{/if}}
+                  <div class="break"></div> <!-- break -->
+                  {{this.newBioRawInput}}
+                  <div class="break"></div> <!-- break -->
+              </div>
+          {{/if}}
+      </div>
+    </div> 
   </div>
-{{/if}}
+</div>
