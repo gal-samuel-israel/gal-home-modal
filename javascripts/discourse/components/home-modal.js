@@ -30,8 +30,8 @@ export default Component.extend({
   currentStep4: null,
 
   modalStateCheck(){
-    this.hideModalNextTime = (JSON.parse(localStorage.getItem("homeModalHide"))) ? true : false;
-    this.showModalPop = !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`); 
+    this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
+    this.set("showModalPop", !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)); 
     if(this.debugForAdmins){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
