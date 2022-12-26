@@ -101,7 +101,7 @@ export default Component.extend({
   displayForUser(currentUser) {         
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
-    var blockDisplay = !this.showModalPop && (showOnlyToAdmins && !isAdmin);
+    var blockDisplay = (showOnlyToAdmins && !isAdmin);
 
     if(this.debugForAdmins){
       console.log('discourseComputed displayForUser');
