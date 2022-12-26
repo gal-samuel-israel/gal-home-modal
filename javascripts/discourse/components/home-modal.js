@@ -53,7 +53,7 @@ export default Component.extend({
     ];
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-    this.showModalPop = !this.hideModalNextTime;
+    this.showModalPop = !this.hideModalNextTime;  
 
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
@@ -142,9 +142,10 @@ export default Component.extend({
   didRender(){
     this._super(...arguments);
 
-    if(this.debugForAdmins){
-      console.log('didRender');
-    }
+    //visual effects should not be done here as this is run many times
+    //if(this.debugForAdmins){
+    //  console.log('didRender');
+    //}
   },
 
   didDestroyElement() {
