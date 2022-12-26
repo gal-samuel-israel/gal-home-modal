@@ -36,8 +36,6 @@ export default Component.extend({
   init() {
     this._super(...arguments);
 
-    console.log('X-init'); 
-
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
     
@@ -77,12 +75,23 @@ export default Component.extend({
 
   @discourseComputed("router.currentRouteName", "router.currentURL")
   showHere(currentRouteName, currentURL) {
+
+    if(this.debugForAdmins){
+      console.log('discourseComputed showHere');
+      console.log(currentRouteName);
+      console.log(currentURL);
+    }
+
     return currentRouteName == `discovery.${defaultHomepage()}`;    
   },
 
   @discourseComputed("currentUser")
   displayForUser(currentUser) { 
-    /*
+    
+    if(this.debugForAdmins){
+      console.log('discourseComputed displayForUser');
+    }
+
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
     var blockDisplay = (showOnlyToAdmins && !isAdmin);
@@ -90,16 +99,21 @@ export default Component.extend({
     if (blockDisplay) {
       return false;
     } 
-    */
+    
     return true;
   },
 
-  shouldDisplay: true, //and("displayForUser", "displayForRoute"),
+  shouldDisplay: and("displayForUser", "displayForRoute"),
 
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
-  displayChanged() {   
+  displayChanged() { 
+
+    if(this.debugForAdmins){
+      console.log('displayChanged');
+    }
+
     document.documentElement.classList.toggle(
       "home-modal",
       this.shouldDisplay
@@ -109,8 +123,10 @@ export default Component.extend({
   didInsertElement() {      
     this._super(...arguments);
 
-    console.log('X-didInsertElement');
-             
+    if(this.debugForAdmins){
+      console.log('didInsertElement');
+    }
+
     this.displayChanged();
 
   },
@@ -118,7 +134,6 @@ export default Component.extend({
   didRender(){
     this._super(...arguments);
 
-    console.log('X-didRender');
     if(this.debugForAdmins){
       console.log('didRender');
     }
@@ -153,7 +168,7 @@ export default Component.extend({
   @action
   handleStep4FinishButton(event){
     event?.preventDefault();
-    this.send("closeModal");
+    this.set("shouldDisplay", false);
   },
 
   /* actions for Avatar and name change */  
