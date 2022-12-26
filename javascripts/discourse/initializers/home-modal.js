@@ -2,7 +2,17 @@ import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("0.8", (api) => {
   const enableConnectorName = settings.plugin_outlet;
-  const disableConnectorName = enableConnectorName === "above-main-container" ? "below-site-header" : "above-main-container";
+  const disableConnectorName = enableConnectorName === "below-site-header" ? "above-main-container" : "below-site-header";
+
+  api.registerConnectorClass(disableConnectorName, "home-modal", {
+    shouldRender() {
+      return false;
+    },
+  });
+  
+  api.createWidget("custom-home-modal-widget", {
+    tagName: "div.custom-home-modal-widget",
+  });
 
   if (api.getCurrentUser()) {
     const currentUser = api.getCurrentUser()
@@ -25,15 +35,7 @@ export default apiInitializer("0.8", (api) => {
     var blockModal = (showOnlyToAdmins && !isAdmin);
   }
 
-  api.registerConnectorClass(disableConnectorName, "home-modal", {
-    shouldRender() {
-      return false;
-    },
-  });
   
-  api.createWidget("custom-home-modal-widget", {
-    tagName: "div.custom-home-modal-widget",
-  });
 
 });
 
