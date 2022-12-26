@@ -27,6 +27,7 @@ export default Component.extend({
   newBioCooked: null,
 
   hideModalNextTime: null,
+  showModalPop: null,
 
   currentStep1: null,
   currentStep2: null,
@@ -52,6 +53,7 @@ export default Component.extend({
     ];
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
+    this.showModalPop = !this.hideModalNextTime;
 
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
@@ -63,7 +65,7 @@ export default Component.extend({
       }).catch(popupAjaxError);
     
     if(this.debugForAdmins){
-      console.log('init start:');
+      console.log('component init start:');
       console.log(this);
       //console.log(arguments);
       //console.log(this.currentUser);      
@@ -108,6 +110,7 @@ export default Component.extend({
 
     if(this.debugForAdmins){
       console.log('displayChanged');
+      console.log('this.shouldDisplay: '+ this.shouldDisplay);
     }
 
     document.documentElement.classList.toggle(
