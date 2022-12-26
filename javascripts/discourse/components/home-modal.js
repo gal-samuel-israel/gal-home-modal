@@ -148,17 +148,7 @@ export default Component.extend({
     );
 
     this.modalStateCheck();
-  },
 
-  didInsertElement() {      
-    this._super(...arguments);
-
-    if(this.debugForAdmins){
-      console.log('didInsertElement');
-    }
-
-    this.displayChanged(); 
-    
     var element = document.querySelector('#welcome-modal');
     if(element !== 'undefined' && this.showModalPop){
       this.trapFocus(element);
@@ -168,6 +158,17 @@ export default Component.extend({
         firstFocusableEl.focus();
       }
     }
+    
+  },
+
+  didInsertElement() {      
+    this._super(...arguments);
+
+    if(this.debugForAdmins){
+      console.log('didInsertElement');
+    }
+
+    this.displayChanged();        
 
   },
 
