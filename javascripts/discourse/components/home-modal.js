@@ -160,7 +160,7 @@ export default Component.extend({
     this.displayChanged(); 
     
     var element = document.querySelector('#welcome-modal');
-    if(element !== 'undefined')
+    if(element !== 'undefined'){
       this.trapFocus(element);
     }
 
