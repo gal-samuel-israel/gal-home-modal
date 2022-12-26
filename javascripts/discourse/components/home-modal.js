@@ -37,6 +37,11 @@ export default Component.extend({
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
     }
+    //reset to step 1
+    this.set("currentStep1", true);
+    this.set("currentStep2", false);
+    this.set("currentStep3", false);
+    this.set("currentStep4", false);
   },
 
   init() {
@@ -44,11 +49,6 @@ export default Component.extend({
 
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
-    
-    this.set("currentStep1", true);
-    this.set("currentStep2", false);
-    this.set("currentStep3", false);
-    this.set("currentStep4", false);
 
     this.saveAttrNames = [
       "name",
