@@ -149,8 +149,9 @@ export default Component.extend({
 
     this.modalStateCheck();
 
+    //TODO: the Focus Trap is not triggered on Time
     var element = document.querySelector('#welcome-modal');
-    if(element !== 'undefined' && this.showModalPop){
+    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
       this.trapFocus(element);
       var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
       var firstFocusableEl = focusableEls[0];
@@ -158,7 +159,7 @@ export default Component.extend({
         firstFocusableEl.focus();
       }
     }
-    
+
   },
 
   didInsertElement() {      
