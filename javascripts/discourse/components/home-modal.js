@@ -116,7 +116,7 @@ export default Component.extend({
     ); 
 
     if(!this.shouldDisplay){
-      this.remove();
+      //TODO: hide the Modal
     }
   },
 
