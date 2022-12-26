@@ -35,7 +35,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
-      console.log('this.showModalPop:') + this.showModalPop;
+      console.log('this.showModalPop:' + this.showModalPop);
     }
   },
 
