@@ -1,17 +1,12 @@
-import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
-import { cookAsync } from "discourse/lib/text";
-import { setting } from 'discourse/lib/computed';
 import showModal from "discourse/lib/show-modal";
-//import getURL from "discourse-common/lib/get-url";
-import { action } from "@ember/object";
-
+import { defaultHomepage } from "discourse/lib/utilities";
+import discourseComputed, { observes } from "discourse-common/utils/decorators";
+//import { action } from "@ember/object";
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
-import { defaultHomepage } from "discourse/lib/utilities";
 import { and } from "@ember/object/computed";
-import discourseComputed, { observes } from "discourse-common/utils/decorators";
 
 export default Component.extend({
   router: service(),
@@ -53,7 +48,7 @@ export default Component.extend({
     ];
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-    this.showModalPop = !this.hideModalNextTime;  
+    this.showModalPop = !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`);  
 
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
@@ -67,26 +62,13 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('component init start:');
       console.log(this);
-      console.log(this.router.currentRouteName);
+      //console.log(this.router.currentRouteName);
       //console.log(this.currentUser);      
       console.log('init end:');
     }
 
   },
   
-  /*
-  @discourseComputed("router.currentRouteName", "router.currentURL")
-  showHere(currentRouteName, currentURL) {
-
-    if(this.debugForAdmins){
-      console.log('discourseComputed showHere');
-      console.log(currentRouteName);
-      console.log(currentURL);
-    }
-
-    return currentRouteName == `discovery.${defaultHomepage()}`;    
-  },
-  */
   @discourseComputed("router.currentRouteName")
   displayForRoute(currentRouteName) {  
     if(this.debugForAdmins){
