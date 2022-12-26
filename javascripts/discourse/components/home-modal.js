@@ -32,6 +32,11 @@ export default Component.extend({
   modalStateCheck(){
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
     this.showModalPop = !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`); 
+    if(this.debugForAdmins){
+      console.log('modalStateCheck:');
+      console.log('this.hideModalNextTime:' + this.hideModalNextTime);
+      console.log('this.showModalPop:') + this.showModalPop;
+    }
   },
 
   init() {
@@ -112,6 +117,8 @@ export default Component.extend({
       "home-modal",
       this.shouldDisplay
     );
+
+    this.modalStateCheck();
   },
 
   didInsertElement() {      
@@ -121,9 +128,7 @@ export default Component.extend({
       console.log('didInsertElement');
     }
 
-    this.modalStateCheck(); 
-    
-    this.displayChanged();
+    this.displayChanged();    
 
   },
 
