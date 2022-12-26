@@ -92,6 +92,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('discourseComputed displayForRoute');
       console.log('currentRouteName: '+ currentRouteName);
+      console.log('defaultHomepage: '+ defaultHomepage());
     }  
     return currentRouteName === `discovery.${defaultHomepage()}`;    
   },
