@@ -131,7 +131,7 @@ export default Component.extend({
           }
         }
     });
-  }
+  },
 
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
