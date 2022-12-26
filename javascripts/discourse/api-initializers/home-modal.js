@@ -1,18 +1,15 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("0.8", (api) => {
-  /*
-  const enableConnectorName = settings.plugin_outlet;
-  const disableConnectorName = enableConnectorName === "below-site-header" ? "above-main-container" : "below-site-header";
 
-  api.registerConnectorClass(disableConnectorName, "home-modal", {
+  api.registerConnectorClass("above-site-header", "home-modal", {
     shouldRender() {
-      return false;
+      return true;
     },
   });
-  */
+
   api.createWidget("home-modal-widget", {
-    tagName: "div.home-modal-widget",
+    tagName: "div.home-modal",
   });
 
   console.log('X-initializer');

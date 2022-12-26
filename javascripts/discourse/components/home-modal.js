@@ -110,9 +110,12 @@ export default Component.extend({
   displayChanged() {
 
     console.log('X-displayChanged');
-    if(this.debugForAdmins){
-      console.log('displayChanged');
-    }    
+    
+    document.documentElement.classList.toggle(
+      "home-modal",
+      this.shouldDisplay
+    );
+    
   },
 
   didInsertElement() {      
