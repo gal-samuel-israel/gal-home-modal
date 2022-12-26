@@ -1,9 +1,6 @@
 plugin_outlet:
-  default: "below-site-header"
-  type: enum
-  choices:
-    - above-main-container
-    - below-site-header
+  default: "above-site-header"
+  type: string 
 enable_debug_for_admins:
   type: bool
   default: true
@@ -25,7 +22,7 @@ button_style:
   default: btn-primary
   choices:
     - btn-default
-  description: "Guest Gate Login button style. btn-primary is a blue (tertiary) colored button by default. btn-default is a grey (primary-low) colored button by default."
+  description: "btn-primary is a blue (tertiary). btn-default is a grey (primary-low)."
 button_icon:
   type: string
   default: "user"

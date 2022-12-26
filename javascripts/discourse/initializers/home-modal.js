@@ -1,6 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("0.8", (api) => {
+  /*
   const enableConnectorName = settings.plugin_outlet;
   const disableConnectorName = enableConnectorName === "below-site-header" ? "above-main-container" : "below-site-header";
 
@@ -9,10 +10,12 @@ export default apiInitializer("0.8", (api) => {
       return false;
     },
   });
-  
+  */
   api.createWidget("home-modal-widget", {
     tagName: "div.home-modal-widget",
   });
+
+  console.log('X-initializer');
 
   if (api.getCurrentUser()) {
     const currentUser = api.getCurrentUser()
@@ -33,9 +36,7 @@ export default apiInitializer("0.8", (api) => {
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
     var blockModal = (showOnlyToAdmins && !isAdmin);
-  }
-
-  
+  }  
 
 });
 
