@@ -15,7 +15,7 @@ import discourseComputed, { observes } from "discourse-common/utils/decorators";
 
 export default Component.extend({
   router: service(),
-  //tagName: "",
+  tagName: "",
 
   /* Object local params */
   
@@ -77,21 +77,12 @@ export default Component.extend({
 
   @discourseComputed("router.currentRouteName", "router.currentURL")
   showHere(currentRouteName, currentURL) {
-    //if (settings.show_on === "all") {
-    //  return true;
-    //}
-
-    //if (settings.show_on === "discovery") {
-    //  return currentRouteName.indexOf("discovery") > -1;
-    //}
-
-    //if (settings.show_on === "homepage") {
-      return currentRouteName == `discovery.${defaultHomepage()}`;
-    //}
+    return currentRouteName == `discovery.${defaultHomepage()}`;    
   },
 
   @discourseComputed("currentUser")
-  displayForUser(currentUser) {  
+  displayForUser(currentUser) { 
+    /*
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
     var blockDisplay = (showOnlyToAdmins && !isAdmin);
@@ -99,6 +90,7 @@ export default Component.extend({
     if (blockDisplay) {
       return false;
     } 
+    */
     return true;
   },
 
@@ -107,27 +99,25 @@ export default Component.extend({
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
-  displayChanged() {
-
-    console.log('X-displayChanged');
-    
+  displayChanged() {   
     document.documentElement.classList.toggle(
       "home-modal",
       this.shouldDisplay
-    );
-    
+    );    
   },
 
   didInsertElement() {      
     this._super(...arguments);
 
-    console.log('X-didInsertElement');            
+    console.log('X-didInsertElement');
+             
     this.displayChanged();
 
   },
 
   didRender(){
     this._super(...arguments);
+
     console.log('X-didRender');
     if(this.debugForAdmins){
       console.log('didRender');
@@ -135,7 +125,7 @@ export default Component.extend({
   },
 
   didDestroyElement() {
-    document.documentElement.classList.remove("custom-home-modal-widget");
+    document.documentElement.classList.remove("home-modal");
   },
  
 

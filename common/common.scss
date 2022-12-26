@@ -1,5 +1,4 @@
-#discourse-modal {
-  &.custom-welcome-modal {
+#welcome-modal.custom-home-modal {
     .modal-inner-container {
       background-color: var(--secondary);
     }
@@ -79,4 +78,4 @@
       color:red;
     }
   }  
-}
+
