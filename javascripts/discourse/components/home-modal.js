@@ -110,17 +110,12 @@ export default Component.extend({
 
     if(this.debugForAdmins){
       console.log('displayChanged');
-      console.log('this.shouldDisplay: '+ this.shouldDisplay);
     }
 
     document.documentElement.classList.toggle(
       "home-modal",
       this.shouldDisplay
-    ); 
-
-    if(!this.shouldDisplay){
-      //TODO: hide the Modal
-    }
+    );
   },
 
   didInsertElement() {      
@@ -139,7 +134,6 @@ export default Component.extend({
 
     if(this.debugForAdmins){
       console.log('didRender');
-      console.log('this.shouldDisplay: '+ this.shouldDisplay);
     }
   },
 
@@ -172,7 +166,7 @@ export default Component.extend({
   @action
   handleStep4FinishButton(event){
     event?.preventDefault();
-    this.set("shouldDisplay", false);
+    this.set("showModalPop", false);
   },
 
   /* actions for Avatar and name change */  
