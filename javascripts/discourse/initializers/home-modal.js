@@ -30,7 +30,6 @@ export default apiInitializer("0.8", (api) => {
       return false;
     },
   });
-
   
   api.createWidget("custom-home-modal-widget", {
     tagName: "div.custom-home-modal-widget",
