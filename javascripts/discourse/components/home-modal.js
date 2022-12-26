@@ -162,6 +162,11 @@ export default Component.extend({
     var element = document.querySelector('#welcome-modal');
     if(element !== 'undefined'){
       this.trapFocus(element);
+      var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+      var firstFocusableEl = focusableEls[0];
+      if(firstFocusableEl!=='undefined'){
+        firstFocusableEl.focus();
+      }
     }
 
   },
