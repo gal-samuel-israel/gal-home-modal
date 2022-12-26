@@ -15,7 +15,7 @@ import discourseComputed, { observes } from "discourse-common/utils/decorators";
 
 export default Component.extend({
   router: service(),
-  tagName: "",
+  //tagName: "",
 
   /* Object local params */
   /*
@@ -77,23 +77,19 @@ export default Component.extend({
 
   @discourseComputed("router.currentRouteName")
   displayForRoute(currentRouteName) {  
-    console.log('X-displayForRoute:');  
-    console.log(currentRouteName);
     return currentRouteName === `discovery.${defaultHomepage()}`;    
   },
 
   @discourseComputed("currentUser")
-  displayForUser(currentUser) {   
-    console.log('X-displayForUser');
-    
+  displayForUser(currentUser) {  
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
-    var blockModal = (showOnlyToAdmins && !isAdmin);
+    var blockDisplay = (showOnlyToAdmins && !isAdmin);
 
-    if (!blockModal) {
-      return true;
+    if (blockDisplay) {
+      return false;
     } 
-    return false;
+    return true;
   },
 
   shouldDisplay: true, //and("displayForUser", "displayForRoute"),
