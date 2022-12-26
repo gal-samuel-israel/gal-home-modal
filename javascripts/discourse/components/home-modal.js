@@ -117,7 +117,7 @@ export default Component.extend({
     document.documentElement.classList.toggle(
       "home-modal",
       this.shouldDisplay
-    );    
+    ); 
   },
 
   didInsertElement() {      
