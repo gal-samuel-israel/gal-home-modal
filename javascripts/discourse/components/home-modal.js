@@ -18,6 +18,7 @@ export default Component.extend({
   tagName: "",
 
   /* Object local params */
+  /*
   debugForAdmins: null,
   debugFooter: false,
     
@@ -54,7 +55,7 @@ export default Component.extend({
 
     this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
 
-    /* prep the user bios */
+    //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
         //console.log(data);        
@@ -72,6 +73,7 @@ export default Component.extend({
     }
 
   },
+  */
 
   @discourseComputed("router.currentRouteName")
   displayForRoute(currentRouteName) {  
@@ -80,11 +82,15 @@ export default Component.extend({
     return currentRouteName === `discovery.${defaultHomepage()}`;    
   },
 
-  @discourseComputed()
-  displayForUser() {   
+  @discourseComputed("currentUser")
+  displayForUser(currentUser) {   
     console.log('X-displayForUser');
     
-    if (!this.blockModal) {
+    var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
+    var isAdmin = (currentUser.admin)        
+    var blockModal = (showOnlyToAdmins && !isAdmin);
+
+    if (!blockModal) {
       return true;
     } 
     return false;
@@ -110,6 +116,7 @@ export default Component.extend({
     this.displayChanged();
 
   },
+  
   didRender(){
     this._super(...arguments);
     console.log('X-didRender');
