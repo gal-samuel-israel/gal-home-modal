@@ -96,7 +96,7 @@ export default Component.extend({
     return false;
   },
 
-  shouldDisplay: and("displayForUser", "displayForRoute"),
+  shouldDisplay: true, //and("displayForUser", "displayForRoute"),
 
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
@@ -116,7 +116,7 @@ export default Component.extend({
     this.displayChanged();
 
   },
-  
+
   didRender(){
     this._super(...arguments);
     console.log('X-didRender');
