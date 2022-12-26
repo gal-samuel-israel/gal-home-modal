@@ -18,7 +18,7 @@ export default Component.extend({
   //tagName: "",
 
   /* Object local params */
-  /*
+  
   debugForAdmins: null,
   debugFooter: false,
     
@@ -73,11 +73,21 @@ export default Component.extend({
     }
 
   },
-  */
+  
 
-  @discourseComputed("router.currentRouteName")
-  displayForRoute(currentRouteName) {  
-    return currentRouteName === `discovery.${defaultHomepage()}`;    
+  @discourseComputed("router.currentRouteName", "router.currentURL")
+  showHere(currentRouteName, currentURL) {
+    //if (settings.show_on === "all") {
+    //  return true;
+    //}
+
+    //if (settings.show_on === "discovery") {
+    //  return currentRouteName.indexOf("discovery") > -1;
+    //}
+
+    //if (settings.show_on === "homepage") {
+      return currentRouteName == `discovery.${defaultHomepage()}`;
+    //}
   },
 
   @discourseComputed("currentUser")
