@@ -67,7 +67,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('component init start:');
       console.log(this);
-      //console.log(arguments);
+      console.log(this.router.currentRouteName);
       //console.log(this.currentUser);      
       console.log('init end:');
     }
