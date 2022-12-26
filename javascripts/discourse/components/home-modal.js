@@ -3,7 +3,7 @@ import { ajax } from "discourse/lib/ajax";
 import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
 import discourseComputed, { observes } from "discourse-common/utils/decorators";
-//import { action } from "@ember/object";
+import { action } from "@ember/object";
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and } from "@ember/object/computed";
