@@ -74,7 +74,7 @@ export default Component.extend({
 
   },
   
-
+  /*
   @discourseComputed("router.currentRouteName", "router.currentURL")
   showHere(currentRouteName, currentURL) {
 
@@ -85,6 +85,15 @@ export default Component.extend({
     }
 
     return currentRouteName == `discovery.${defaultHomepage()}`;    
+  },
+  */
+  @discourseComputed("router.currentRouteName")
+  displayForRoute(currentRouteName) {  
+    if(this.debugForAdmins){
+      console.log('discourseComputed displayForRoute');
+      console.log('currentRouteName: '+ currentRouteName);
+    }  
+    return currentRouteName === `discovery.${defaultHomepage()}`;    
   },
 
   @discourseComputed("currentUser")
