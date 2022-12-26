@@ -86,21 +86,17 @@ export default Component.extend({
   },
 
   @discourseComputed("currentUser")
-  displayForUser(currentUser) { 
-    
-    if(this.debugForAdmins){
-      console.log('discourseComputed displayForUser');
-    }
-
+  displayForUser(currentUser) {         
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
     var blockDisplay = (showOnlyToAdmins && !isAdmin);
 
-    if (blockDisplay) {
-      return false;
-    } 
-    
-    return true;
+    if(this.debugForAdmins){
+      console.log('discourseComputed displayForUser');
+      console.log('blockDisplay: '+ blockDisplay);
+    }
+
+    return !blockDisplay;
   },
 
   shouldDisplay: and("displayForUser", "displayForRoute"),
