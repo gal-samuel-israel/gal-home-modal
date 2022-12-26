@@ -29,6 +29,11 @@ export default Component.extend({
   currentStep3: null,
   currentStep4: null,
 
+  modalStateCheck(){
+    this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
+    this.showModalPop = !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`); 
+  },
+
   init() {
     this._super(...arguments);
 
@@ -47,8 +52,7 @@ export default Component.extend({
       "bio_excerpt",
     ];
 
-    this.hideModalNextTime = JSON.parse(localStorage.getItem("homeModalHide"));
-    this.showModalPop = !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`);  
+    this.modalStateCheck(); 
 
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
@@ -117,6 +121,8 @@ export default Component.extend({
       console.log('didInsertElement');
     }
 
+    this.modalStateCheck(); 
+    
     this.displayChanged();
 
   },
