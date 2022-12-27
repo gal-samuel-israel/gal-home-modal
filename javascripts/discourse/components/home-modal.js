@@ -115,6 +115,10 @@ export default Component.extend({
 
   //focus trap
   handleFocus(e) {
+    var firstFocusableEl = this.currentFocusables[0];  
+    var lastFocusableEl = this.currentFocusables[focusableEls.length - 1];
+    var KEYCODE_TAB = 9;    
+    
     var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
     if (!isTabPressed) { 
