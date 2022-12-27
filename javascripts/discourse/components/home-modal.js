@@ -114,6 +114,12 @@ export default Component.extend({
   },
   
   handleFocus(e) {
+
+    if(this.debugForAdmins){
+      console.log('handleFocus element:');
+      console.log(e);
+    }
+
     var firstFocusableEl = this.currentFocusables[0];  
     var lastFocusableEl = this.currentFocusables[this.currentFocusables.length - 1];
     var KEYCODE_TAB = 9;
@@ -128,6 +134,7 @@ export default Component.extend({
       console.log('document.activeElement:');
       console.log(document.activeElement);
     }
+
     if ( e.shiftKey ) /* shift + tab */ {
       if (document.activeElement === firstFocusableEl) {
         lastFocusableEl.focus();
