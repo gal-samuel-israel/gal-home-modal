@@ -53,51 +53,46 @@
                       <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
                     </div>
                   </div>
-                  
-              </div>                              
-              
-              <!-- SaveControls @model={{this.currentUser}} @action={{action "saveUserInfo"}} @saved={{this.saved}} @translatedLabel="Next >>"/-->
+
+              </div>
+
               <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
 
             </div>
             {{/if}}
             {{#if this.currentStep3}}
             <div id="step-3" class="step">
+
               <h3>Step 3</h3>
               <p> Step 3 text</p>
-              <DButton
-                      @class={{theme-setting "button_style"}} 
-                      @action={{action "handleStep3NextButton"}}                  
-                      @translatedLabel="Next >>" />
+
+              <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep3NextButton"}} @translatedLabel="Next >>" />
+
             </div>
             {{/if}}
             {{#if this.currentStep4}}
               <div id="step-4" class="step">
+
                 <h3>Step 4</h3>
-                <p> Step 4 text</p>            
+                <p> Step 4 text</p>  
 
                 <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
+                
               </div>
-            {{/if}}
-
-            
+            {{/if}}            
           </div>      
-
         </div>  
-
 
         <div class="modal-footer">
             <div class="hide-this-wrapper">
               <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
             </div>
-
             {{#if this.debugFooter}}  
               <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"testAction"}} />
               <div class="break"></div> <!-- break -->      
               <a href {{on "click" this.testAction}}>Some Link</a>
               <div class="break"></div> <!-- break -->
-              <a href {{on "click" this.testAction}}>TestAction</a> 
-              
+              <a href {{on "click" this.testAction}}>TestAction</a>               
                 <div class="break"></div> <!-- break -->
                 <div class="debug">
                   hideModalNextTime: 

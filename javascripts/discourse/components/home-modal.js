@@ -112,7 +112,7 @@ export default Component.extend({
     var lastFocusableEl = focusableEls[focusableEls.length - 1];
     var KEYCODE_TAB = 9;
   
-    element.addEventListener('keydown', function(e) {
+    const handleFocus = function(e) {
       var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
   
       if (!isTabPressed) { 
@@ -130,7 +130,19 @@ export default Component.extend({
             e.preventDefault();
           }
         }
-    });
+    };
+
+    element.removeEventListener('keydown', handleFocus);
+    element.addEventListener('keydown', handleFocus);
+    firstFocusableEl.focus();
+  },
+
+  //Refresh the FocusTrap on steps change
+  refreshTrapFocus(){
+    var element = document.querySelector('#welcome-modal');
+    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
+      this.trapFocus(element);      
+    }
   },
 
   // Setting a class on <html> from a component is not great
@@ -168,19 +180,8 @@ export default Component.extend({
     //visual effects should not be done here as this is run many times
     if(this.debugForAdmins){
       console.log('didRender');      
-    }
-
-    //TODO: the Focus Trap is not triggered on Time when we go back to latest via vlick and not a page load !!!
-    var element = document.querySelector('#welcome-modal');
-    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
-      this.trapFocus(element);
-      var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-      var firstFocusableEl = focusableEls[0];
-      if(firstFocusableEl!=='undefined'){
-        firstFocusableEl.focus();
-      }
-    }
-
+    }    
+    this.refreshTrapFocus();
   },
 
   didDestroyElement() {
