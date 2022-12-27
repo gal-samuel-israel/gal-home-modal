@@ -130,7 +130,7 @@ export default Component.extend({
       console.log('document.activeElement:');
       console.log(document.activeElement);
     }
-    /*
+    
     var arrFocusableElements = this.currentFocusableElements;
     var firstFocusableEl = arrFocusableElements[0];  
     var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
@@ -146,7 +146,7 @@ export default Component.extend({
           e.preventDefault();
         }
       }
-      */
+      
   },
   
   //focus trap
