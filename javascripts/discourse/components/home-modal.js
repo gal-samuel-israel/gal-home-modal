@@ -162,6 +162,8 @@ export default Component.extend({
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
     if(!this.arrayEquals(this.currentFocusableElements, focusableEls)){
       this.set("currentFocusableElements", focusableEls);
+    } else {
+      return; // no change in focusable elements
     }
           
     element.addEventListener("keydown", this.handleTabKeyStrokes, true);
@@ -218,7 +220,8 @@ export default Component.extend({
       console.log('didRender');      
     }    
     
-
+    this.refreshTrapFocus();
+    
   },
 
   willDestroyElement(element){
@@ -247,8 +250,7 @@ export default Component.extend({
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked);    
-    
-    this.refreshTrapFocus();
+        
   },
 
   @action
