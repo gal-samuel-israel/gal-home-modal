@@ -29,6 +29,8 @@ export default Component.extend({
   currentStep3: null,
   currentStep4: null,
 
+  currentFocusableElements: [],
+
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
     this.set("showModalPop", !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)); 
@@ -102,9 +104,7 @@ export default Component.extend({
     return !blockDisplay;
   },
 
-  shouldDisplay: and("displayForUser", "displayForRoute"),
-
-  currentFocusables: [],
+  shouldDisplay: and("displayForUser", "displayForRoute"), 
   
   arrayEquals(a, b) {
     return Array.isArray(a) &&
@@ -120,7 +120,7 @@ export default Component.extend({
       console.log(e);
     }
 
-    var arrFocusableElements = this.get("currentFocusables");
+    var arrFocusableElements = this.currentFocusableElements;
     var firstFocusableEl = arrFocusableElements[0];  
     var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
     var KEYCODE_TAB = 9;
@@ -152,8 +152,8 @@ export default Component.extend({
   //focus trap
   trapFocus(element) {
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-    if(!this.arrayEquals(this.currentFocusables, this.focusableEls)){
-      this.set("currentFocusables", focusableEls);
+    if(!this.arrayEquals(this.currentFocusableElements, this.focusableEls)){
+      this.set("currentFocusableElements", focusableEls);
     }
           
     element.addEventListener('keydown', this.handleTabKeyStrokes);
@@ -161,7 +161,7 @@ export default Component.extend({
 
     if(this.debugForAdmins){
       console.log('trapFocus: trap + focus on 1st item of:'); 
-      console.log(this.currentFocusables);
+      console.log(this.currentFocusableElements);
     } 
   },
 
