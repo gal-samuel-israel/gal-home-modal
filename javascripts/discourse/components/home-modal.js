@@ -190,12 +190,12 @@ export default Component.extend({
 
   },
 
-  didInsertElement(element) {      
+  didInsertElement() {      
     this._super(...arguments);
 
     if(this.debugForAdmins){
       console.log('didInsertElement');
-      console.log(element);
+      console.log(this.element);
     }
 
     this.displayChanged();
