@@ -106,6 +106,7 @@ export default Component.extend({
 
   shouldDisplay: and("displayForUser", "displayForRoute"), 
   
+  @bind
   arrayEquals(a, b) {
     return Array.isArray(a) &&
         Array.isArray(b) &&
@@ -221,7 +222,7 @@ export default Component.extend({
     }    
     
     this.refreshTrapFocus();
-    
+
   },
 
   willDestroyElement(element){
