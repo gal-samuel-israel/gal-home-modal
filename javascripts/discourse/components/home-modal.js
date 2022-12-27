@@ -106,6 +106,22 @@ export default Component.extend({
 
   shouldDisplay: and("displayForUser", "displayForRoute"), 
   
+  #bind
+  nodeListsAreEqual( list1, list2 ) {
+    if ( list1.length !== list2.length ) {
+        if(this.debugForAdmins){      
+          console.log('nodeListsAreEqual lists not same length');
+        }
+        return false;
+    }
+    var check = Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
+    if(this.debugForAdmins){      
+      console.log('check: '+ check);
+    }
+
+    return Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
+  },
+
   @bind
   arrayEquals(a, b) {
     /*
@@ -180,7 +196,7 @@ export default Component.extend({
   trapFocus(element) {
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"]');
     var newSet = false;
-    if(!this.arrayEquals(this.currentFocusableElements, focusableEls)){
+    if(!this.nodeListsAreEqual(this.currentFocusableElements, focusableEls)){
       this.set("currentFocusableElements", focusableEls);
       newSet = true;
     } 
