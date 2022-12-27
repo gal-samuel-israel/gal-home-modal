@@ -120,33 +120,7 @@ export default Component.extend({
     }
 
     return Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
-  },
-
-  @bind
-  arrayEquals(a, b) {
-    /*
-    var isEqual = equal(a,b);
-    if(this.debugForAdmins){
-      console.log('arrayEquals:');
-      console.log('isEqual: '+ isEqual);
-    }
-    */
-    var check = Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
-
-    if(this.debugForAdmins){      
-      console.log('check: '+ check);
-      console.log(a);
-      console.log(b);
-    }
-
-    return Array.isArray(a) &&
-        Array.isArray(b) &&
-        a.length === b.length &&
-        a.every((val, index) => val === b[index]);  
-  },
+  },  
   
   @bind
   handleTabKeyStrokes(e) {
