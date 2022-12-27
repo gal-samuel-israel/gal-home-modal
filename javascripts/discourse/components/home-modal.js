@@ -131,7 +131,7 @@ export default Component.extend({
     var lastFocusableEl = this.currentFocusables[focusableEls.length - 1];
     var KEYCODE_TAB = 9;
   
-    const handleFocus = function(e) {
+    window.handleFocus = function(e) {
       var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
   
       if (!isTabPressed) { 
@@ -151,8 +151,8 @@ export default Component.extend({
         }
     };
 
-    element.removeEventListener('keydown', handleFocus);
-    element.addEventListener('keydown', handleFocus);
+    element.removeEventListener('keydown', window.handleFocus);
+    element.addEventListener('keydown', window.handleFocus);
     firstFocusableEl.focus();
   },
 
