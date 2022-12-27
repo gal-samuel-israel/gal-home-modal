@@ -106,7 +106,7 @@ export default Component.extend({
 
   shouldDisplay: and("displayForUser", "displayForRoute"), 
   
-  #bind
+  @bind
   nodeListsAreEqual( list1, list2 ) {
     if ( list1.length !== list2.length ) {
         if(this.debugForAdmins){      
