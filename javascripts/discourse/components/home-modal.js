@@ -151,7 +151,7 @@ export default Component.extend({
 
   //Refresh the FocusTrap on steps change
   refreshTrapFocus(){
-    var element = document.querySelector('#welcome-modal');
+    var element = document.querySelector('#welcome-modal .step');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
       this.trapFocus(element);      
     }
