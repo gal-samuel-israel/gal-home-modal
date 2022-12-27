@@ -217,8 +217,11 @@ export default Component.extend({
       console.log('willDestroyElement:');
       console.log(element);
     }  
-    element.removeEventListener('keydown', this.handleTabKeyStrokes, true)
+    element.removeEventListener('keydown', this.handleTabKeyStrokes, true);
+    
+    this._super(...arguments);
   },
+
   didDestroyElement() {
     document.documentElement.classList.remove("home-modal");
   },
