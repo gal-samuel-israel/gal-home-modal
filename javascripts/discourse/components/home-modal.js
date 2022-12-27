@@ -2,7 +2,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
 import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
-import discourseComputed, { observes } from "discourse-common/utils/decorators";
+import discourseComputed, { observes, bind } from "discourse-common/utils/decorators";
 import { action } from "@ember/object";
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
@@ -190,11 +190,12 @@ export default Component.extend({
 
   },
 
-  didInsertElement() {      
+  didInsertElement(element) {      
     this._super(...arguments);
 
     if(this.debugForAdmins){
       console.log('didInsertElement');
+      console.log(element);
     }
 
     this.displayChanged();
@@ -218,7 +219,7 @@ export default Component.extend({
       console.log(element);
     }  
     element.removeEventListener('keydown', this.handleTabKeyStrokes, true);
-    
+
     this._super(...arguments);
   },
 
