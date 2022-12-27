@@ -120,9 +120,10 @@ export default Component.extend({
     a.length === b.length &&
     a.every((val, index) => val === b[index]);
 
-    if(this.debugForAdmins){
-      
+    if(this.debugForAdmins){      
       console.log('check: '+ check);
+      console.log(a);
+      console.log(b);
     }
 
     return Array.isArray(a) &&
