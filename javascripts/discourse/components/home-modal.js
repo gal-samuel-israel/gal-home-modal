@@ -248,6 +248,7 @@ export default Component.extend({
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked);    
     
+    this.refreshTrapFocus();
   },
 
   @action
