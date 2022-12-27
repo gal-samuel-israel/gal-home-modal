@@ -108,12 +108,13 @@ export default Component.extend({
   
   @bind
   arrayEquals(a, b) {
+    /*
     var isEqual = equal(a,b);
     if(this.debugForAdmins){
       console.log('arrayEquals:');
       console.log('isEqual: '+ isEqual);
     }
-
+    */
     var check = Array.isArray(a) &&
     Array.isArray(b) &&
     a.length === b.length &&
