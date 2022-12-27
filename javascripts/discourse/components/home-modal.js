@@ -104,12 +104,31 @@ export default Component.extend({
 
   shouldDisplay: and("displayForUser", "displayForRoute"),
 
+  currentFocusables: [],
+  
+  arrayEquals(a, b) {
+    return Array.isArray(a) &&
+        Array.isArray(b) &&
+        a.length === b.length &&
+        a.every((val, index) => val === b[index]);  
+  },
 
   //focus trap
   trapFocus(element) {
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-    var firstFocusableEl = focusableEls[0];  
-    var lastFocusableEl = focusableEls[focusableEls.length - 1];
+    if(arrayEquals(this.currentFocusables, focusableEls)){
+      if(this.debugForAdmins){
+        console.log('same focusableEls');        
+      }   
+      return;
+    }
+    if(this.debugForAdmins){
+      console.log('new focusableEls');
+      console.log(focusableEls);
+    }  
+    this.set("currentFocusables", focusableEls);
+    var firstFocusableEl = this.currentFocusables[0];  
+    var lastFocusableEl = this.currentFocusables[focusableEls.length - 1];
     var KEYCODE_TAB = 9;
   
     const handleFocus = function(e) {
