@@ -112,41 +112,42 @@ export default Component.extend({
         a.length === b.length &&
         a.every((val, index) => val === b[index]);  
   },
+  
+  handleFocus(e) {
+    var firstFocusableEl = this.focusableEls[0];  
+    var lastFocusableEl = this.focusableEls[this.focusableEls.length - 1];
+    var KEYCODE_TAB = 9;
+    
+    var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
+    if (!isTabPressed) { 
+      return; 
+    }
+
+    if ( e.shiftKey ) /* shift + tab */ {
+      if (document.activeElement === firstFocusableEl) {
+        lastFocusableEl.focus();
+          e.preventDefault();
+        }
+      } else /* tab */ {
+      if (document.activeElement === lastFocusableEl) {
+        firstFocusableEl.focus();
+          e.preventDefault();
+        }
+      }
+  },
+  focusableEls:[],
   //focus trap
   trapFocus(element) {
-    var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    this.focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
     if(!this.arrayEquals(this.currentFocusables, focusableEls)){
       this.set("currentFocusables", focusableEls);
     }
-    var firstFocusableEl = focusableEls[0];  
-    var lastFocusableEl = focusableEls[focusableEls.length - 1];
-    var KEYCODE_TAB = 9;
-  
-    const handleFocus = function(e) {
-      var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-  
-      if (!isTabPressed) { 
-        return; 
-      }
-  
-      if ( e.shiftKey ) /* shift + tab */ {
-        if (document.activeElement === firstFocusableEl) {
-          lastFocusableEl.focus();
-            e.preventDefault();
-          }
-        } else /* tab */ {
-        if (document.activeElement === lastFocusableEl) {
-          firstFocusableEl.focus();
-            e.preventDefault();
-          }
-        }
-    };
-
-    if(!element.removeEventListener('keydown', handleFocus, true)){
-      element.addEventListener('keydown', handleFocus, true);
-      firstFocusableEl.focus();
-    }
+    
+      
+    element.addEventListener('keydown', this.handleFocus, true);
+    firstFocusableEl.focus();
+    
   },
 
   //Refresh the FocusTrap on steps change
@@ -182,10 +183,7 @@ export default Component.extend({
       console.log('didInsertElement');
     }
 
-    this.displayChanged();   
-    
-    //for step1
-    this.refreshTrapFocus();
+    this.displayChanged();               
   },
 
   didRender(){
@@ -195,9 +193,13 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('didRender');      
     }    
-    
+    this.refreshTrapFocus();
+
   },
 
+  willDestroyElement(element){
+    element.removeEventListener('keydown', this.handleFocus)
+  },
   didDestroyElement() {
     document.documentElement.classList.remove("home-modal");
   },
@@ -213,10 +215,7 @@ export default Component.extend({
 
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
-    this.set("newBioCooked", this.currentUser.bio_cooked);
-
-    //for step2
-    this.refreshTrapFocus();
+    this.set("newBioCooked", this.currentUser.bio_cooked);    
     
   },
 
