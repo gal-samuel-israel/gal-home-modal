@@ -198,7 +198,8 @@ export default Component.extend({
       console.log('didInsertElement');
     }
 
-    this.displayChanged();               
+    this.displayChanged();
+    this.refreshTrapFocus();              
   },
 
   didRender(){
@@ -208,7 +209,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('didRender');      
     }    
-    this.refreshTrapFocus();
+    
 
   },
 
