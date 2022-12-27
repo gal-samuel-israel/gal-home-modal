@@ -114,49 +114,39 @@ export default Component.extend({
   },
 
   //focus trap
-  handleFocus(e) {
-    var firstFocusableEl = this.currentFocusables[0];  
-    var lastFocusableEl = this.currentFocusables[focusableEls.length - 1];
-    var KEYCODE_TAB = 9;    
-    
-    var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-
-    if (!isTabPressed) { 
-      return; 
-    }
-
-    if ( e.shiftKey ) /* shift + tab */ {
-      if (document.activeElement === firstFocusableEl) {
-        lastFocusableEl.focus();
-          e.preventDefault();
-        }
-      } else /* tab */ {
-      if (document.activeElement === lastFocusableEl) {
-        firstFocusableEl.focus();
-          e.preventDefault();
-        }
-      }
-  },
   trapFocus(element) {
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-    if(this.arrayEquals(this.currentFocusables, focusableEls)){
-      if(this.debugForAdmins){
-        console.log('same focusableEls');        
-      }   
-      return;
+    if(!arrayEquals(this.currentFocusables, focusableEls)){
+      this.set("currentFocusables", focusableEls);
     }
-    if(this.debugForAdmins){
-      console.log('new focusableEls');
-      console.log(focusableEls);
-    }  
-    this.set("currentFocusables", focusableEls);
-    var firstFocusableEl = this.currentFocusables[0];  
-    var lastFocusableEl = this.currentFocusables[focusableEls.length - 1];
-    var KEYCODE_TAB = 9;     
+    var firstFocusableEl = focusableEls[0];  
+    var lastFocusableEl = focusableEls[focusableEls.length - 1];
+    var KEYCODE_TAB = 9;
+  
+    const handleFocus = function(e) {
+      var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+  
+      if (!isTabPressed) { 
+        return; 
+      }
+  
+      if ( e.shiftKey ) /* shift + tab */ {
+        if (document.activeElement === firstFocusableEl) {
+          lastFocusableEl.focus();
+            e.preventDefault();
+          }
+        } else /* tab */ {
+        if (document.activeElement === lastFocusableEl) {
+          firstFocusableEl.focus();
+            e.preventDefault();
+          }
+        }
+    };
 
-    element.removeEventListener('keydown', this.handleFocus, true);
-    element.addEventListener('keydown', this.handleFocus, true);
-    firstFocusableEl.focus();
+    if(!element.removeEventListener('keydown', handleFocus, true)){
+      element.addEventListener('keydown', handleFocus, true);
+      firstFocusableEl.focus();
+    }
   },
 
   //Refresh the FocusTrap on steps change
