@@ -182,8 +182,10 @@ export default Component.extend({
       console.log('didInsertElement');
     }
 
-    this.displayChanged();        
-
+    this.displayChanged();   
+    
+    //for step1
+    this.refreshTrapFocus();
   },
 
   didRender(){
@@ -193,7 +195,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('didRender');      
     }    
-    this.refreshTrapFocus();
+    
   },
 
   didDestroyElement() {
@@ -212,6 +214,9 @@ export default Component.extend({
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked);
+
+    //for step2
+    this.refreshTrapFocus();
     
   },
 
