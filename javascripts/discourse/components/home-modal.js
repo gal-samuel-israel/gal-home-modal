@@ -114,16 +114,20 @@ export default Component.extend({
   },
   
   handleFocus(e) {
-    var firstFocusableEl = this.focusableEls[0];  
-    var lastFocusableEl = this.focusableEls[this.focusableEls.length - 1];
+    var firstFocusableEl = this.currentFocusables[0];  
+    var lastFocusableEl = this.currentFocusables[this.currentFocusables.length - 1];
     var KEYCODE_TAB = 9;
-    
+
     var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
     if (!isTabPressed) { 
       return; 
     }
 
+    if(this.debugForAdmins){
+      console.log('document.activeElement:');
+      console.log(document.activeElement);
+    }
     if ( e.shiftKey ) /* shift + tab */ {
       if (document.activeElement === firstFocusableEl) {
         lastFocusableEl.focus();
@@ -136,18 +140,20 @@ export default Component.extend({
         }
       }
   },
-  focusableEls:[],
+  
   //focus trap
   trapFocus(element) {
-    this.focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-    if(!this.arrayEquals(this.currentFocusables, focusableEls)){
+    var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    if(!this.arrayEquals(this.currentFocusables, this.focusableEls)){
       this.set("currentFocusables", focusableEls);
     }
-    
-      
-    element.addEventListener('keydown', this.handleFocus, true);
-    firstFocusableEl.focus();
-    
+          
+    element.addEventListener('keydown', this.handleFocus);
+    this.currentFocusables[0].focus();
+    if(this.debugForAdmins){
+      console.log('trapFocus: trap + focus on 1st item of:'); 
+      console.log(this.currentFocusables);
+    } 
   },
 
   //Refresh the FocusTrap on steps change
