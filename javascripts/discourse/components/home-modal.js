@@ -113,6 +113,7 @@ export default Component.extend({
         a.every((val, index) => val === b[index]);  
   },
   
+  @bind
   handleTabKeyStrokes(e) {
 
     if(this.debugForAdmins){
@@ -194,8 +195,7 @@ export default Component.extend({
     this._super(...arguments);
 
     if(this.debugForAdmins){
-      console.log('didInsertElement');
-      console.log(this.element);
+      console.log('didInsertElement');      
     }
 
     this.displayChanged();
