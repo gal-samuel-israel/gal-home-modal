@@ -118,11 +118,7 @@ export default Component.extend({
     if(this.debugForAdmins){
       console.log('handleTabKeyStrokes element:');
       console.log(e);
-    }
-
-    var arrFocusableElements = this.currentFocusableElements;
-    var firstFocusableEl = arrFocusableElements[0];  
-    var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
+    }    
     var KEYCODE_TAB = 9;
 
     var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
@@ -135,6 +131,10 @@ export default Component.extend({
       console.log('document.activeElement:');
       console.log(document.activeElement);
     }
+
+    var arrFocusableElements = this.currentFocusableElements;
+    var firstFocusableEl = arrFocusableElements[0];  
+    var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
 
     if ( e.shiftKey ) /* shift + tab */ {
       if (document.activeElement === firstFocusableEl) {
