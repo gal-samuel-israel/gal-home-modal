@@ -120,7 +120,7 @@ export default Component.extend({
       console.log(e);
     }
 
-    var arrFocusableElements = this.currentFocusables;
+    var arrFocusableElements = this.get("currentFocusables");
     var firstFocusableEl = arrFocusableElements[0];  
     var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
     var KEYCODE_TAB = 9;
