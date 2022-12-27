@@ -156,7 +156,7 @@ export default Component.extend({
       this.set("currentFocusableElements", focusableEls);
     }
           
-    element.addEventListener('keydown', this.handleTabKeyStrokes, true);
+    element.addEventListener("keydown", this.handleTabKeyStrokes, true);
     focusableEls[0].focus();
 
     if(this.debugForAdmins){
@@ -218,7 +218,7 @@ export default Component.extend({
       console.log('willDestroyElement:');
       console.log(element);
     }  
-    element.removeEventListener('keydown', this.handleTabKeyStrokes, true);
+    element.removeEventListener("keydown", this.handleTabKeyStrokes, true);
 
     this._super(...arguments);
   },
