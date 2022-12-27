@@ -135,6 +135,14 @@ export default Component.extend({
     var firstFocusableEl = arrFocusableElements[0];  
     var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
 
+    if(this.debugForAdmins){
+      console.log('Focusable count:' + arrFocusableElements.length);
+      console.log('firstFocusableEl:');
+      console.log(firstFocusableEl);
+      console.log('lastFocusableEl:');
+      console.log(lastFocusableEl);
+    }
+
     if ( e.shiftKey )  { //shift + tab 
       if (document.activeElement === firstFocusableEl) {
         lastFocusableEl.focus();
