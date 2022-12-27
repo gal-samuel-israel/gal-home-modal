@@ -160,20 +160,22 @@ export default Component.extend({
   
   //focus trap
   trapFocus(element) {
-    var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"]');
+    var newSet = false;
     if(!this.arrayEquals(this.currentFocusableElements, focusableEls)){
       this.set("currentFocusableElements", focusableEls);
-    } else {
-      return; // no change in focusable elements
-    }
-          
-    element.addEventListener("keydown", this.handleTabKeyStrokes, true);
-    focusableEls[0].focus();
-
-    if(this.debugForAdmins){
-      console.log('trapFocus: trap + focus on 1st item of:'); 
-      console.log(this.currentFocusableElements);
+      newSet = true;
     } 
+          
+    if(newSet){
+      element.addEventListener("keydown", this.handleTabKeyStrokes, true);
+      focusableEls[0].focus();
+
+      if(this.debugForAdmins){
+        console.log('trapFocus: trap + focus on 1st item of:'); 
+        console.log(this.currentFocusableElements);
+      } 
+    }
   },
 
   //Refresh the FocusTrap on steps change
