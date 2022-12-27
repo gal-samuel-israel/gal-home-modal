@@ -149,7 +149,7 @@ export default Component.extend({
 
     this.modalStateCheck();
 
-    //TODO: the Focus Trap is not triggered on Time
+    //TODO: the Focus Trap is not triggered on Time when we go back to latest via vlick and not a page load !!!
     var element = document.querySelector('#welcome-modal');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
       this.trapFocus(element);
@@ -177,9 +177,10 @@ export default Component.extend({
     this._super(...arguments);
 
     //visual effects should not be done here as this is run many times
-    //if(this.debugForAdmins){
-    //  console.log('didRender');
-    //}
+    if(this.debugForAdmins){
+      console.log('didRender');
+      console.log(this.element);
+    }
   },
 
   didDestroyElement() {
