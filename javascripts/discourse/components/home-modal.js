@@ -16,6 +16,7 @@ export default Component.extend({
   
   debugForAdmins: null,
   debugFooter: false,
+  debugFocusTrap: false,
     
   newNameInput: null,
   newBioRawInput: null,
@@ -109,13 +110,13 @@ export default Component.extend({
   @bind
   nodeListsAreEqual( list1, list2 ) {
     if ( list1.length !== list2.length ) {
-        if(this.debugForAdmins){      
-          console.log('nodeListsAreEqual lists not same length');
+        if(this.debugFocusTrap){      
+          console.log('check: not same length');
         }
         return false;
     }
     var check = Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
-    if(this.debugForAdmins){      
+    if(this.debugFocusTrap){      
       console.log('check: '+ check);
     }
 
@@ -125,7 +126,7 @@ export default Component.extend({
   @bind
   handleTabKeyStrokes(e) {
 
-    if(this.debugForAdmins){
+    if(this.debugFocusTrap){
       console.log('handleTabKeyStrokes element:');
       console.log(e);
     }    
@@ -135,7 +136,7 @@ export default Component.extend({
       return; 
     }
 
-    if(this.debugForAdmins){
+    if(this.debugFocusTrap){
       console.log('document.activeElement:');
       console.log(document.activeElement);
     }
@@ -144,7 +145,7 @@ export default Component.extend({
     var firstFocusableEl = arrFocusableElements[0];  
     var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
 
-    if(this.debugForAdmins){
+    if(this.debugFocusTrap){
       console.log('Focusable count:' + arrFocusableElements.length);
       console.log('firstFocusableEl:');
       console.log(firstFocusableEl);
@@ -179,7 +180,7 @@ export default Component.extend({
       element.addEventListener("keydown", this.handleTabKeyStrokes, true);
       focusableEls[0].focus();
 
-      if(this.debugForAdmins){
+      if(this.debugFocusTrap){
         console.log('trapFocus: trap + focus on 1st item of:'); 
         console.log(this.currentFocusableElements);
       } 
