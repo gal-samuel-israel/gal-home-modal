@@ -113,15 +113,16 @@ export default Component.extend({
         a.every((val, index) => val === b[index]);  
   },
   
-  handleFocus(e) {
+  handleTabKeyStrokes(e) {
 
     if(this.debugForAdmins){
-      console.log('handleFocus element:');
+      console.log('handleTabKeyStrokes element:');
       console.log(e);
     }
 
-    var firstFocusableEl = this.currentFocusables[0];  
-    var lastFocusableEl = this.currentFocusables[this.currentFocusables.length - 1];
+    var arrFocusableElements = this.currentFocusables;
+    var firstFocusableEl = arrFocusableElements[0];  
+    var lastFocusableEl = arrFocusableElements[arrFocusableElements.length - 1];
     var KEYCODE_TAB = 9;
 
     var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
@@ -155,9 +156,9 @@ export default Component.extend({
       this.set("currentFocusables", focusableEls);
     }
           
-    element.addEventListener('keydown', this.handleFocus);
+    element.addEventListener('keydown', this.handleTabKeyStrokes);
     focusableEls[0].focus();
-    
+
     if(this.debugForAdmins){
       console.log('trapFocus: trap + focus on 1st item of:'); 
       console.log(this.currentFocusables);
@@ -212,7 +213,11 @@ export default Component.extend({
   },
 
   willDestroyElement(element){
-    element.removeEventListener('keydown', this.handleFocus)
+    if(this.debugForAdmins){
+      console.log('willDestroyElement:');
+      console.log(element);
+    }  
+    element.removeEventListener('keydown', this.handleTabKeyStrokes)
   },
   didDestroyElement() {
     document.documentElement.classList.remove("home-modal");
