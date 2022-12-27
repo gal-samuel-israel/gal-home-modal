@@ -147,18 +147,7 @@ export default Component.extend({
       this.shouldDisplay
     );
 
-    this.modalStateCheck();
-
-    //TODO: the Focus Trap is not triggered on Time when we go back to latest via vlick and not a page load !!!
-    var element = document.querySelector('#welcome-modal');
-    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
-      this.trapFocus(element);
-      var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-      var firstFocusableEl = focusableEls[0];
-      if(firstFocusableEl!=='undefined'){
-        firstFocusableEl.focus();
-      }
-    }
+    this.modalStateCheck();    
 
   },
 
@@ -178,9 +167,20 @@ export default Component.extend({
 
     //visual effects should not be done here as this is run many times
     if(this.debugForAdmins){
-      console.log('didRender');
-      console.log(this.element);
+      console.log('didRender');      
     }
+
+    //TODO: the Focus Trap is not triggered on Time when we go back to latest via vlick and not a page load !!!
+    var element = document.querySelector('#welcome-modal');
+    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
+      this.trapFocus(element);
+      var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+      var firstFocusableEl = focusableEls[0];
+      if(firstFocusableEl!=='undefined'){
+        firstFocusableEl.focus();
+      }
+    }
+
   },
 
   didDestroyElement() {
