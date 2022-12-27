@@ -156,7 +156,8 @@ export default Component.extend({
     }
           
     element.addEventListener('keydown', this.handleFocus);
-    this.currentFocusables[0].focus();
+    focusableEls[0].focus();
+    
     if(this.debugForAdmins){
       console.log('trapFocus: trap + focus on 1st item of:'); 
       console.log(this.currentFocusables);
