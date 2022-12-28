@@ -205,7 +205,7 @@ export default Component.extend({
     var active = document.querySelector('#welcome-modal .progress-steps .active');
     var barNodes = document.querySelector('#welcome-modal .progress-steps li');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
-      active.classList.remove("active");
+      active?.classList?.remove("active");
 
       if(this.debugForAdmins){
         console.log(barNodes);
