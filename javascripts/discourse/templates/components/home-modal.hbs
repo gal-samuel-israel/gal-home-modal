@@ -94,9 +94,7 @@
               <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
             </div>
             {{#if this.debugFooter}}  
-              <img src="{{theme-setting 'custom_image'}}"/>
-              <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"testAction"}} />
-              <div class="break"></div> <!-- break -->      
+             <div class="break"></div> <!-- break -->      
               <a href {{on "click" this.testAction}}>Some Link</a>
               <div class="break"></div> <!-- break -->
               <a href {{on "click" this.testAction}}>TestAction</a>               
