@@ -1,5 +1,13 @@
 en:
   modal_data:
-    title: "The Modal Title"    
-    big_text: "Custom Big text"
-    little_text: "Custom Little text"
+    title: "AlgoSec Community Introduction"  
+  steps_titles:
+    step_1_title: "Step 1 title"    
+    step_2_title: "Step 2 title" 
+    step_3_title: "Step 3 title" 
+    step_4_title: "Step 4 title" 
+  progress_bar:
+    label_1: "Welcome"    
+    label_2: "Profile" 
+    label_3: "Notifications" 
+    label_4: "What's Next?" 

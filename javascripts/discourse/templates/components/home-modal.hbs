@@ -6,29 +6,27 @@
           <h1>{{theme-i18n "modal_data.title"}}</h1>
           <div class="progress-container">
               <ul class="progress-steps">
-                  <li class="active">Welcome</li>
-                  <li>Profile</li>
-                  <li>Notifications</li>
-                  <li>What's Next?</li>
+                  <li class="active">{{theme-i18n "progress_bar.label_1"}}</li>
+                  <li>{{theme-i18n "progress_bar.label_2"}}</li>
+                  <li>{{theme-i18n "progress_bar.label_3"}}</li>
+                  <li>{{theme-i18n "progress_bar.label_4"}}</li>
           </ul>
         </div>
 
         </div>
         <div class="modal-content">          
-          <h2>{{theme-i18n "modal_data.big_text"}}</h2>
-          <p>{{theme-i18n "modal_data.little_text"}}</p>
           
           <div class="modal-steps">
             {{#if this.currentStep1}}
               <div id="step-1" class="step">
-                  <h3>Step 1</h3>
+                  <h3>{{theme-i18n "steps_titles.step_1_title"}}</h3>
                   <p> Step 1 text</p>
                   <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
               </div>
             {{/if}}
             {{#if this.currentStep2}}
             <div id="step-2" class="step">
-              <h3>Step 2</h3>
+              <h3>{{theme-i18n "steps_titles.step_2_title"}}</h3>
               <p> Step 2 text</p>
               <div class="control-group avatar-change-button-wrapper">
 
@@ -71,7 +69,7 @@
             {{#if this.currentStep3}}
             <div id="step-3" class="step">
 
-              <h3>Step 3</h3>
+              <h3>{{theme-i18n "steps_titles.step_3_title"}}</h3>
               <p> Step 3 text</p>
 
               <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep3NextButton"}} @translatedLabel="Next >>" />
@@ -81,7 +79,7 @@
             {{#if this.currentStep4}}
               <div id="step-4" class="step">
 
-                <h3>Step 4</h3>
+                <h3>{{theme-i18n "steps_titles.step_4_title"}}</h3>
                 <p> Step 4 text</p>  
 
                 <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
