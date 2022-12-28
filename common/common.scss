@@ -100,11 +100,7 @@
       .modal-content {
         padding: 20px;
         text-align: left;
-        img {
-          width: #{$custom_image_width};
-          height: auto;
-          margin-bottom: 0.75em;
-        }
+        
         h2 {
           color: var(--primary);
           text-align: left;
