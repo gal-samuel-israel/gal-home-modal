@@ -46,6 +46,7 @@
             text-align: center;
             text-transform: uppercase;
             color: $body-color;
+            z-index: 1;
           }
           .progress-steps li:before {
             width: 2.5em;
