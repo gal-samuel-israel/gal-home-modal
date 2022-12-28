@@ -206,6 +206,11 @@ export default Component.extend({
     var barNodes = document.querySelector('#welcome-modal .progress-steps li');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
       active.classList.remove("active");
+
+      if(this.debugForAdmins){
+        console.log(barNodes);
+      }
+      /*
       if(this.currentStep1){
         barNodes[0].classList.add("active");
       } else if (this.currentStep2) {
@@ -214,7 +219,8 @@ export default Component.extend({
         barNodes[2].classList.add("active");
       } else {
         barNodes[3].classList.add("active");
-      }      
+      } 
+      */     
     }
   },
 
