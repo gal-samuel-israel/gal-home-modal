@@ -8,14 +8,13 @@
               <ul class="progress-steps">
                   <li class="active">Welcome</li>
                   <li>Profile</li>
-                  <li>Nofications</li>
-                  <li>What's Next</li>
+                  <li>Notifications</li>
+                  <li>What's Next?</li>
           </ul>
         </div>
 
         </div>
-        <div class="modal-content">
-          <img src="{{theme-setting 'custom_image'}}"/>
+        <div class="modal-content">          
           <h2>{{theme-i18n "modal_data.big_text"}}</h2>
           <p>{{theme-i18n "modal_data.little_text"}}</p>
           
@@ -97,6 +96,7 @@
               <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Hide This Wizard Next Time
             </div>
             {{#if this.debugFooter}}  
+              <img src="{{theme-setting 'custom_image'}}"/>
               <DButton @class={{theme-setting "button_style"}} @icon={{theme-setting "button_icon"}} @translatedLabel='Button Label' @action={{"testAction"}} />
               <div class="break"></div> <!-- break -->      
               <a href {{on "click" this.testAction}}>Some Link</a>

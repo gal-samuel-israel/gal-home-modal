@@ -20,15 +20,20 @@
       width: 800px; 
 
       .modal-title {        
-        background-color: var(--tertiary-low);
+        background-color: var(--tertiary);
         display: flex;
         justify-content: center;
         align-content: center;
         align-items: center;
         flex-direction: column;
 
-        $brand-color: var(--tertiary);
+        $brand-color: var(--tertiary-hover);
         $body-color: #999;
+
+        h1{
+          margin: 0.5em auto 0 auto;
+          color:#ffffff;
+        }
 
         .progress-container {
             width:100%;
@@ -108,11 +113,14 @@
           color: var(--primary);
           text-align: left;
         }
-        .step{
+        .step {
+          display:block;
+          /*
           border:1px solid #eee;
           margin:0.5em 0;
           padding:0.5em;
           border-radius:1em;
+          */
         }
         .instructions {
           font-size: 0.8rem;
