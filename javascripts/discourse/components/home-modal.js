@@ -197,13 +197,9 @@ export default Component.extend({
   },
 
   @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
-  progressBarUpdate(sender, key, value, rev){
+  stepUpdate(){
     if(this.debugForAdmins){
-      console.log('progressBarUpdate');
-      console.log(sender);
-      console.log(key);
-      console.log(value);
-      console.log(rev);
+      console.log('stepUpdate');      
     }
     var element = document.querySelector('#welcome-modal');
     //var active = document.querySelector('#welcome-modal .progress-steps .active');
@@ -261,7 +257,7 @@ export default Component.extend({
     }    
     
     this.refreshTrapFocus();
-    this.progressBarUpdate();
+    //this.progressBarUpdate();
 
   },
 
