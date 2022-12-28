@@ -20,7 +20,7 @@
       width: 800px; 
 
       .modal-title {        
-        background-color: var(--tertiary);
+        background-color: var(--tertiary-low);
         display: flex;
         justify-content: center;
         align-content: center;
@@ -32,7 +32,7 @@
 
         h1{
           margin: 0.5em auto 0 auto;
-          color:#ffffff;
+          color:var(--tertiary-hover);
         }
 
         .progress-container {
