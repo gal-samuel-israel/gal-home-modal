@@ -86,7 +86,7 @@
           .progress-steps li.active:before {
             border-color: $brand-color;
           }
-          .progress-steps li.active + li:after {
+          .progress-steps li.active:after {
             background-color: $brand-color;
           }
 
