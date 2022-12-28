@@ -23,22 +23,22 @@ button_style:
   choices:
     - btn-default
   description: "btn-primary is a blue (tertiary). btn-default is a grey (primary-low)."
-button_icon:
-  type: string
-  default: "user"
-  description: "Add icon to Log In button. (FontAwesome 5 icons)"
-custom_image:
-  type: upload
-  default: ""
-  description: "Upload an image"
-custom_image_width:
-  type: string
-  default: "auto"
-  description: "The uploaded image width. You can use px, % etc, e.g. 100% will add a full modal width (minus padding) image."
-custom_image_position:
-  default: center
-  type: enum
-  choices:
-    - left
-    - right
-  description: "Custom image position."
+#button_icon:
+  #type: string
+  #default: "user"
+  #description: "Add icon to Log In button. (FontAwesome 5 icons)"
+#custom_image:
+  #type: upload
+  #default: ""
+  #description: "Upload an image"
+#custom_image_width:
+  #type: string
+  #default: "auto"
+  #description: "The uploaded image width. You can use px, % etc, e.g. 100% will add a full modal width (minus padding) image."
+#custom_image_position:
+  #default: center
+  #type: enum
+  #choices:
+    #- left
+    #- right
+  #description: "Custom image position."
