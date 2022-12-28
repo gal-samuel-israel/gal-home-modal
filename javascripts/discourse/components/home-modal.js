@@ -206,10 +206,10 @@ export default Component.extend({
       console.log(rev);
     }
     var element = document.querySelector('#welcome-modal');
-    var active = document.querySelector('#welcome-modal .progress-steps .active');
+    //var active = document.querySelector('#welcome-modal .progress-steps .active');
     var barNodes = document.querySelector('#welcome-modal .progress-steps');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
-      active?.classList?.remove("active");
+      //active?.classList?.remove("active");
       if(this.currentStep1){
         barNodes?.children[0]?.classList.add("active");
       } else if (this.currentStep2) {
