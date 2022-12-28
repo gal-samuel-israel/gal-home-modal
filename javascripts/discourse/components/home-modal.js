@@ -197,30 +197,29 @@ export default Component.extend({
   },
 
   @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
-  progressBarUpdate(){
+  progressBarUpdate(sender, key, value, rev){
     if(this.debugForAdmins){
       console.log('progressBarUpdate');
+      console.log(sender);
+      console.log(key);
+      console.log(value);
+      console.log(rev);
     }
     var element = document.querySelector('#welcome-modal');
     var active = document.querySelector('#welcome-modal .progress-steps .active');
-    var barNodes = document.querySelector('#welcome-modal .progress-steps li');
+    var barNodes = document.querySelector('#welcome-modal .progress-steps');
     if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
       active?.classList?.remove("active");
-
-      if(this.debugForAdmins){
-        console.log(barNodes);
-      }
-      /*
       if(this.currentStep1){
-        barNodes[0].classList.add("active");
+        barNodes?.children[0]?.classList.add("active");
       } else if (this.currentStep2) {
-        barNodes[1].classList.add("active");
+        barNodes?.children[1]?.classList.add("active");
       } else if (this.currentStep3) {
-        barNodes[2].classList.add("active");
+        barNodes?.children[2]?.classList.add("active");
       } else {
-        barNodes[3].classList.add("active");
+        barNodes?.children[3]?.classList.add("active");
       } 
-      */     
+           
     }
   },
 
