@@ -18,8 +18,71 @@
       margin: 15% auto; /* 15% from the top and centered */      
       border: 1px solid #888;
       width: 800px; 
-      .modal-header {
-        border-bottom: none;
+
+      .modal-title {        
+        background-color: var(--tertiary-low);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        $brand-color: var(--tertiary-low);
+        $body-color: #999;
+
+        .progress-container {
+            width:100%;
+            margin: 2em auto; 
+          }
+          .progress-steps {
+            counter-reset: step;
+          }
+          .progress-steps li {
+            list-style-type: none;
+            width: 25%;
+            float: left;
+            font-size: .7em;
+            position: relative;
+            text-align: center;
+            text-transform: uppercase;
+            color: $body-color;
+          }
+          .progress-steps li:before {
+            width: 2.5em;
+            height: 2.5em;
+            content: counter(step);
+            counter-increment: step;
+            line-height: 2.5em;
+            border: 2px solid $body-color;
+            display: block;
+            text-align: center;
+            margin: 0 auto .7em auto;
+            border-radius: 50%;
+            background-color: white;
+          }
+          .progress-steps li:after {
+            width: 100%;
+            height: 2px;
+            content: '';
+            position: absolute;
+            background-color: $body-color;
+            top: 1.3em;
+            left: -50%;
+            z-index: -1;
+          }
+          .progress-steps li:first-child:after {
+            content: none;
+          }
+          .progress-steps li.active {
+            color: $brand-color;
+          }
+          .progress-steps li.active:before {
+            border-color: $brand-color;
+          }
+          .progress-steps li.active + li:after {
+            background-color: $brand-color;
+          }
+
       }            
       .modal-footer {
         color: var(--primary-medium);
