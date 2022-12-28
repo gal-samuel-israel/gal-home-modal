@@ -59,15 +59,16 @@
             margin: 0 auto .7em auto;
             border-radius: 50%;
             background-color: white;
+            z-index: 1;
           }
           .progress-steps li:after {
-            width: 100%;
+            width: 90%;
             height: 2px;
             content: '';
             position: absolute;
             background-color: $body-color;
             top: 1.3em;
-            left: -50%;
+            left: -42%;
             z-index: -1;
           }
           .progress-steps li:first-child:after {
