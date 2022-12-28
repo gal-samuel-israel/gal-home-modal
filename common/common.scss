@@ -1,5 +1,8 @@
 #welcome-modal.custom-home-modal {
     .modal-background{
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed; /* Stay in place */
       z-index: 1001; /* Sit on top */
       left: 0;
@@ -12,14 +15,12 @@
     }
     .modal-pop {
       background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered */
-      padding: 20px;
+      margin: 15% auto; /* 15% from the top and centered */      
       border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-
-      .modal-inner-container {
-        background-color: var(--secondary);
-      }
+      width: 800px; 
+      .modal-header {
+        border-bottom: none;
+      }            
       .modal-footer {
         color: var(--primary-medium);
         a {
@@ -27,6 +28,7 @@
         }
       }
       .modal-content {
+        padding: 20px;
         text-align: left;
         img {
           width: #{$custom_image_width};
@@ -74,12 +76,7 @@
       .modal-inner-container {
         background-color: var(--secondary);
       }
-      .modal-header {
-        border-bottom: none;
-      }
-      .modal-body {
-        padding: 0 1em;
-      }
+      
       .modal-footer {
         color: var(--primary-medium);
         justify-content: left;
