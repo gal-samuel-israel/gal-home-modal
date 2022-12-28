@@ -25,6 +25,7 @@ export default Component.extend({
   hideModalNextTime: null,
   showModalPop: null,
 
+  
   currentStep1: null,
   currentStep2: null,
   currentStep3: null,
@@ -195,6 +196,28 @@ export default Component.extend({
     }
   },
 
+  @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
+  progressBarUpdate(){
+    if(this.debugForAdmins){
+      console.log('progressBarUpdate');
+    }
+    var element = document.querySelector('#welcome-modal');
+    var active = document.querySelector('#welcome-modal .progress-steps .active');
+    var barNodes = document.querySelector('#welcome-modal .progress-steps li');
+    if(element !== 'undefined' && this.shouldDisplay && this.showModalPop){
+      active.classList.remove("active");
+      if(this.currentStep1){
+        barNodes[0].classList.add("active");
+      } else if (this.currentStep2) {
+        barNodes[1].classList.add("active");
+      } else if (this.currentStep3) {
+        barNodes[2].classList.add("active");
+      } else {
+        barNodes[3].classList.add("active");
+      }      
+    }
+  },
+
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
@@ -233,6 +256,7 @@ export default Component.extend({
     }    
     
     this.refreshTrapFocus();
+    this.progressBarUpdate();
 
   },
 
