@@ -54,16 +54,6 @@
             z-index: 1;
           }
           .progress-steps li:before {
-            width: 90%;
-            height: 2px;
-            content: '';
-            position: absolute;
-            background-color: $body-color;
-            top: 1.3em;
-            left: -42%;
-            z-index: -1;
-          }
-          .progress-steps li:after {
             width: 2.5em;
             height: 2.5em;
             content: counter(step);
@@ -77,17 +67,26 @@
             background-color: white;
             z-index: 1;
           }
-          
-          .progress-steps li:first-child:before {
+          .progress-steps li:after {
+            width: 90%;
+            height: 2px;
+            content: '';
+            position: absolute;
+            background-color: $body-color;
+            top: 1.3em;
+            left: -42%;
+            z-index: -1;
+          }
+          .progress-steps li:first-child:after {
             content: none;
           }
           .progress-steps li.active {
             color: $brand-color;
           }
-          .progress-steps li.active:after {
+          .progress-steps li.active:before {
             border-color: $brand-color;
           }
-          .progress-steps li.active + li:before {
+          .progress-steps li.active + li:after {
             background-color: $brand-color;
           }
 
