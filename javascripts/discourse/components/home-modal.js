@@ -310,10 +310,10 @@ export default Component.extend({
     event?.preventDefault();
 
     this.set("saved", false);
-
+    
     this.currentUser.setProperties({
-      email_messages_level: (this.emailMessagesLevel) ? 0 : 2, //0 is always, 2 is never
-      email_digests: this.emailDigests,
+      'user_option.email_messages_level': (this.emailMessagesLevel) ? 0 : 2, //0 is always, 2 is never
+      'user_option.email_digests': this.emailDigests,
     });
 
     return this.currentUser
