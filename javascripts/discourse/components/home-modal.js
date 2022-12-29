@@ -99,7 +99,9 @@ export default Component.extend({
           if(this.debugForAdmins){
             console.log(`user_option.${key}` + ': '+ data.user.user_option[key]);
           }
-        });        
+        });
+        this.set("emailMessagesLevel", this.currentUser.userOption.email_messages_level === 0 ? true : false);
+        this.set("emailDigests", this.currentUser.user_option.email_digests);     
 
         if(this.debugForAdmins){     
           console.log('user info updated:');
@@ -237,9 +239,6 @@ export default Component.extend({
       //active?.classList?.remove("active");
       if(this.currentStep1){
         barNodes?.children[0]?.classList.add("active");
-        this.set("emailMessagesLevel", this.currentUser.userOption.email_messages_level === 0 ? true : false);
-        this.set("emailDigests", this.currentUser.user_option.email_digests);
-
       } else if (this.currentStep2) {
         barNodes?.children[1]?.classList.add("active");
       } else if (this.currentStep3) {
