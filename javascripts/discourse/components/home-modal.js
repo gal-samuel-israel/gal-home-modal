@@ -76,6 +76,7 @@ export default Component.extend({
     this.saveAttrNamesEmail = [
       "email_messages_level",
       "email_digests",
+      "digest_after_minutes",
     ];    
 
     this.modalStateCheck(); 
@@ -317,6 +318,7 @@ export default Component.extend({
     this.currentUser.setProperties({
       'user_option.email_messages_level': (this.emailMessagesLevel) ? 0 : 2, //0 is always, 2 is never
       'user_option.email_digests': this.emailDigests,
+      'user_option.digest_after_minutes': 10080, //weekly
     });
 
     return this.currentUser
