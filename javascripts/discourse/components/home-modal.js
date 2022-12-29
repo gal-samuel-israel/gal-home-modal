@@ -78,7 +78,7 @@ export default Component.extend({
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        //console.log(data);        
+        console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt);
@@ -87,9 +87,9 @@ export default Component.extend({
     
     if(this.debugForAdmins){
       console.log('component init start:');
-      console.log(this);
+      //console.log(this);
       //console.log(this.router.currentRouteName);
-      //console.log(this.currentUser);      
+      console.log(this.currentUser);      
       console.log('init end:');
     }
 
