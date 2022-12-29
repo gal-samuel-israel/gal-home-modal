@@ -2,6 +2,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
 import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
+import {addSaveableUserField, addSaveableUserOptionField } from "discourse/models/user";
 import discourseComputed, { observes, bind } from "discourse-common/utils/decorators";
 import { action } from "@ember/object";
 import Component from "@ember/component";
@@ -77,34 +78,35 @@ export default Component.extend({
       "email_digests",
     ];
 
+    this.saveAttrNamesEmail.forEach((field)=>this.currentUser.addSaveableUserOptionField(field));
+
     this.modalStateCheck(); 
 
-    //prep the user bios
+    //get user json
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        //console.log(data);        
+        if(this.debugForAdmins){     
+          console.log('got user info:');
+          console.log(data);        
+        }
+        //prep the user bios
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt);
 
-      }).catch(popupAjaxError);
+        //prep the user email prefs
+        this.saveAttrNamesEmail.forEach((key)=>{
+          this.currentUser.set(`user_option.${key}`, data.user.user_option[key]);
+        });        
 
-    //prep the user email prefs
-    ajax(`/u/${this.currentUser.username}/preferences/emails.json`)
-    .then((data) => {   
-      if(this.debugForAdmins){     
-          console.log('prep user email prefs:');
-          console.log(data);        
-      }
-        
-      }).catch(popupAjaxError);
-    
-    if(this.debugForAdmins){
+        if(this.debugForAdmins){     
+          console.log('user info updated:');
+          console.log(this.currentUser);
+          console.log('init ajax end');     
+        }
+
+      }).catch(popupAjaxError);      
       
-      //console.log(this);
-      //console.log(this.router.currentRouteName);
-      console.log(this.currentUser);      
-      console.log('init end:');
     }
 
   },
