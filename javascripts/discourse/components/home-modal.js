@@ -100,8 +100,9 @@ export default Component.extend({
             console.log(`user_option.${key}` + ': '+ data.user.user_option[key]);
           }
         });
-        this.set("emailMessagesLevel", this.currentUser.userOption.email_messages_level === 0 ? true : false);
-        this.set("emailDigests", this.currentUser.user_option.email_digests);     
+        
+        this.set("emailMessagesLevel", data.user.user_option.email_messages_level === 0 ? true : false);
+        this.set("emailDigests", data.user.user_option.email_digests);     
 
         if(this.debugForAdmins){     
           console.log('user info updated:');
