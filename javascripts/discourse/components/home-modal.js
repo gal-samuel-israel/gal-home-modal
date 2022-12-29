@@ -61,6 +61,10 @@ export default Component.extend({
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
 
+    if(this.debugForAdmins){
+      console.log('component init start:');
+    }
+
     this.saveAttrNamesProfile = [
       "name",
       "bio_raw",  
@@ -78,15 +82,25 @@ export default Component.extend({
     //prep the user bios
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        console.log(data);        
+        //console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
         this.currentUser.set("bio_excerpt", data.user.bio_excerpt);
 
       }).catch(popupAjaxError);
+
+    //prep the user email prefs
+    ajax(`/u/${this.currentUser.username}/preferences/emails.json`)
+    .then((data) => {   
+      if(this.debugForAdmins){     
+          console.log('prep user email prefs:');
+          console.log(data);        
+      }
+        
+      }).catch(popupAjaxError);
     
     if(this.debugForAdmins){
-      console.log('component init start:');
+      
       //console.log(this);
       //console.log(this.router.currentRouteName);
       console.log(this.currentUser);      
@@ -221,7 +235,7 @@ export default Component.extend({
       //active?.classList?.remove("active");
       if(this.currentStep1){
         barNodes?.children[0]?.classList.add("active");
-        this.set("emailMessagesLevel", this.currentUser.user_option.email_messages_level !== 0 ? true : false);
+        this.set("emailMessagesLevel", this.currentUser.userOption.get("email_messages_level") === 0 ? true : false);
         this.set("emailDigests", this.currentUser.user_option.email_digests);
 
       } else if (this.currentStep2) {
