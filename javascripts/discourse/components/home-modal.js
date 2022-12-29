@@ -295,7 +295,7 @@ export default Component.extend({
 
     this.set("saved", false);
 
-    this.currentUser.user_option.setProperties({
+    this.currentUser.setProperties({
       email_messages_level: (this.email_messages_level) ? 0 : 2, //0 is always, 2 is never
       email_digests: this.email_digests,        
     });
