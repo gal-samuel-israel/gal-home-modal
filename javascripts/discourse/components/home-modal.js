@@ -76,9 +76,7 @@ export default Component.extend({
     this.saveAttrNamesEmail = [
       "email_messages_level",
       "email_digests",
-    ];
-
-    this.saveAttrNamesEmail.forEach((field)=>this.currentUser.addSaveableUserOptionField(field));
+    ];    
 
     this.modalStateCheck(); 
 
