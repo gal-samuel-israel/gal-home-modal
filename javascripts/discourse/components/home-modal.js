@@ -102,14 +102,12 @@ export default Component.extend({
         if(this.debugForAdmins){     
           console.log('user info updated:');
           console.log(this.currentUser);
-          console.log('init ajax end');     
+          console.log('init ajax end');
         }
 
       }).catch(popupAjaxError);      
       
-    }
-
-  },
+  },  
   
   @discourseComputed("router.currentRouteName")
   displayForRoute(currentRouteName) {  
