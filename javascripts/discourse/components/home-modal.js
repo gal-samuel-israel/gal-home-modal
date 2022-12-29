@@ -95,6 +95,9 @@ export default Component.extend({
         //prep the user email prefs
         this.saveAttrNamesEmail.forEach((key)=>{
           this.currentUser.set(`user_option.${key}`, data.user.user_option[key]);
+          if(this.debugForAdmins){
+            console.log(`user_option.${key}` + ': 'data.user.user_option[key])
+          }
         });        
 
         if(this.debugForAdmins){     
@@ -233,7 +236,7 @@ export default Component.extend({
       //active?.classList?.remove("active");
       if(this.currentStep1){
         barNodes?.children[0]?.classList.add("active");
-        this.set("emailMessagesLevel", this.currentUser.userOption.get("email_messages_level") === 0 ? true : false);
+        this.set("emailMessagesLevel", this.currentUser.userOption.email_messages_level === 0 ? true : false);
         this.set("emailDigests", this.currentUser.user_option.email_digests);
 
       } else if (this.currentStep2) {
