@@ -96,7 +96,7 @@ export default Component.extend({
         this.saveAttrNamesEmail.forEach((key)=>{
           this.currentUser.set(`user_option.${key}`, data.user.user_option[key]);
           if(this.debugForAdmins){
-            console.log(`user_option.${key}` + ': 'data.user.user_option[key])
+            console.log(`user_option.${key}` + ': '+ data.user.user_option[key]);
           }
         });        
 
