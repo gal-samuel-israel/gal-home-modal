@@ -126,12 +126,14 @@
             .col-title {
               color: var(--tertiary);
               font-size: 1.1rem;
+              font-weight: bold;
             }
             .col-check-box{
               flex-basis: 1;
             }
             .col-description{
               flex-basis: auto;
+              margin-bottom: 1em;
             }
           }
         }
