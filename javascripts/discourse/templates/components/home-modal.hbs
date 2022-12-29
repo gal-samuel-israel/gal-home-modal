@@ -21,6 +21,31 @@
               <div id="step-1" class="step">
                   <h3>{{theme-i18n "steps_titles.step_1_title"}}</h3>
                   <p> Step 1 text</p>
+
+                  <div class="row">
+                    <div class="col-title">Email Notofications</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-check-box">
+                      <Input @type="checkbox" @checked={{this.email_messages_level}} />
+                    </div>
+                    <div class="col-description">
+                      Email me when I am quoted, replied to, my @username is mentioned, or when there is new activity in my watched categories, tags or topics
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-title">Activity Summary</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-check-box">
+                      <Input @type="checkbox" @checked={{this.email_digests}} />
+                    </div>
+                    <div class="col-description">
+                      When I don’t visit here, send me an email summary of popular topics and replies
+                    </div>
+                  </div>
+
                   <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
               </div>
             {{/if}}

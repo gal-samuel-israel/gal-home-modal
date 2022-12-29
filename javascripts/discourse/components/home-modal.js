@@ -17,12 +17,19 @@ export default Component.extend({
   debugForAdmins: null,
   debugFooter: false,
   debugFocusTrap: false,
-    
+  
+  //email preferances checkboxes
+  email_messages_level: true, 
+  email_digests: true,
+
+  //profile
   newNameInput: null,
   newBioRawInput: null,
   newBioCooked: null,
 
+  //modal hide next time checkbox
   hideModalNextTime: null,
+
   showModalPop: null,
 
   
@@ -54,11 +61,16 @@ export default Component.extend({
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
 
-    this.saveAttrNames = [
+    this.saveAttrNamesProfile = [
       "name",
       "bio_raw",  
       "bio_cooked", 
       "bio_excerpt",
+    ];
+
+    this.saveAttrNamesEmail = [
+      "email_messages_level",
+      "email_digests",
     ];
 
     this.modalStateCheck(); 
@@ -281,12 +293,29 @@ export default Component.extend({
   handleStep1NextButton(event){
     event?.preventDefault();
 
-    this.set("currentStep1", false);
-    this.set("currentStep2", true);
+    this.set("saved", false);
 
-    this.set("newNameInput", this.currentUser.name);
-    this.set("newBioRawInput", this.currentUser.bio_raw);
-    this.set("newBioCooked", this.currentUser.bio_cooked);    
+    this.currentUser.user_option.setProperties({
+      email_messages_level: (this.email_messages_level) ? 0 : 2, //0 is always, 2 is never
+      email_digests: this.email_digests,        
+    });
+
+    return this.currentUser
+      .save(this.saveAttrNamesEmail)
+      .then(() => {
+        if(this.debugForAdmins){
+          console.log('user email preferences saved');
+        }
+        this.set("saved", true);
+        this.set("currentStep1", false);
+        this.set("currentStep2", true);
+
+        //prep user info in step 2
+        this.set("newNameInput", this.currentUser.name);
+        this.set("newBioRawInput", this.currentUser.bio_raw);
+        this.set("newBioCooked", this.currentUser.bio_cooked); 
+      })
+      .catch(popupAjaxError);       
         
   },
 
@@ -319,7 +348,7 @@ export default Component.extend({
     });
 
     return this.currentUser
-      .save(this.saveAttrNames)
+      .save(this.saveAttrNamesProfile)
       .then(() => {
         if(this.debugForAdmins){
           console.log('user info saved');
