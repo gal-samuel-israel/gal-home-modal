@@ -19,8 +19,8 @@ export default Component.extend({
   debugFocusTrap: false,
   
   //email preferances checkboxes
-  email_messages_level: true, 
-  email_digests: true,
+  emailMessagesLevel: null, 
+  emailDigests: null,
 
   //profile
   newNameInput: null,
@@ -81,7 +81,8 @@ export default Component.extend({
         //console.log(data);        
         this.currentUser.set("bio_raw", data.user.bio_raw); 
         this.currentUser.set("bio_cooked", data.user.bio_cooked); 
-        this.currentUser.set("bio_excerpt", data.user.bio_excerpt);                
+        this.currentUser.set("bio_excerpt", data.user.bio_excerpt);
+
       }).catch(popupAjaxError);
     
     if(this.debugForAdmins){
@@ -220,6 +221,9 @@ export default Component.extend({
       //active?.classList?.remove("active");
       if(this.currentStep1){
         barNodes?.children[0]?.classList.add("active");
+        this.set("emailMessagesLevel", this.currentUser.user_option.email_messages_level !== 0 ? true : false);
+        this.set("emailDigests", this.currentUser.user_option.email_digests);
+
       } else if (this.currentStep2) {
         barNodes?.children[1]?.classList.add("active");
       } else if (this.currentStep3) {
@@ -296,8 +300,8 @@ export default Component.extend({
     this.set("saved", false);
 
     this.currentUser.setProperties({
-      email_messages_level: (this.email_messages_level) ? 0 : 2, //0 is always, 2 is never
-      email_digests: this.email_digests,        
+      email_messages_level: (this.emailMessagesLevel) ? 0 : 2, //0 is always, 2 is never
+      email_digests: this.emailDigests,
     });
 
     return this.currentUser
