@@ -20,7 +20,7 @@ export default Component.extend({
   debugFocusTrap: false,
   
   //email preferances checkboxes
-  emailMessagesLevel: null, 
+  emailLevel: null, 
   emailDigests: null,
 
   //profile
@@ -74,7 +74,7 @@ export default Component.extend({
     ];
 
     this.saveAttrNamesEmail = [
-      "email_messages_level",
+      "email_level",
       "email_digests",
       "digest_after_minutes",
     ];    
@@ -101,7 +101,7 @@ export default Component.extend({
           }
         });
         
-        this.set("emailMessagesLevel", data.user.user_option.email_messages_level === 0 ? true : false);
+        this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
         this.set("emailDigests", data.user.user_option.email_digests);     
 
         if(this.debugForAdmins){     
@@ -316,7 +316,7 @@ export default Component.extend({
     this.set("saved", false);
     
     this.currentUser.setProperties({
-      'user_option.email_messages_level': (this.emailMessagesLevel) ? 0 : 2, //0 is always, 2 is never
+      'user_option.email_level': (this.emailLevel) ? 0 : 2, //0 is always, 2 is never
       'user_option.email_digests': this.emailDigests,
       'user_option.digest_after_minutes': 10080, //weekly
     });
