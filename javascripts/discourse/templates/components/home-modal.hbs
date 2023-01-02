@@ -132,7 +132,7 @@
 
                 <div class="row">
                   <div class="col">
-                    <a href={{`/u/${this.currentUser.username}/preferences/profile`}} class="composite-button">
+                    <a href {{on "click" window.href=`/u/${this.currentUser.username}/preferences/profile`}} class="composite-button">
                       <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_address_card'}} />
                       <span class="button-title">View Profile</span>
                       <span class="button-description">Further setup your profile details.</span>
