@@ -148,8 +148,31 @@
               margin-bottom: 1em;
             }
           }
-          .black-2-blue{
-            filter: invert(58%) sepia(73%) saturate(7182%) hue-rotate(179deg) brightness(96%) contrast(102%);
+          #step-4{
+            .composite-button {
+              display:flex;
+              background:var(--primary-very-low);
+              border-radius:0.5em;
+              margin:0 1em;
+              width:90%;    
+              flex-direction: row;
+              align-content: center;
+              align-items: center;
+            }
+            .composite-button img{width:50px; margin:0.5em}
+            .black-2-blue{
+              filter: invert(58%) sepia(73%) saturate(7182%) hue-rotate(179deg) brightness(96%) contrast(102%);
+            }
+            span.button-title {
+              display:block;
+              font-weight: bold;
+              flex-basis: 100%;
+              color: var(--primary);
+            }            
+            span.button-description {
+                display:block;
+                color: var(--primary);
+            }
           }
         }
         .instructions {
