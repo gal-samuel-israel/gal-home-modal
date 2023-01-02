@@ -145,6 +145,9 @@
               margin-bottom: 1em;
             }
           }
+          .black-2-blue{
+            filter: invert(58%) sepia(73%) saturate(7182%) hue-rotate(179deg) brightness(96%) contrast(102%);
+          }
         }
         .instructions {
           font-size: 0.8rem;
