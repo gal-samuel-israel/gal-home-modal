@@ -316,6 +316,11 @@ export default Component.extend({
   handleStep1NextButton(event){
     event?.preventDefault();
 
+    //prep user info in step 2
+    this.set("newNameInput", this.currentUser.name);
+    this.set("newBioRawInput", this.currentUser.bio_raw);
+    this.set("newBioCooked", this.currentUser.bio_cooked); 
+    
     this.set("currentStep1", false);
     this.set("currentStep2", true);        
         
@@ -342,11 +347,7 @@ export default Component.extend({
         this.set("saved", true);
         this.set("currentStep3", false);
         this.set("currentStep4", true);
-
-        //prep user info in step 2
-        this.set("newNameInput", this.currentUser.name);
-        this.set("newBioRawInput", this.currentUser.bio_raw);
-        this.set("newBioCooked", this.currentUser.bio_cooked); 
+        
       })
       .catch(popupAjaxError);
     
