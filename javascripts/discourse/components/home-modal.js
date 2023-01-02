@@ -57,6 +57,9 @@ export default Component.extend({
   },
 
   init() {
+
+    //TODO: Move the Email Preferences to step 3
+
     this._super(...arguments);
 
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
@@ -313,6 +316,15 @@ export default Component.extend({
   handleStep1NextButton(event){
     event?.preventDefault();
 
+    this.set("currentStep1", false);
+    this.set("currentStep2", true);        
+        
+  },
+
+  @action
+  handleStep3NextButton(event){
+    event?.preventDefault();
+
     this.set("saved", false);
     
     this.currentUser.setProperties({
@@ -328,23 +340,16 @@ export default Component.extend({
           console.log('user email preferences saved');
         }
         this.set("saved", true);
-        this.set("currentStep1", false);
-        this.set("currentStep2", true);
+        this.set("currentStep3", false);
+        this.set("currentStep4", true);
 
         //prep user info in step 2
         this.set("newNameInput", this.currentUser.name);
         this.set("newBioRawInput", this.currentUser.bio_raw);
         this.set("newBioCooked", this.currentUser.bio_cooked); 
       })
-      .catch(popupAjaxError);       
-        
-  },
-
-  @action
-  handleStep3NextButton(event){
-    event?.preventDefault();
-    this.set("currentStep3", false);
-    this.set("currentStep4", true);
+      .catch(popupAjaxError);
+    
   },
 
   @action

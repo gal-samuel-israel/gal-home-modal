@@ -20,31 +20,13 @@
             {{#if this.currentStep1}}
               <div id="step-1" class="step">
                   <h3>{{theme-i18n "steps_titles.step_1_title"}}</h3>
-                  <p> Step 1 text</p>
-
-                  <div class="row">
-                    <div class="col-title">Email Notofications</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-check-box">
-                      <Input @type="checkbox" @checked={{this.emailLevel}} />
-                    </div>
-                    <div class="col-description">
-                      Email me when I am quoted, replied to, my @username is mentioned, or when there is new activity in my watched categories, tags or topics
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-title">Activity Summary</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-check-box">
-                      <Input @type="checkbox" @checked={{this.emailDigests}} />
-                    </div>
-                    <div class="col-description">
-                      When I don’t visit here, send me an email summary of popular topics and replies
-                    </div>
-                  </div>
+                  <p>Thanks for joining AlgoSec Community. We are so happy to have you here!</p>
+                  <p>This is the place where you can find solutions, share ideas, and discuss best practices.</p>
+                  <p>First, make sure to checkout the <a href="/t/algosec-community-guidelines" target="_blank">AlgoSec Community Guidelines</a> as it contains important information for getting started and help you set in this Community</p>
+                  <p>Have a question for AlgoSec? Use the search bar first, as a similar question and the answer may already be here.</p>
+                  <p>To ask a new question, simply click the 
+                    <DButton @class="btn-default" @translatedLabel="+ New Topic" />
+                    button in the Community Home Page.</p>
 
                   <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
               </div>
@@ -92,7 +74,31 @@
             <div id="step-3" class="step">
 
               <h3>{{theme-i18n "steps_titles.step_3_title"}}</h3>
-              <p> Step 3 text</p>
+              <p>Email notifications are the best way to keep track of activity on the items you follow, and for getting Community Announcements.</p>
+
+              <div class="row">
+                    <div class="col-title">Email Notifications</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-check-box">
+                      <Input @type="checkbox" @checked={{this.emailLevel}} />
+                    </div>
+                    <div class="col-description">
+                      Email me when I am quoted, replied to, my @username is mentioned, or when there is new activity in my watched categories, tags or topics
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-title">Activity Summary</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-check-box">
+                      <Input @type="checkbox" @checked={{this.emailDigests}} />
+                    </div>
+                    <div class="col-description">
+                      When I don’t visit here, send me an email summary of popular topics and replies
+                    </div>
+                  </div>
 
               <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep3NextButton"}} @translatedLabel="Next >>" />
 
