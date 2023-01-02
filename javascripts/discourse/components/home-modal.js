@@ -320,7 +320,7 @@ export default Component.extend({
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked); 
-    
+
     this.set("currentStep1", false);
     this.set("currentStep2", true);        
         
@@ -358,6 +358,12 @@ export default Component.extend({
     event?.preventDefault();
     this.set("showModalPop", false);
   },
+
+  @action
+  navigateToProfile(event){
+    event?.preventDefault();
+    window.location = `/u/${this.currentUser.username}/preferences/profile`;
+  }
 
   /* actions for Avatar and name change */  
   @action
