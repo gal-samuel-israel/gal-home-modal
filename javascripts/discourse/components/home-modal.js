@@ -363,7 +363,7 @@ export default Component.extend({
   navigateToProfile(event){
     event?.preventDefault();
     window.location = `/u/${this.currentUser.username}/preferences/profile`;
-  }
+  },
 
   /* actions for Avatar and name change */  
   @action
