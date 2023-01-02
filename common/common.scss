@@ -120,6 +120,12 @@
           h3 {
             text-align:center;
             color:var(--tertiary);
+            font-size: 1.5em;
+            margin-bottom: 0.65em;
+          }
+          .btn-default{
+            font-size: 0.8em;
+            padding: 0.4em 0.65em 0.45em 0.65em;
           }
           .row{
             display: flex;

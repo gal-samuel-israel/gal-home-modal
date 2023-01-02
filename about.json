@@ -4,7 +4,8 @@
   "license_url": null,
   "about_url": "",
   "authors": "Gal Samuel (webmaster@agency.co.il)",
-  "assets": {
+  "assets": {    
+    "img_ico_algosec_community": "assets/img/ico-algosec-community.png"
   },
   "color_schemes": {
   },
