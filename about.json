@@ -6,7 +6,10 @@
   "authors": "Gal Samuel (webmaster@agency.co.il)",
   "assets": {    
     "img_ico_algosec_community": "assets/img/ico-algosec-community.png",
-    "img_ico_svg_house":"assets/img/house-solid.svg"
+    "img_ico_svg_house":"assets/img/house-solid.svg",
+    "img_ico_svg_address_card":"assets/img/address-card-solid.svg",
+    "img_ico_svg_display":"assets/img/display-solid.svg",
+    "img_ico_svg_users":"assets/img/users-solid.svg"
   },
   "color_schemes": {
   },
