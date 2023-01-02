@@ -24,7 +24,7 @@ button_style:
     - btn-default
   description: "btn-primary is a blue (tertiary). btn-default is a grey (primary-low)."
 svg_icons: 
-  default: 'home|tv'
+  default: 'house|tv'
   type: 'list'
   list_type: 'compact'
   description: "Register additional Icons from Font Awesome 5 free library"
