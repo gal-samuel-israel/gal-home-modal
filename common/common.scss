@@ -132,6 +132,9 @@
           }
           .row{
             display: flex;
+            .col{
+              flex-basis: auto;
+            }
             .col-title {
               color: var(--tertiary);
               font-size: 1.1rem;

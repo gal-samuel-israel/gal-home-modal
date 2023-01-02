@@ -115,21 +115,40 @@
 
                 <div class="row">
                   <div class="col">
-                    <a href="/">
-                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_display'}} />                      
-                    </a>
-                    <a href="/">
+                    <a href="/c/get-started" class="composite-button">
+                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_display'}} />
+                      <span class="button-title">Get Started Group</span>
+                      <span class="button-description">Get more information about the community.</span>
+                    </a>                                        
+                  </div>
+                  <div class="col">
+                    <a href="/c/ask-the-community" class="composite-button">
                       <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_users'}} />
-                    </a>
-                    <a href="/">
-                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_address_card'}} />
-                    </a>
-                    <a href="/">
-                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_house'}} />
+                      <span class="button-title">Ask The Community</span>
+                      <span class="button-description">Have a question? Start here.</span>
                     </a>
                   </div>
-                  <div class="col"></div>
                 </div>
+
+                <div class="row">
+                  <div class="col">
+                    <a href={{`/u/${this.currentUser.username}/preferences/profile`}} class="composite-button">
+                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_address_card'}} />
+                      <span class="button-title">View Profile</span>
+                      <span class="button-description">Further setup your profile details.</span>
+                    </a>                                       
+                  </div>
+                  <div class="col">
+                    <a href {{on "click" this.handleStep4FinishButton}} class="composite-button">
+                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_house'}} />
+                      <span class="button-title">Visit Home Page</span>
+                      <span class="button-description">The Community Feed, announcements and more.</span>
+                    </a>
+                  </div>
+                </div>
+
+                    
+                    
 
                 <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep4FinishButton"}} @translatedLabel="Close" />
                 
