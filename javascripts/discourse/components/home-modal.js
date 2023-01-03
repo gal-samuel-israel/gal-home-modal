@@ -137,6 +137,13 @@ export default Component.extend({
           });         
         }
 
+        if(isEmployee){
+          var userFields = data.user.user_fields;
+          if(this.debug){ 
+            console.log(userFields);
+          }
+        }
+
         if(this.debug){     
           console.log('user info updated:');
           console.log(this.currentUser);
