@@ -144,13 +144,13 @@ export default Component.extend({
             console.log(userFields);
           }
           if(userFields[1]==='undefined' || userFields[1]===null){
-            this.currentUser.set({"user_fields.1": true});        
+            this.currentUser.set({"user_field_1": true});        
             return this.currentUser
-              .save(["user_fields"])
+              .save(["user_field_1"])
               .then((resp) => {
                 if(this.debug){
                   console.log(resp);
-                  console.log('user_fields.1 saved');
+                  console.log('user_field_1 saved');
                 }                
               })
               .catch(popupAjaxError);
