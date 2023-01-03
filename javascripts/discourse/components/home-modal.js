@@ -145,9 +145,10 @@ export default Component.extend({
           if(userFields[1]==='undefined' || userFields[1]===null){
             this.currentUser.setProperties({'user_fields': {1: true}});        
             return this.currentUser
-              .save(['user_fields'])
-              .then(() => {
+              .save(["user_fields"])
+              .then((resp) => {
                 if(this.debug){
+                  console.log(resp);
                   console.log('user_fields.1 saved');
                 }                
               })
