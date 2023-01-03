@@ -9,7 +9,7 @@ export default apiInitializer("0.8", (api) => {
 
     var debug = currentUser.admin && settings.enable_debug_for_admins;
     var debugForUsers = settings.enable_debug_for_user_ids;
-    var debugForIDs = debugForUsers.split("|");
+    var debugForIDs = (debugForUsers) ? debugForUsers.split("|") : null;
     if (debugForIDs && debugForIDs.includes(currentUser.id)) {
       debug = true;
     }
