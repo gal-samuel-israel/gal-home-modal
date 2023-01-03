@@ -130,15 +130,14 @@
           img.as-ico-img {
             width: 22px;
           }
+          
           .row{
             display: flex;
-            display: flex;
-            justify-content: space-between;
             align-items: stretch;
             flex-direction: row;
-            
+
             .col{
-              flex-basis: auto;
+              flex-basis: 380px;
             }
             .col-title {
               color: var(--tertiary);
@@ -159,13 +158,20 @@
               display:flex;
               background:var(--primary-very-low);
               border-radius:0.5em;
-              margin:0 1em;
-              width:90%;    
+              margin:0 1em 1em 1em;
+              /*width:90%;    */
               flex-direction: row;
               align-content: center;
               align-items: center;
+              height: 100px;
+
+              img{width:50px; margin:1em}
             }
-            .composite-button img{width:50px; margin:0.5em}
+
+            .composite-button:hover {
+              background:var(--tertiary-low);
+            }
+            
             .black-2-blue{
               filter: invert(58%) sepia(73%) saturate(7182%) hue-rotate(179deg) brightness(96%) contrast(102%);
             }
