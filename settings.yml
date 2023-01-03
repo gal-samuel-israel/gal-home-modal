@@ -1,8 +1,11 @@
 plugin_outlet:
   default: "above-site-header"
   type: string 
-  enable_debug_for_user_ids: "2|42"
+enable_debug_for_user_ids:   
   type: list
+  default: "2|42"
+  list_type: simple
+  regex: "^\\d+$"
   description: "Enable debug for specific users by numeric ID"
 enable_debug_for_admins:
   type: bool
