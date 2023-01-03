@@ -132,7 +132,9 @@ export default Component.extend({
         var arrGroups = data.user.groups;
         var isEmployee;
         if(arrGroups?.length > 2){
-          isEmployee = arrGroups.includes('Algosec');          
+          isEmployee = arrGroups.some((item)=>{
+            return item.name === 'Algosec';
+          });         
         }
 
         if(this.debug){     
