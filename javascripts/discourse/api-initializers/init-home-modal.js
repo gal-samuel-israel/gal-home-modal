@@ -2,15 +2,7 @@ import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("0.8", (api) => {
 
-  api.registerConnectorClass("above-site-header", "home-modal", {
-    shouldRender() {
-      return true;
-    },
-  });
-
-  api.createWidget("home-modal-widget", {
-    tagName: "div.home-modal",
-  });
+  var blockModal;  
 
   if (api.getCurrentUser()) {
     const currentUser = api.getCurrentUser()
@@ -25,12 +17,25 @@ export default apiInitializer("0.8", (api) => {
       console.log('initializer:');
       //console.log(user);
       //console.log(currentUser.user_option);
-      //console.log(currentUser.admin); 
+      console.log(currentUser.admin); 
     }
 
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
     var isAdmin = (currentUser.admin)        
-    var blockModal = (showOnlyToAdmins && !isAdmin);
+    blockModal = (showOnlyToAdmins && !isAdmin);
+
+    if(!blockModal){
+      api.registerConnectorClass("above-site-header", "home-modal", {
+        shouldRender() {
+          return true;
+        },
+      });
+    
+      api.createWidget("home-modal-widget", {
+        tagName: "div.home-modal",
+      });
+    }
+
   }  
 
 });
