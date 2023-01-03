@@ -1,7 +1,7 @@
 plugin_outlet:
   default: "above-site-header"
   type: string 
-enable_debug_for_user_ids: "2|42"
+  enable_debug_for_user_ids: "2|42"
   type: list
   description: "Enable debug for specific users by numeric ID"
 enable_debug_for_admins:
