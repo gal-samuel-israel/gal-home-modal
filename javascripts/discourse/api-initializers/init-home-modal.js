@@ -13,6 +13,11 @@ export default apiInitializer("0.8", (api) => {
     if (debugForIDs && debugForIDs.includes(currentUser.id)) {
       debug = true;
     }
+
+    console.log('debugForUsers: ' + debugForUsers);
+    console.log('debugForIDs: ' + debugForIDs);
+    console.log('debug: ' + debug);
+
     var debug4All = settings.enable_debug_for_all;
     if(debug4All){ debug = true; }
     
