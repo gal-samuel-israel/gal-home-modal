@@ -142,6 +142,17 @@ export default Component.extend({
           if(this.debug){ 
             console.log(userFields);
           }
+          if(userFields[1]==='undefined' || userFields[1]===null){
+            this.currentUser.setProperties({'user_fields.1': true});        
+            return this.currentUser
+              .save(['user_fields.1'])
+              .then(() => {
+                if(this.debug){
+                  console.log('user_fields.1 saved');
+                }                
+              })
+              .catch(popupAjaxError);
+          }
         }
 
         if(this.debug){     
