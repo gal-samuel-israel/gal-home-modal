@@ -14,10 +14,6 @@ export default apiInitializer("0.8", (api) => {
       debug = true;
     }
 
-    console.log('debugForUsers: ' + debugForUsers);
-    console.log('debugForIDs: ' + debugForIDs);
-    console.log('debug: ' + debug);
-
     var debug4All = settings.enable_debug_for_all;
     if(debug4All){ debug = true; }
     

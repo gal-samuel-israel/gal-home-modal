@@ -66,8 +66,12 @@ export default Component.extend({
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
     this.debug4All = settings?.enable_debug_for_all; //from settings.yml    
 
+    this.debugForUsers = settings?.enable_debug_for_user_ids; //from settings.yml
+    var debugForIDs = (this.debugForUsers) ? this.debugForUsers.split("|") : null;
+    
     this.debug = false;
     if(this.currentUser.admin && this.debugForAdmins){ this.debug = true; }
+    if(debugForIDs && debugForIDs.includes(this.currentUser.id.toString())) { this.debug = true; }
     if(this.debug4All){ this.debug = true; }
 
     if(this.debug){
