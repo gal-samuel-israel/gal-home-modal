@@ -137,14 +137,14 @@ export default Component.extend({
           });         
         }
 
-        //TODO: user_fields {1 : null} is not changing !!! FIX
+        //TODO: user_fields {1 : null} is not changing !!! FIX | DEBUG
         if(isEmployee){
           var userFields = data.user.user_fields;
           if(this.debug){ 
             console.log(userFields);
           }
           if(userFields[1]==='undefined' || userFields[1]===null){
-            this.currentUser.setProperties({"user_fields": {"1": true}});        
+            this.currentUser.set({"user_fields.1": true});        
             return this.currentUser
               .save(["user_fields"])
               .then((resp) => {
