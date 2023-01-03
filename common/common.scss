@@ -17,7 +17,8 @@
       background-color: #fefefe;
       margin: 15% auto; /* 15% from the top and centered */      
       border: 1px solid #888;
-      width: 800px; 
+      width: 800px;
+      border-radius: 1em;
 
       .modal-title {        
         background-color: var(--tertiary-low);
@@ -26,6 +27,8 @@
         align-content: center;
         align-items: center;
         flex-direction: column;
+        border-top-right-radius: 1em;
+        border-top-left-radius: 1em;
 
         $brand-color: var(--tertiary-hover);
         $body-color: #999;
