@@ -145,6 +145,7 @@ export default Component.extend({
           }
           if(userFields[1]===null){
             this.currentUser.setProperties({'user_fields': {'1': true}});        
+            this.currentUser.setProperties({'custom_fields': {'user_field_1': true}}); 
             return this.currentUser
               .save(["user_field_1"])
               .then((resp) => {
