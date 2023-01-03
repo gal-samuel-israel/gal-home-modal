@@ -33,6 +33,7 @@ export default Component.extend({
 
   showModalPop: null,
 
+  destroying: false,
   
   currentStep1: null,
   currentStep2: null,
@@ -78,6 +79,7 @@ export default Component.extend({
       if(this.debug){
         console.log('destroy');
       }
+      this.destroying = true;
       this.destroy();
       return false;
     }
@@ -289,6 +291,8 @@ export default Component.extend({
   didInsertElement() {      
     this._super(...arguments);
 
+    if(this.destroying){return;}
+
     if(this.debug){
       console.log('didInsertElement');      
     }
@@ -300,6 +304,8 @@ export default Component.extend({
   didRender(){
     this._super(...arguments);
 
+    if(this.destroying){return;}
+    
     //visual effects should not be done here as this is run many times
     if(this.debug){
       console.log('didRender');      
