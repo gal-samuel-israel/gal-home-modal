@@ -132,6 +132,11 @@
           }
           .row{
             display: flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-direction: row;
+            
             .col{
               flex-basis: auto;
             }
