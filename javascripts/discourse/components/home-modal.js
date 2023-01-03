@@ -137,6 +137,7 @@ export default Component.extend({
           });         
         }
 
+        //TODO: user_fields {1 : null} is not changing !!! FIX
         if(isEmployee){
           var userFields = data.user.user_fields;
           if(this.debug){ 
