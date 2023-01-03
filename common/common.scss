@@ -101,6 +101,9 @@
         padding: 20px;
         text-align: left;
         
+        .btn-primary{
+          padding: 0.5em 1em 0.65em 1em;
+        }
         h2 {
           color: var(--primary);
           text-align: left;
@@ -131,7 +134,7 @@
             width: 22px;
           }
           
-          .row{
+          .row {
             display: flex;
             align-items: stretch;
             flex-direction: row;
@@ -184,6 +187,10 @@
             span.button-description {
                 display:block;
                 color: var(--primary);
+            }
+            .complete-button-wrapper {
+              text-align: center;
+              margin: 1em 0 0 0;
             }
           
         }
