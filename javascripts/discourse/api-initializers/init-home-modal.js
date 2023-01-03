@@ -8,16 +8,22 @@ export default apiInitializer("0.8", (api) => {
     const currentUser = api.getCurrentUser()
 
     var debug = currentUser.admin && settings.enable_debug_for_admins;
+    var debugForUsers = settings.enable_debug_for_user_ids;
+    var debugForIDs = debugForUsers.split("|");
+    if (debugForIDs.includes(currentUser.id)) {
+      debug = true;
+    }
     var debug4All = settings.enable_debug_for_all;
     if(debug4All){ debug = true; }
     
     //const user = container.lookup("service:current-user");
 
     if(debug){          
-      console.log('initializer:');
+      console.log('home-modal initializer:');
       //console.log(user);
       //console.log(currentUser.user_option);
       console.log('admin: ' + currentUser.admin); 
+      console.log('id: ' + currentUser.id); 
     }
 
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
