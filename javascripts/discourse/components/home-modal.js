@@ -124,12 +124,21 @@ export default Component.extend({
           }
         });
         
+        //prep email prefs
         this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
         this.set("emailDigests", data.user.user_option.email_digests);     
+
+        //is user an algosec employee ? (if so - set his custom_fields[1])
+        var arrGroups = data.user.groups;
+        var isEmployee;
+        if(arrGroups?.length > 2){
+          isEmployee = arrGroups.includes('Algosec');          
+        }
 
         if(this.debug){     
           console.log('user info updated:');
           console.log(this.currentUser);
+          console.log('isEmployee: ' + isEmployee);
           console.log('init ajax end');
         }
 
