@@ -17,7 +17,7 @@ export default apiInitializer("0.8", (api) => {
       console.log('initializer:');
       //console.log(user);
       //console.log(currentUser.user_option);
-      console.log(currentUser.admin); 
+      console.log('admin: ' + currentUser.admin); 
     }
 
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users

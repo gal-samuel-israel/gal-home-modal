@@ -2,7 +2,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
 import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
-import {addSaveableUserField, addSaveableUserOptionField } from "discourse/models/user";
+//import {addSaveableUserField, addSaveableUserOptionField } from "discourse/models/user";
 import discourseComputed, { observes, bind } from "discourse-common/utils/decorators";
 import { action } from "@ember/object";
 import Component from "@ember/component";
@@ -44,7 +44,7 @@ export default Component.extend({
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
     this.set("showModalPop", !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)); 
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
@@ -58,14 +58,17 @@ export default Component.extend({
 
   init() {
 
-    //TODO: Move the Email Preferences to step 3
-
     this._super(...arguments);
 
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
+    this.debug4All = settings?.enable_debug_for_all; //from settings.yml
 
-    if(this.debugForAdmins){
+    this.debug = false;
+    if(this.currentUser.admin && this.debugForAdmins){ this.debug = true; }
+    if(this.debug4All){ this.debug = true; }
+
+    if(this.debug){
       console.log('component init start:');
     }
 
@@ -87,7 +90,7 @@ export default Component.extend({
     //get user json
     ajax(`/u/${this.currentUser.username}.json`)
     .then((data) => {        
-        if(this.debugForAdmins){     
+        if(this.debug){     
           console.log('got user info:');
           console.log(data);        
         }
@@ -99,7 +102,7 @@ export default Component.extend({
         //prep the user email prefs
         this.saveAttrNamesEmail.forEach((key)=>{
           this.currentUser.set(`user_option.${key}`, data.user.user_option[key]);
-          if(this.debugForAdmins){
+          if(this.debug){
             console.log(`user_option.${key}` + ': '+ data.user.user_option[key]);
           }
         });
@@ -107,7 +110,7 @@ export default Component.extend({
         this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
         this.set("emailDigests", data.user.user_option.email_digests);     
 
-        if(this.debugForAdmins){     
+        if(this.debug){     
           console.log('user info updated:');
           console.log(this.currentUser);
           console.log('init ajax end');
@@ -119,7 +122,7 @@ export default Component.extend({
   
   @discourseComputed("router.currentRouteName")
   displayForRoute(currentRouteName) {  
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('discourseComputed displayForRoute');
       console.log('currentRouteName: '+ currentRouteName);
       console.log('defaultHomepage: '+ defaultHomepage());
@@ -133,7 +136,7 @@ export default Component.extend({
     var isAdmin = (currentUser.admin)        
     var blockDisplay = (showOnlyToAdmins && !isAdmin);
 
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('discourseComputed displayForUser');
       console.log('blockDisplay: '+ blockDisplay);
     }
@@ -233,7 +236,7 @@ export default Component.extend({
 
   @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
   stepUpdate(){
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('stepUpdate');      
     }
     var element = document.querySelector('#welcome-modal');
@@ -259,7 +262,7 @@ export default Component.extend({
   @observes("shouldDisplay")
   displayChanged() { 
 
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('displayChanged');
     }
 
@@ -275,7 +278,7 @@ export default Component.extend({
   didInsertElement() {      
     this._super(...arguments);
 
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('didInsertElement');      
     }
 
@@ -287,7 +290,7 @@ export default Component.extend({
     this._super(...arguments);
 
     //visual effects should not be done here as this is run many times
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('didRender');      
     }    
     
@@ -297,7 +300,7 @@ export default Component.extend({
   },
 
   willDestroyElement(element){
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('willDestroyElement:');
       console.log(element);
     }  
@@ -341,7 +344,7 @@ export default Component.extend({
     return this.currentUser
       .save(this.saveAttrNamesEmail)
       .then(() => {
-        if(this.debugForAdmins){
+        if(this.debug){
           console.log('user email preferences saved');
         }
         this.set("saved", true);
@@ -383,7 +386,7 @@ export default Component.extend({
     return this.currentUser
       .save(this.saveAttrNamesProfile)
       .then(() => {
-        if(this.debugForAdmins){
+        if(this.debug){
           console.log('user info saved');
         }
         this.set("saved", true);
@@ -395,7 +398,7 @@ export default Component.extend({
   @action
   biosUpdate(event){
     event?.preventDefault();
-    if(this.debugForAdmins){ 
+    if(this.debug){ 
       console.log('target value:');
       console.log(event.target.value);
       console.log('this.newBioRawInput:');
@@ -409,13 +412,13 @@ export default Component.extend({
   @action
   toggleHideNextTime(event){
     event?.preventDefault();
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('toggleHideNextTime:');
       console.log('was : ' + this.hideModalNextTime);
     }
     this.set("hideModalNextTime", !this.hideModalNextTime);
     localStorage.setItem("homeModalHide", this.hideModalNextTime);
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('now : ' + this.hideModalNextTime);
     }
   },
@@ -424,7 +427,7 @@ export default Component.extend({
   @action
   testAction(event){
     event?.preventDefault();
-    if(this.debugForAdmins){
+    if(this.debug){
       console.log('testAction');
       console.log(event);
     }
