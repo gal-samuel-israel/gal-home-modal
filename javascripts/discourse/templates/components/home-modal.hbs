@@ -31,13 +31,16 @@
                   <p>Enjoy,<br/>
                   AlgoSec Community <img class="as-ico-img" src={{theme-setting 'theme_uploads.img_ico_algosec_community'}} /></p>
 
-                  <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
+                  <div class="next-button-wrapper">
+                    <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
+                  </div>
+                  
               </div>
             {{/if}}
             {{#if this.currentStep2}}
             <div id="step-2" class="step">
               <h3>{{theme-i18n "steps_titles.step_2_title"}}</h3>
-              <p> Step 2 text</p>
+               
               <div class="control-group avatar-change-button-wrapper">
 
                   <div class="control-group pref-name">
@@ -69,7 +72,9 @@
 
               </div>
 
-              <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
+              <div class="next-button-wrapper">
+                <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
+              </div>
 
             </div>
             {{/if}}
@@ -103,7 +108,9 @@
                     </div>
                   </div>
 
-              <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep3NextButton"}} @translatedLabel="Next >>" />
+              <div class="next-button-wrapper">
+                <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep3NextButton"}} @translatedLabel="Next >>" />
+              </div>
 
             </div>
             {{/if}}
