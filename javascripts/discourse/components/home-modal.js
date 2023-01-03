@@ -63,13 +63,8 @@ export default Component.extend({
     this.showOnlyToAdmins = settings?.enable_modal_only_for_admins; //from settings.yml
     this.debugForAdmins = settings?.enable_debug_for_admins; //from settings.yml
     this.debugFooter = this.debugForAdmins && settings?.enable_modal_footer_internal_debug; //from settings.yml
-    this.debug4All = settings?.enable_debug_for_all; //from settings.yml
+    this.debug4All = settings?.enable_debug_for_all; //from settings.yml    
 
-    if(!this.currentUser.admin && this.showOnlyToAdmins){
-      this.destroy();
-      return;
-    }
-    
     this.debug = false;
     if(this.currentUser.admin && this.debugForAdmins){ this.debug = true; }
     if(this.debug4All){ this.debug = true; }
@@ -77,6 +72,16 @@ export default Component.extend({
     if(this.debug){
       console.log('component init start:');
     }
+
+
+    if(!this.currentUser.admin && this.showOnlyToAdmins){
+      if(this.debug){
+        console.log('destroy');
+      }
+      this.destroy();
+      return false;
+    }
+
 
     this.saveAttrNamesProfile = [
       "name",
