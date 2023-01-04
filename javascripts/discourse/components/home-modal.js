@@ -146,11 +146,13 @@ export default Component.extend({
             console.log('userTitle: ' + userTitle);
           }
           if(userTitle.includes('AlgoSec Employee') !== true){
-            var newTitle = (userTitle !==null && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee';            
+            var newTitle = (userTitle !==null && userTitle !=='' && userTitle !=='undefined') ? userTitle.toString() + ', AlgoSec' : 'AlgoSec Employee';            
             
             this.currentUser.setProperties("title", newTitle);
+            this.currentUser.set("title", newTitle);
 
             this.set("saved", false);
+            
             this.currentUser
               .save(["title"])
               .then((resp) => {
