@@ -28,10 +28,6 @@ export default Component.extend({
   newBioRawInput: null,
   newBioCooked: null,
 
-  //userTitle
-  isEmployee: false,
-  userTitle: null, 
-
   //modal hide next time checkbox
   hideModalNextTime: null,
 
@@ -135,30 +131,31 @@ export default Component.extend({
         //is user an algosec employee ? (if so - set his custom_fields[1])
         var arrGroups = data.user.groups;
         
-        var itemFound;
+        var isEmployee = false;
         if(arrGroups?.length > 2){
-          itemFound = arrGroups.some((item)=>{
+          isEmployee = arrGroups.some((item)=>{
             return item.name === 'Algosec';
           });         
         }
 
-        this.isEmployee = itemFound;
-       
-        if(this.isEmployee){
-          this.userTitle = data.user.title;
+        if(isEmployee){
+          var userTitle = data.user.title;
           if(this.debug){ 
-            console.log('userTitle: ' + this.userTitle);
+            console.log('userTitle: ' + userTitle);
           }
-          if(this.userTitle.includes('AlgoSec Employee') !== true){
-            var newTitle = (this.userTitle && this.userTitle !=='' && this.userTitle !=='undefined') ? this.userTitle + ', AlgoSec': 'AlgoSec Employee';
-            this.currentUser.set("title", newTitle);                    
+          if(userTitle.includes('AlgoSec Employee') !== true){
+            var newTitle = (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee';            
+            this.currentUser.set("title", newTitle);
+
+            this.set("saved", false);
             this.currentUser
               .save(["title"])
               .then((resp) => {
                 if(this.debug){
                   console.log(resp);
-                  console.log('title save end: '+ this.currentUser.title + ' | ' + resp.user.title);
-                }                
+                  console.log('title save end: '+ this.currentUser.title + ' | ' + resp.user.title);                  
+                }
+                this.set("saved", true);
               })
               .catch(popupAjaxError);
           }
