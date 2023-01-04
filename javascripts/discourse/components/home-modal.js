@@ -146,7 +146,7 @@ export default Component.extend({
             console.log('userTitle: ' + userTitle);
           }
           if(userTitle.includes('AlgoSec Employee') !== true){
-            var newTitle = (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee';            
+            var newTitle = (userTitle !==null && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee';            
             
             this.currentUser.setProperties("title", newTitle);
 
