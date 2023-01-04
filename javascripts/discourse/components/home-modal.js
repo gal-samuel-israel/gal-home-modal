@@ -140,12 +140,15 @@ export default Component.extend({
 
         if(isEmployee){
           var userTitle = (data.user.title) ? data.user.title : '';
+          this.currentUser.set("title", userTitle);
+          
           if(this.debug){ 
             console.log('userTitle: ' + userTitle);
           }
           if(userTitle.includes('AlgoSec Employee') !== true){
             var newTitle = (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee';            
-            this.currentUser.set("title", newTitle);
+            
+            this.currentUser.setProperties("title", newTitle);
 
             this.set("saved", false);
             this.currentUser
@@ -162,7 +165,7 @@ export default Component.extend({
         }
 
         if(this.debug){     
-          console.log('user info updated:');
+          console.log('user info:');
           console.log(this.currentUser);
           console.log('isEmployee: ' + isEmployee);
           console.log('init ajax end');
