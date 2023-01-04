@@ -136,25 +136,26 @@ export default Component.extend({
         var arrGroups = data.user.groups;
         
         if(arrGroups?.length > 2){
-          this.set("isEmployee", arrGroups.some((item)=>{
+          this.isEmployee = arrGroups.some((item)=>{
             return item.name === 'Algosec';
-          }));         
+          });         
         }
 
        
         if(this.isEmployee){
-          this.set("userTitle", data.user.title);
+          this.userTitle = data.user.title;
           if(this.debug){ 
             console.log('userTitle: ' + this.userTitle);
           }
           if(this.userTitle.includes('AlgoSec Employee') !== true){
-            this.currentUser.set("title", (this.userTitle && this.userTitle !=='' && this.userTitle !=='undefined') ? this.userTitle + ', AlgoSec': 'AlgoSec Employee' );                    
+            var newTitle = (this.userTitle && this.userTitle !=='' && this.userTitle !=='undefined') ? this.userTitle + ', AlgoSec': 'AlgoSec Employee';
+            this.currentUser.set("title", newTitle);                    
             this.currentUser
               .save(["title"])
               .then((resp) => {
                 if(this.debug){
                   console.log(resp);
-                  console.log('title saved');
+                  console.log('title save end: '+ this.currentUser.title + ' | ' + resp.user.title);
                 }                
               })
               .catch(popupAjaxError);
