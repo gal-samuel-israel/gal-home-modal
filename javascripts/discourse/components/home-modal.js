@@ -130,8 +130,7 @@ export default Component.extend({
 
         if(this.debug){     
           console.log('user info:');
-          console.log(this.currentUser);
-          console.log('isEmployee: ' + isEmployee);
+          console.log(this.currentUser);          
           console.log('init ajax end');
         }
 
