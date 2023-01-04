@@ -28,6 +28,10 @@ export default Component.extend({
   newBioRawInput: null,
   newBioCooked: null,
 
+  //userTitle
+  isEmployee: false,
+  userTitle: null, 
+
   //modal hide next time checkbox
   hideModalNextTime: null,
 
@@ -130,21 +134,21 @@ export default Component.extend({
 
         //is user an algosec employee ? (if so - set his custom_fields[1])
         var arrGroups = data.user.groups;
-        var isEmployee;
+        
         if(arrGroups?.length > 2){
-          isEmployee = arrGroups.some((item)=>{
+          this.set("isEmployee", arrGroups.some((item)=>{
             return item.name === 'Algosec';
-          });         
+          }));         
         }
 
-        //TODO: user_fields {1 : null} is not changing !!! FIX | DEBUG
-        if(isEmployee){
-          var userTitle = data.user.title || '';
+       
+        if(this.isEmployee){
+          this.set("userTitle", data.user.title);
           if(this.debug){ 
-            console.log('userTitle: ' + userTitle);
+            console.log('userTitle: ' + this.userTitle);
           }
-          if(userTitle.includes('AlgoSec Employee') !== true){
-            this.currentUser.set("title", (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee' );                    
+          if(this.userTitle.includes('AlgoSec Employee') !== true){
+            this.currentUser.set("title", (this.userTitle && this.userTitle !=='' && this.userTitle !=='undefined') ? this.userTitle + ', AlgoSec': 'AlgoSec Employee' );                    
             this.currentUser
               .save(["title"])
               .then((resp) => {
