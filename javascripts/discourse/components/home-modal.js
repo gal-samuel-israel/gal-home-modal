@@ -139,7 +139,7 @@ export default Component.extend({
         }
 
         if(isEmployee){
-          var userTitle = data.user.title;
+          var userTitle = (data.user.title) ? data.user.title : '';
           if(this.debug){ 
             console.log('userTitle: ' + userTitle);
           }
