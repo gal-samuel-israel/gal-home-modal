@@ -141,10 +141,10 @@ export default Component.extend({
         if(isEmployee){
           var userTitle = data.user.title || '';
           if(this.debug){ 
-            console.log('userTitle: '+userTitle);
+            console.log('userTitle: ' + userTitle);
           }
           if(userTitle.includes('AlgoSec Employee') !== true){
-            this.currentUser.setProperties({'title': (userTitle !=='' ? userTitle + ', AlgoSec': 'AlgoSec Employee') });                    
+            this.currentUser.set("title", (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee' );                    
             return this.currentUser
               .save(["title"])
               .then((resp) => {
