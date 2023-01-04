@@ -135,12 +135,14 @@ export default Component.extend({
         //is user an algosec employee ? (if so - set his custom_fields[1])
         var arrGroups = data.user.groups;
         
+        var itemFound;
         if(arrGroups?.length > 2){
-          this.isEmployee = arrGroups.some((item)=>{
+          itemFound = arrGroups.some((item)=>{
             return item.name === 'Algosec';
           });         
         }
 
+        this.isEmployee = itemFound;
        
         if(this.isEmployee){
           this.userTitle = data.user.title;
