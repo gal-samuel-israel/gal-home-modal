@@ -126,45 +126,7 @@ export default Component.extend({
         
         //prep email prefs
         this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
-        this.set("emailDigests", data.user.user_option.email_digests);     
-
-        //is user an algosec employee ? (if so - set his custom_fields[1])
-        var arrGroups = data.user.groups;
-        
-        var isEmployee = false;
-        if(arrGroups?.length > 2){
-          isEmployee = arrGroups.some((item)=>{
-            return item.name === 'Algosec';
-          });         
-        }
-
-        if(isEmployee){
-          var userTitle = (data.user.title) ? data.user.title : '';
-          this.currentUser.set("title", userTitle);
-          
-          if(this.debug){ 
-            console.log('userTitle: ' + userTitle);
-          }
-          if(userTitle.includes('AlgoSec Employee') !== true){
-            var newTitle = (userTitle !==null && userTitle !=='' && userTitle !=='undefined') ? userTitle.toString() + ', AlgoSec' : 'AlgoSec Employee';            
-            
-            this.currentUser.setProperties("title", newTitle);
-            this.currentUser.set("title", newTitle);
-
-            this.set("saved", false);
-            
-            this.currentUser
-              .save(["title"])
-              .then((resp) => {
-                if(this.debug){
-                  console.log(resp);
-                  console.log('title save end: '+ this.currentUser.title + ' | ' + resp.user.title);                  
-                }
-                this.set("saved", true);
-              })
-              .catch(popupAjaxError);
-          }
-        }
+        this.set("emailDigests", data.user.user_option.email_digests);             
 
         if(this.debug){     
           console.log('user info:');
