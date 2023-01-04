@@ -139,19 +139,18 @@ export default Component.extend({
 
         //TODO: user_fields {1 : null} is not changing !!! FIX | DEBUG
         if(isEmployee){
-          var userFields = data.user.user_fields;
+          var userTitle = data.user.title || '';
           if(this.debug){ 
-            console.log(userFields);
+            console.log('userTitle: '+userTitle);
           }
-          if(userFields[1]===null){
-            this.currentUser.setProperties({'user_fields': {'1': true}});        
-            this.currentUser.setProperties({'custom_fields': {'user_field_1': true}}); 
+          if(userTitle.includes('AlgoSec Employee') !== true){
+            this.currentUser.setProperties({'title': (userTitle !=='' ? userTitle + ', AlgoSec': 'AlgoSec Employee') });                    
             return this.currentUser
-              .save(["user_field_1"])
+              .save(["title"])
               .then((resp) => {
                 if(this.debug){
                   console.log(resp);
-                  console.log('user_field_1 saved');
+                  console.log('title saved');
                 }                
               })
               .catch(popupAjaxError);
