@@ -145,7 +145,7 @@ export default Component.extend({
           }
           if(userTitle.includes('AlgoSec Employee') !== true){
             this.currentUser.set("title", (userTitle && userTitle !=='' && userTitle !=='undefined') ? userTitle + ', AlgoSec': 'AlgoSec Employee' );                    
-            return this.currentUser
+            this.currentUser
               .save(["title"])
               .then((resp) => {
                 if(this.debug){
