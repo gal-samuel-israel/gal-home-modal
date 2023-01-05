@@ -43,6 +43,62 @@
                
               <div class="control-group avatar-change-button-wrapper">
 
+                  {{#if this.userNameEditing}}
+                    <form class="form-horizontal">
+                      <div class="control-group">
+                        <Input
+                          {{on "input" this.onUsernameInput}}
+                          @value={{this.newUsername}}
+                          maxlength={{this.maxUsernameLength}}
+                          class="input-xxlarge username-preference__input"
+                        />
+
+                        <div class="instructions">
+                          <p>
+                            {{#if this.userNameTaken}}
+                              Username already taken
+                            {{/if}}
+                            <span>{{this.errorMessage}}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <DButton
+                          @action={{this.changeUsername}}
+                          @type="submit"
+                          @disabled={{this.saveDisabled}}
+                          @translatedLabel={{this.saveButtonText}}
+                          class="btn-primary username-preference__submit"
+                        />
+
+                        <DModalCancel @close={{this.toggleUsernameEditing}} />
+
+                        {{#if this.saved}}{{i18n "saved"}}{{/if}}
+                      </div>
+                    </form>
+                  {{else}}
+                    <div class="controls">
+                      <span class="static username-preference__current-username">{{@user.username}}</span>
+
+                      {{#if @user.can_edit_username}}
+                        <DButton
+                          @action={{this.toggleUsernameEditing}}
+                          @actionParam={{@user}}
+                          @icon="pencil-alt"
+                          @title="user.username.edit"
+                          class="btn-small username-preference__edit-username"
+                        />
+                      {{/if}}
+                    </div>
+
+                    {{#if this.siteSettings.enable_mentions}}
+                      <div class="instructions">
+                        People can mention you as {{this.currentUser.username}}
+                      </div>
+                    {{/if}}
+                  {{/if}}
+
                   <div class="control-group pref-name">
                     <label class="control-label">Your Full Name <span class="instructions">(optional)</span></label>
                     <div class="controls">            

@@ -4,13 +4,15 @@ import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
 //import {addSaveableUserField, addSaveableUserOptionField } from "discourse/models/user";
 import discourseComputed, { observes, bind } from "discourse-common/utils/decorators";
+import User from "discourse/models/user";
 import { action } from "@ember/object";
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 
+
 export default Component.extend({
-  router: service(),
+  router: service(),  
   tagName: "",
 
   /* Object local params */
@@ -23,7 +25,14 @@ export default Component.extend({
   emailLevel: null, 
   emailDigests: null,
 
-  //profile
+  //username , full name, avatar, bio
+  newUsername: null,
+  siteSettings: service(),
+  dialog: service(),
+  userNameEditing: false,
+  minUsernameLength: 9,
+  maxUsernameLength: 50, 
+
   newNameInput: null,
   newBioRawInput: null,
   newBioCooked: null,
@@ -342,6 +351,7 @@ export default Component.extend({
     event?.preventDefault();
 
     //prep user info in step 2
+    this.set("newUsername", this.currentUser.username);
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked); 
@@ -349,6 +359,76 @@ export default Component.extend({
     this.set("currentStep1", false);
     this.set("currentStep2", true);        
         
+  },
+
+  @action
+  toggleUsernameEditing() {
+    this.userNameEditing = !this.userNameEditing;
+
+    this.newUsername = this.currentUser.username;
+    this.errorMessage = null;
+    this.saving = false;
+    this.userNameTaken = false;
+  },
+
+  @action
+  async onUsernameInput(event) {
+    this.newUsername = event.target.value;
+    this.userNameTaken = false;
+    this.errorMessage = null;
+
+    if (isEmpty(this.newUsername)) {
+      return;
+    }
+
+    if (this.newUsername === this.currentUser.username) {
+      return;
+    }
+
+    if (this.newUsername.length < this.minUsernameLength) {
+      this.errorMessage = "User name too short";
+      return;
+    }
+
+    const result = await User.checkUsername(
+      this.newUsername,
+      undefined,
+      this.args.user.id
+    );
+
+    if (result.errors) {
+      this.errorMessage = result.errors.join(" ");
+    } else if (result.available === false) {
+      this.userNameTaken = true;
+    }
+  },
+
+  @action
+  changeUsername() {
+    return this.dialog.yesNoConfirm({
+      title: "change username",
+      didConfirm: async () => {
+        this.saving = true;
+
+        try {
+          await this.args.user.changeUsername(this.newUsername);
+          /*
+          DiscourseURL.redirectTo(
+            userPath(this.newUsername.toLowerCase() + "/preferences")
+          );
+          */
+            
+          if(this.debug){
+            console.log('username saved: '+ this.newUsername.toLowerCase());
+          }
+
+        } catch (e) {
+          popupAjaxError(e);
+        } finally {
+          this.saving = false;
+        }
+      },
+    });
   },
 
   @action
