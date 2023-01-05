@@ -83,7 +83,7 @@
                     <div class="controls">
                       <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
 
-                      {{#if this.currentUser.can_edit_username}}
+                      {{#if this.currentUser.can_edit}}
                         <DButton
                           @action={{this.toggleUsernameEditing}}
                           @actionParam={{this.currentUser}}
