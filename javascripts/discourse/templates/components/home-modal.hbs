@@ -85,7 +85,7 @@
 
                       {{#if this.currentUser.can_edit}}
                         <DButton
-                          @action={{this.toggleUsernameEditing}}
+                          @action={{"toggleUsernameEditing"}}
                           @actionParam={{this.currentUser}}
                           @icon="pencil-alt"
                           @translatedTitle="Edit"
