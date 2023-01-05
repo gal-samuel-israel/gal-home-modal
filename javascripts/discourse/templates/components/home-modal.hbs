@@ -37,12 +37,14 @@
                   
               </div>
             {{/if}}
+
             {{#if this.currentStep2}}
             <div id="step-2" class="step">
               <h3>{{theme-i18n "steps_titles.step_2_title"}}</h3>
                
-              <div class="control-group avatar-change-button-wrapper">
-
+              <div class="change-personal-info-wrapper">
+                <div class="control-group pref-name">
+                  <label class="control-label">Your Full Name <span class="instructions">(optional)</span></label>
                   {{#if this.userNameEditing}}
                     <form class="form-horizontal">
                       <div class="control-group">
@@ -79,9 +81,9 @@
                     </form>
                   {{else}}
                     <div class="controls">
-                      <span class="static username-preference__current-username">{{@user.username}}</span>
+                      <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
 
-                      {{#if @user.can_edit_username}}
+                      {{#if this.currentUser.can_edit_username}}
                         <DButton
                           @action={{this.toggleUsernameEditing}}
                           @actionParam={{@user}}
@@ -94,7 +96,7 @@
 
                     {{#if this.siteSettings.enable_mentions}}
                       <div class="instructions">
-                        People can mention you as {{this.currentUser.username}}
+                        People can mention you as @{{this.currentUser.username}}
                       </div>
                     {{/if}}
                   {{/if}}
@@ -105,7 +107,7 @@
                       <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
                     </div>                    
                   </div>
-
+            
                   <div class="control-group pref-avatar">
                     <label class="control-label">Your Avatar</label>
                     <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
