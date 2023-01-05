@@ -362,7 +362,8 @@ export default Component.extend({
   },
 
   @action
-  toggleUsernameEditing() {
+  toggleUsernameEditing(event) {
+    event?.preventDefault();
     this.userNameEditing = !this.userNameEditing;
 
     this.newUsername = this.currentUser.username;
@@ -373,6 +374,7 @@ export default Component.extend({
 
   @action
   async onUsernameInput(event) {
+    event?.preventDefault();
     this.newUsername = event.target.value;
     this.userNameTaken = false;
     this.errorMessage = null;
@@ -404,7 +406,8 @@ export default Component.extend({
   },
 
   @action
-  changeUsername() {
+  changeUsername(event) {
+    event?.preventDefault();
     return this.dialog.yesNoConfirm({
       title: "change username",
       didConfirm: async () => {
