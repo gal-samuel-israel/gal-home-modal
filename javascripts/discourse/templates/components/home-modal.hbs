@@ -122,20 +122,20 @@
 
                 <div class="row">
                   <div class="col">
+                    <a href {{on "click" this.handleStep4FinishButton}} class="composite-button">
+                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_house'}} />
+                      <div class="composite-content">
+                        <span class="button-title">Visit Home Page</span>
+                        <span class="button-description">The Community Feed, announcements and more.</span>
+                      </div>
+                    </a>                                   
+                  </div>
+                  <div class="col">
                     <a href="/c/get-started" class="composite-button">
                       <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_display'}} />
                       <div class="composite-content">
-                        <span class="button-title">Get Started Group</span>
+                        <span class="button-title">Get Started</span>
                         <span class="button-description">Get more information about the community.</span>
-                      </div>
-                    </a>                                        
-                  </div>
-                  <div class="col">
-                    <a href="/c/ask-the-community" class="composite-button">
-                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_users'}} />
-                      <div class="composite-content">
-                        <span class="button-title">Ask The Community</span>
-                        <span class="button-description">Have a question? Start here.</span>
                       </div>
                     </a>
                   </div>
@@ -143,22 +143,22 @@
 
                 <div class="row">
                   <div class="col">
+                    <a href="/c/ask-the-community" class="composite-button">
+                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_users'}} />
+                      <div class="composite-content">
+                        <span class="button-title">Ask The Community</span>
+                        <span class="button-description">Have a question? Start here.</span>
+                      </div>
+                    </a>                                
+                  </div>
+                  <div class="col">                    
                     <a href {{on "click" this.navigateToProfile}} class="composite-button">
                       <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_address_card'}} />
                       <div class="composite-content">
-                        <span class="button-title">View Profile</span>
+                        <span class="button-title">View Your Profile</span>
                         <span class="button-description">Further setup your profile details.</span>
                       </div>
-                    </a>                                       
-                  </div>
-                  <div class="col">
-                    <a href {{on "click" this.handleStep4FinishButton}} class="composite-button">
-                      <img class="black-2-blue" src={{theme-setting 'theme_uploads.img_ico_svg_house'}} />
-                      <div class="composite-content">
-                        <span class="button-title">Visit Home Page</span>
-                        <span class="button-description">The Community Feed, announcements and more.</span>
-                      </div>
-                    </a>
+                    </a> 
                   </div>
                 </div>
 
