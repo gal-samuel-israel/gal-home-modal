@@ -29,7 +29,7 @@ export default Component.extend({
   newUsername: null,
   siteSettings: service(),
   dialog: service(),
-  userNameEditing: false,
+  userNameEditing: null,
   minUsernameLength: 9,
   maxUsernameLength: 50, 
 
@@ -352,6 +352,8 @@ export default Component.extend({
 
     //prep user info in step 2
     this.set("newUsername", this.currentUser.username);
+    this.set("userNameEditing", false);
+
     this.set("newNameInput", this.currentUser.name);
     this.set("newBioRawInput", this.currentUser.bio_raw);
     this.set("newBioCooked", this.currentUser.bio_cooked); 
@@ -370,6 +372,12 @@ export default Component.extend({
     this.errorMessage = null;
     this.saving = false;
     this.userNameTaken = false;
+
+    if(this.debug){
+      console.log('toggleUsernameEditing:');
+      console.log('userNameEditing: '+this.userNameEditing);
+    }  
+
   },
 
   @action
