@@ -103,6 +103,8 @@
       .modal-content {
         padding: 20px;
         text-align: left;
+        max-height:400px;
+        overflow:auto;
         
         .btn-primary{
           padding: 0.5em 1em 0.65em 1em;
