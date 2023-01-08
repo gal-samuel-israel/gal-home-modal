@@ -10,7 +10,7 @@ import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 
-import UsernamePreference from "discourse/app/components/username-preference.js"
+import UsernamePreference from "discourse/components/username-preference"
 
 export class UsernamePreferenceOW extends UsernamePreference{
   @action
