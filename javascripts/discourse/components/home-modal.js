@@ -449,6 +449,9 @@ export default Component.extend({
           if(this.debug){
             console.log('username saved: '+ this.newUsername.toLowerCase());
           }          
+          this.currentUser.setProperties({
+            username: this.newUsername.toLowerCase(),
+          }
         } catch (e) {
           popupAjaxError(e);
         } finally {
@@ -504,6 +507,7 @@ export default Component.extend({
   showAvatarSelector(user) {
     showModal("avatar-selector").setProperties({user});    
   },
+
   @action
   saveUserInfo() {
     event?.preventDefault();
