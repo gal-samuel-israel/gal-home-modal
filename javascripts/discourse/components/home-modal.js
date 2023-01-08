@@ -9,6 +9,7 @@ import { action } from "@ember/object";
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
+import { tracked } from "@glimmer/tracking";
 
 export default Component.extend({
   router: service(),  
@@ -25,10 +26,10 @@ export default Component.extend({
   emailDigests: null,
 
   //username , full name, avatar, bio
-  newUsername: null,
+  @tracked newUsername: null,
   siteSettings: service(),
   dialog: service(),
-  userNameEditing: null,
+  @tracked userNameEditing: null,
   minUsernameLength: 9,
   maxUsernameLength: 50, 
 
@@ -368,12 +369,12 @@ export default Component.extend({
   
   @action
   toggleUsernameEditing() {    
-    this.userNameEditing = !this.userNameEditing;
+    this.set("userNameEditing", !this.userNameEditing);
 
-    this.newUsername = this.currentUser.username;
-    this.errorMessage = null;
-    this.saving = false;
-    this.userNameTaken = false;
+    this.set("newUsername", this.currentUser.username);
+    this.set("errorMessage", null);
+    this.set("saving", false);
+    this.set("userNameTaken", false);
 
     if(this.debug){
       console.log('toggleUsernameEditing:');
