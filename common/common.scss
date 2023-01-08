@@ -169,7 +169,11 @@
           .control-group.user-name {
               height: 59px;
           }
-          
+
+          .col-username-controls {
+            margin-left: 1em;
+          }
+
           //step-4
             .composite-button {
               display:flex;
