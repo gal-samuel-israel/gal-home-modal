@@ -20,7 +20,7 @@ export class UsernamePreferenceOW extends UsernamePreference{
   @action
   changeUsername() {
     return this.dialog.yesNoConfirm({
-      title: I18n.t("user.change_username.confirm"),
+      title: "Are you sure you want to edit your username ?",
       didConfirm: async () => {
         this.saving = true;
 
