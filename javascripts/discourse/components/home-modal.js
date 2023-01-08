@@ -430,6 +430,7 @@ export default Component.extend({
       didConfirm: async () => {
         this.set("saving", true);
 
+        /* NOT WORKING:
         return this.currentUser
         .save(["username"])
         .then(() => {
@@ -439,7 +440,8 @@ export default Component.extend({
           this.set("saving", false);       
         })
         .catch(popupAjaxError);
-        /*
+        */
+
         try {
           await this.currentUser.changeUsername(this.newUsername);
             
@@ -452,7 +454,7 @@ export default Component.extend({
         } finally {
           this.set("saving", false);
         }
-        */
+        
       },
     });
   },
