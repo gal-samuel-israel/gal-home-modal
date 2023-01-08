@@ -86,7 +86,7 @@
                       </div>
                     </form>
                   {{else}}
-                    <div class="controls">
+                    <div class="control-group">
                       <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
 
                       {{#if this.currentUser.can_edit_username}}
@@ -98,13 +98,14 @@
                           @class="btn-default pad-right"
                         />
                       {{/if}}
-                    </div>
+                    
 
-                    {{#if this.siteSettings.enable_mentions}}
-                      <div class="instructions">
-                        People can mention you as @{{this.currentUser.username}}
-                      </div>
-                    {{/if}}
+                      {{#if this.siteSettings.enable_mentions}}
+                        <div class="instructions">
+                          People can mention you as @{{this.currentUser.username}}
+                        </div>
+                      {{/if}}
+                    </div>
                   {{/if}}
 
                   <div class="control-group pref-name">
