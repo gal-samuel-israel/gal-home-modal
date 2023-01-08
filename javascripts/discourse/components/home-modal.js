@@ -370,8 +370,6 @@ export default Component.extend({
     this.set("currentStep2", true);        
         
   },
-
-  // TODO: FIX THE USERNAME EDITOR
   
   @action
   toggleUsernameEditing() {    
@@ -422,6 +420,9 @@ export default Component.extend({
     }
   },
 
+
+    // TODO: FIX THE USERNAME EDITOR
+
   @action
   changeUsername(event) {
     event?.preventDefault();
@@ -447,12 +448,12 @@ export default Component.extend({
             
           if(this.debug){
             console.log('username saved: '+ this.newUsername.toLowerCase());
-          }
-
+          }          
         } catch (e) {
           popupAjaxError(e);
         } finally {
           this.set("saving", false);
+          this.toggleUsernameEditing();
         }
         
       },
