@@ -13,6 +13,10 @@ import { and, equal } from "@ember/object/computed";
 import UsernamePreference from "discourse/components/username-preference"
 
 export class UsernamePreferenceOW extends UsernamePreference{
+  init() {
+    this._super(...arguments);
+  }
+
   @action
   changeUsername() {
     return this.dialog.yesNoConfirm({
