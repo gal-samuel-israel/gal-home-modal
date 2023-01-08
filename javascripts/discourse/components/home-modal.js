@@ -451,7 +451,7 @@ export default Component.extend({
           }          
           this.currentUser.setProperties({
             username: this.newUsername.toLowerCase(),
-          }
+          });
         } catch (e) {
           popupAjaxError(e);
         } finally {
