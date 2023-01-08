@@ -45,8 +45,8 @@
               
                 <div class="change-personal-info-wrapper">
                   
-                  {{#if this.userNameEditing}}
                   <div class="control-group user-name">
+                  {{#if this.userNameEditing}}                  
                     <label class="control-label">Your Username</label>
                     <form class="form-horizontal">
                       <div class="row">
@@ -106,8 +106,9 @@
                           People can mention you as @{{this.currentUser.username}}
                         </div>
                       {{/if}}
-                  </div>
+                  
                   {{/if}}
+                  </div>
 
                   <div class="control-group pref-name">
                     <label class="control-label">Your Full Name <span class="instructions">(optional)</span></label>
