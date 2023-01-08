@@ -16,29 +16,7 @@ export class UsernamePreferenceOW extends UsernamePreference{
   init() {
     this._super(...arguments);
   }
-
-  @action
-  changeUsername() {
-    return this.dialog.yesNoConfirm({
-      title: "Are you sure you want to edit your username ?",
-      didConfirm: async () => {
-        this.saving = true;
-
-        try {
-          await this.args.user.changeUsername(this.newUsername);
-          /*
-          DiscourseURL.redirectTo(
-            userPath(this.newUsername.toLowerCase() + "/preferences")
-          );
-          */
-        } catch (e) {
-          popupAjaxError(e);
-        } finally {
-          this.saving = false;
-        }
-      },
-    });
-  }
+  
 }
 
 export default Component.extend({
