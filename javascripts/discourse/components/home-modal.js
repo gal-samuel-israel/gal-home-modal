@@ -31,9 +31,14 @@ export default Component.extend({
   siteSettings: service(),
   dialog: service(),
   @tracked userNameEditing: null,
+  @tracked errorMessage: null,
+  @tracked saving: false,
+  @tracked userNameTaken:false,
+
   minUsernameLength: 9,
   maxUsernameLength: 50, 
 
+  //user full name (optional)
   newNameInput: null,
   newBioRawInput: null,
   newBioCooked: null,
@@ -407,13 +412,13 @@ export default Component.extend({
     const result = await User.checkUsername(
       this.newUsername,
       undefined,
-      this.args.user.id
+      this.currentUser.id
     );
 
     if (result.errors) {
-      this.errorMessage = result.errors.join(" ");
+      this.set("errorMessage" , result.errors.join(" "));
     } else if (result.available === false) {
-      this.userNameTaken = true;
+      this.set("userNameTaken",true);
     }
   },
 
@@ -423,10 +428,10 @@ export default Component.extend({
     return this.dialog.yesNoConfirm({
       title: "change username",
       didConfirm: async () => {
-        this.saving = true;
+        this.set("saving", true);
 
         try {
-          await this.args.user.changeUsername(this.newUsername);
+          await this.currentUser.changeUsername(this.newUsername);
           /*
           DiscourseURL.redirectTo(
             userPath(this.newUsername.toLowerCase() + "/preferences")
@@ -440,7 +445,7 @@ export default Component.extend({
         } catch (e) {
           popupAjaxError(e);
         } finally {
-          this.saving = false;
+          this.set("saving", false);
         }
       },
     });

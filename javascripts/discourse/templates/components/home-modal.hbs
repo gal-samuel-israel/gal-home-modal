@@ -71,13 +71,13 @@
                           @action={{this.changeUsername}}
                           @type="submit"
                           @disabled={{this.saveDisabled}}
-                          @translatedLabel={{this.saveButtonText}}
+                          @translatedTitle="Save"
                           class="btn-primary username-preference__submit"
                         />
 
                         <DModalCancel @close={{this.toggleUsernameEditing}} />
 
-                        {{#if this.saved}}{{i18n "saved"}}{{/if}}
+                        {{#if this.saved}}Saved{{/if}}
                       </div>
                     </form>
                   {{else}}
