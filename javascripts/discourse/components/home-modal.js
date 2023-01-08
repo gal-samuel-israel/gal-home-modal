@@ -10,16 +10,15 @@ import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 
-import { UsernamePreference as UsernamePreferenceOW} from "discourse/components/username-preference"
+import {UsernamePreference} from "discourse/components/username-preference"
 
-/*
+
 export class UsernamePreferenceOW extends UsernamePreference{
   init() {
     this._super(...arguments);
   }
   
 }
-*/
 
 export default Component.extend({
   router: service(),  
