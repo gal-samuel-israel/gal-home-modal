@@ -363,6 +363,8 @@ export default Component.extend({
         
   },
 
+  // TODO: FIX THE USERNAME EDITOR
+  
   @action
   toggleUsernameEditing(event) {
     event?.preventDefault();
