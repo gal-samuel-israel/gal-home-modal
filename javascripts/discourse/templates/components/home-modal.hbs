@@ -49,8 +49,8 @@
                   {{#if this.userNameEditing}}
                     <form class="form-horizontal">
                       <div class="row">
-                        <div class="col">
-                          <div class="control-group">
+                        <div class="col-username">
+                          
                             <Input
                               {{on "input" this.onUsernameInput}}
                               @value={{this.newUsername}}
@@ -66,10 +66,10 @@
                                 <span>{{this.errorMessage}}</span>
                               </p>
                             </div>
-                          </div>
+                          
                         </div>
-                        <div class="col">
-                          <div class="control-group">
+                        <div class="col-username-controls">
+                          
                             <DButton
                               @action={{this.changeUsername}}
                               @type="submit"
@@ -81,12 +81,12 @@
                             <DModalCancel @close={{this.toggleUsernameEditing}} />
 
                             {{#if this.saved}}Saved{{/if}}
-                          </div>
+                          
                         </div>
                       </div>
                     </form>
                   {{else}}
-                    <div class="control-group">
+                    
                       <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
 
                       {{#if this.currentUser.can_edit_username}}
@@ -105,7 +105,7 @@
                           People can mention you as @{{this.currentUser.username}}
                         </div>
                       {{/if}}
-                    </div>
+                    
                   {{/if}}
 
                   <div class="control-group pref-name">
