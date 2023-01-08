@@ -46,8 +46,6 @@
                 <div class="change-personal-info-wrapper">
                   <label class="control-label">Your Username</label>
 
-                  <UsernamePreferenceOW @user={{this.currentUser}} />
-
                   {{#if this.userNameEditing}}
                     <form class="form-horizontal">
                       <div class="control-group">
@@ -86,7 +84,7 @@
                     <div class="controls">
                       <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
 
-                      {{#if this.currentUser.can_edit}}
+                      {{#if this.currentUser.can_edit_username}}
                         <DButton
                           @action={{"toggleUsernameEditing"}}
                           @actionParam={{this.currentUser}}

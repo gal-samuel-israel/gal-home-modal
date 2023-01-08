@@ -10,13 +10,6 @@ import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 
-import UsernamePreference from "discourse/components/username-preference"
-
-
-export class UsernamePreferenceOW extends UsernamePreference{
-  
-}
-
 export default Component.extend({
   router: service(),  
   tagName: "",
@@ -374,8 +367,7 @@ export default Component.extend({
   // TODO: FIX THE USERNAME EDITOR
   
   @action
-  toggleUsernameEditing(event) {
-    event?.preventDefault();
+  toggleUsernameEditing() {    
     this.userNameEditing = !this.userNameEditing;
 
     this.newUsername = this.currentUser.username;
