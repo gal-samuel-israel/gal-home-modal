@@ -60,10 +60,10 @@
                                 class="input-xxlarge username-preference__input"
                               />
 
-                              <div class="instructions">
+                              <div class="instructions" aria-live="polite">
                                 <p>
                                   {{#if this.userNameTaken}}
-                                    Username already taken
+                                    Username already taken!
                                   {{/if}}
                                   <span>{{this.errorMessage}}</span>
                                 </p>
