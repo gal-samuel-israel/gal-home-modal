@@ -14,9 +14,6 @@ import UsernamePreference from "discourse/components/username-preference"
 
 
 export class UsernamePreferenceOW extends UsernamePreference{
-  init() {
-    this._super(...arguments);
-  }
   
 }
 
