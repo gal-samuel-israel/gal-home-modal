@@ -426,7 +426,7 @@ export default Component.extend({
   changeUsername(event) {
     event?.preventDefault();
     return this.dialog.yesNoConfirm({
-      title: "change username",
+      title: "Change username",
       didConfirm: async () => {
         this.set("saving", true);
 
