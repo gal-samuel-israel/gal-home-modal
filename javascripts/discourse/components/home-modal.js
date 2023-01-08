@@ -10,6 +10,32 @@ import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 
+import UsernamePreference from "discourse/app/components/username-preference.js"
+
+class UsernamePreferenceOW extends UsernamePreference{
+  @action
+  changeUsername() {
+    return this.dialog.yesNoConfirm({
+      title: I18n.t("user.change_username.confirm"),
+      didConfirm: async () => {
+        this.saving = true;
+
+        try {
+          await this.args.user.changeUsername(this.newUsername);
+          /*
+          DiscourseURL.redirectTo(
+            userPath(this.newUsername.toLowerCase() + "/preferences")
+          );
+          */
+        } catch (e) {
+          popupAjaxError(e);
+        } finally {
+          this.saving = false;
+        }
+      },
+    });
+  }
+}
 
 export default Component.extend({
   router: service(),  
