@@ -430,13 +430,18 @@ export default Component.extend({
       didConfirm: async () => {
         this.set("saving", true);
 
+        return this.currentUser
+        .save(["username"])
+        .then(() => {
+          if(this.debug){
+            console.log('username saved: '+ this.newUsername.toLowerCase());
+          }
+          this.set("saving", false);       
+        })
+        .catch(popupAjaxError);
+        /*
         try {
           await this.currentUser.changeUsername(this.newUsername);
-          /*
-          DiscourseURL.redirectTo(
-            userPath(this.newUsername.toLowerCase() + "/preferences")
-          );
-          */
             
           if(this.debug){
             console.log('username saved: '+ this.newUsername.toLowerCase());
@@ -447,6 +452,7 @@ export default Component.extend({
         } finally {
           this.set("saving", false);
         }
+        */
       },
     });
   },
