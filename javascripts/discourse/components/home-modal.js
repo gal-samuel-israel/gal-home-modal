@@ -137,6 +137,8 @@ export default Component.extend({
         this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
         this.set("emailDigests", data.user.user_option.email_digests);             
 
+        this.currentUser.set("can_edit_username", true); 
+
         if(this.debug){     
           console.log('user info:');
           console.log(this.currentUser);          
