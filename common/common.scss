@@ -160,6 +160,15 @@
               margin-bottom: 1em;
             }
           }
+          //step-2
+          .control-group.user-name .form-horizontal {
+            margin: 0;
+            padding: 0;
+          }
+          
+          .control-group.user-name {
+              height: 59px;
+          }
           
           //step-4
             .composite-button {
