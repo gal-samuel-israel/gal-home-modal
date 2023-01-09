@@ -421,13 +421,19 @@ export default Component.extend({
   },
 
 
-    // TODO: FIX THE USERNAME EDITOR
+    /*
+      in
+      https://community.algosec.com/admin/site_settings/category/users
+      username chaning is limited by days.
+      username change period : was set from 3 to 30
+
+    */
 
   @action
   changeUsername(event) {
     event?.preventDefault();
     return this.dialog.yesNoConfirm({
-      title: "Change username",
+      title: "Are you absolutely sure you want to change your username?",
       didConfirm: async () => {
         this.set("saving", true);
 
