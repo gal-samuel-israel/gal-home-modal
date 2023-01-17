@@ -70,9 +70,10 @@ export default Component.extend({
       console.log('this.showModalPop:' + this.showModalPop);
     }
 
+    //jump to step2 if avatar on storage is not the avatar of user
     var storedCPI = JSON.parse(localStorage.getItem("homeModalCPI"));
     var userCPI = xSHA1(this.currentUser.avatar_template);
-    if(homeModalCPI && userCPI!= storedCPI){
+    if(storedCPI && userCPI!= storedCPI){
        //reset to step 2
        this.set("currentStep1", false);
       this.set("currentStep2", true);
