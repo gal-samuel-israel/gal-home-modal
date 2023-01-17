@@ -69,23 +69,13 @@ export default Component.extend({
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
     }
-
-    //jump to step2 if avatar on storage is not the avatar of user
-    var storedCPI = localStorage.getItem("homeModalCPI");
-    var userCPI = xSHA1(this.currentUser.avatar_template);
-    if(storedCPI && userCPI!= storedCPI){
-       //reset to step 2
-       this.set("currentStep1", false);
-      this.set("currentStep2", true);
-      this.set("currentStep3", false);
-      this.set("currentStep4", false);
-    } else {
-      //reset to step 1
-      this.set("currentStep1", true);
-      this.set("currentStep2", false);
-      this.set("currentStep3", false);
-      this.set("currentStep4", false);
-    }
+        
+    //reset to step 1
+    this.set("currentStep1", true);
+    this.set("currentStep2", false);
+    this.set("currentStep3", false);
+    this.set("currentStep4", false);
+    
   },
 
   init() {
@@ -160,6 +150,15 @@ export default Component.extend({
         this.set("emailDigests", data.user.user_option.email_digests);             
 
         this.currentUser.set("can_edit_username", true); 
+
+        //jump to step2 if avatar on storage is not the avatar of user
+        var storedCPI = localStorage.getItem("homeModalCPI");
+        var userCPI = xSHA1(this.currentUser.avatar_template);
+        if(storedCPI && userCPI!= storedCPI){
+          //reset to step 2
+          this.set("currentStep1", false);
+          this.set("currentStep2", true);      
+        }
 
         //the current profile image:
         localStorage.setItem("homeModalCPI", xSHA1(data.user.avatar_template));
