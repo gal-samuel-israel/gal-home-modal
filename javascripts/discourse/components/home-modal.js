@@ -564,6 +564,12 @@ export default Component.extend({
     }
   },
 
+  @action
+  openNewTopicLink(event){
+    event?.preventDefault();
+    window.open('/new-topic?category=ask-the-community', '_blank');    
+  },
+
   /* Test actions */
   @action
   testAction(event){
