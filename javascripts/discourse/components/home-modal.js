@@ -69,11 +69,22 @@ export default Component.extend({
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
     }
-    //reset to step 1
-    this.set("currentStep1", true);
-    this.set("currentStep2", false);
-    this.set("currentStep3", false);
-    this.set("currentStep4", false);
+
+    var storedCPI = JSON.parse(localStorage.getItem("homeModalCPI"));
+    var userCPI = xSHA1(this.currentUser.avatar_template);
+    if(homeModalCPI && userCPI!= storedCPI){
+       //reset to step 2
+       this.set("currentStep1", false);
+      this.set("currentStep2", true);
+      this.set("currentStep3", false);
+      this.set("currentStep4", false);
+    } else {
+      //reset to step 1
+      this.set("currentStep1", true);
+      this.set("currentStep2", false);
+      this.set("currentStep3", false);
+      this.set("currentStep4", false);
+    }
   },
 
   init() {
