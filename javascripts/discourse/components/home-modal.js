@@ -156,8 +156,7 @@ export default Component.extend({
         var userCPI = xMD5(this.currentUser.avatar_template);
         if(storedCPI && userCPI!= storedCPI){
           //reset to step 2
-          this.set("currentStep1", false);
-          this.set("currentStep2", true);      
+          this.handleStep1NextButton();     
         }
 
         //the current profile image:
