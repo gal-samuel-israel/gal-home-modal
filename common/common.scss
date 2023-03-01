@@ -264,9 +264,7 @@
           vertical-align: text-bottom;
           margin-bottom: 0 !important;
         }
-        .d-editor-preview-wrapper {
-          margin: 0.5em 0.6em !important;
-        }
+        .d-editor-preview-wrapper { margin: 0.1em 0 0 0.6em !important; max-height: 70px; }
 
         .user-profile-avatar {
           margin-bottom: 0.5em;
