@@ -31,7 +31,7 @@
         border-top-left-radius: 1em;
 
         $brand-color: #9acd32; /*var(--tertiary-hover)*/;
-        $body-color: #999;
+        $body-color: var(--tertiary-low);
 
         h1{
           margin: 0.5em auto 0 auto;
