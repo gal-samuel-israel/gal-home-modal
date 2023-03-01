@@ -44,100 +44,111 @@
                
               
                 <div class="change-personal-info-wrapper">
-                  
-                  <div class="control-group user-name">
-                    <label class="control-label">Your Username</label>
-                    {{#if this.userNameEditing}}                  
-                      
-                      <form class="form-horizontal">
-                        <div class="row">
-                          <div class="col-username">
+                  <div class="row-wrap-1">
+                      <div class="col-wrap">
+                        <div class="control-group user-name">
+                          <label class="control-label">Your Username</label>
+                          {{#if this.userNameEditing}}                  
                             
-                              <Input
-                                {{on "input" this.onUsernameInput}}
-                                @value={{this.newUsername}}
-                                maxlength={{this.maxUsernameLength}}
-                                class="input-xxlarge username-preference__input"
-                              />
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <div class="col-username">
+                                  
+                                    <Input
+                                      {{on "input" this.onUsernameInput}}
+                                      @value={{this.newUsername}}
+                                      maxlength={{this.maxUsernameLength}}
+                                      class="input-xxlarge username-preference__input"
+                                    />
 
-                              <div class="instructions" aria-live="polite">
-                                <p>
-                                  {{#if this.userNameTaken}}
-                                    Username already taken!
-                                  {{/if}}
-                                  <span>{{this.errorMessage}}</span>
-                                </p>
+                                    <div class="instructions" aria-live="polite">
+                                      <p>
+                                        {{#if this.userNameTaken}}
+                                          Username already taken!
+                                        {{/if}}
+                                        <span>{{this.errorMessage}}</span>
+                                      </p>
+                                    </div>
+                                  
+                                </div>
+                                <div class="col-username-controls">
+                                  
+                                    <DButton
+                                      @action={{this.changeUsername}}
+                                      @type="submit"
+                                      @disabled={{this.saveDisabled}}                          
+                                      @translatedLabel="Save"
+                                      class="btn-primary username-preference__submit"
+                                    />
+
+                                    <DModalCancel @close={{this.toggleUsernameEditing}} />
+
+                                    {{#if this.saved}}Saved{{/if}}
+                                  
+                                </div>
                               </div>
+                            </form>
+                          {{else}}
                             
+                              <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
+
+                              {{#if this.currentUser.can_edit_username}}
+                                <DButton
+                                  @action={{"toggleUsernameEditing"}}
+                                  @actionParam={{this.currentUser}}
+                                  @icon="pencil-alt"
+                                  @translatedTitle="Edit"
+                                  @class="btn-default pad-right"
+                                />
+                              {{/if}}
+                            
+
+                              {{#if this.siteSettings.enable_mentions}}
+                                <div class="instructions">
+                                  People can mention you as @{{this.currentUser.username}}
+                                </div>
+                              {{/if}}
+                          
+                          {{/if}}
+                      </div><!-- end col-wrap -->
+
+                      <div class="col-wrap">
+                          <div class="control-group pref-name">
+                              <label class="control-label">Your Full Name <span class="instructions">(optional)</span></label>
+                              <div class="controls">            
+                                <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
+                              </div>                    
                           </div>
-                          <div class="col-username-controls">
-                            
+                      </div><!-- end col-wrap -->
+
+                  </div><!-- end row-wrap -->
+
+                  <div class="row-wrap-2">
+                      <div class="col-wrap">
+                          <div class="control-group pref-avatar">
+                              <label class="control-label">Your Avatar</label>
+                              <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
+                                <UserProfileAvatar @user={{this.currentUser}} />
+                              </div>
                               <DButton
-                                @action={{this.changeUsername}}
-                                @type="submit"
-                                @disabled={{this.saveDisabled}}                          
-                                @translatedLabel="Save"
-                                class="btn-primary username-preference__submit"
-                              />
-
-                              <DModalCancel @close={{this.toggleUsernameEditing}} />
-
-                              {{#if this.saved}}Saved{{/if}}
-                            
+                                @class="btn-default pad-right"
+                                @icon="pencil-alt"
+                                @action={{"showAvatarSelector"}}
+                                @actionParam={{this.currentUser}}
+                                @translatedLabel="Change your Avatar" />
                           </div>
-                        </div>
-                      </form>
-                    {{else}}
-                      
-                        <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
+                      </div><!-- end col-wrap -->
 
-                        {{#if this.currentUser.can_edit_username}}
-                          <DButton
-                            @action={{"toggleUsernameEditing"}}
-                            @actionParam={{this.currentUser}}
-                            @icon="pencil-alt"
-                            @translatedTitle="Edit"
-                            @class="btn-default pad-right"
-                          />
-                        {{/if}}
-                      
-
-                        {{#if this.siteSettings.enable_mentions}}
-                          <div class="instructions">
-                            People can mention you as @{{this.currentUser.username}}
+                      <div class="col-wrap">
+                          <div class="control-group pref-bio">
+                              <label class="control-label">Your personal bio <span class="instructions">(Let us know something about you)</span></label>
+                              <div class="controls bio-composer input-xxlarge">
+                                <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
+                              </div>
                           </div>
-                        {{/if}}
-                    
-                    {{/if}}
-                  </div>
+                      </div><!-- end col-wrap -->
 
-                  <div class="control-group pref-name">
-                    <label class="control-label">Your Full Name <span class="instructions">(optional)</span></label>
-                    <div class="controls">            
-                      <TextField @value={{this.newNameInput}} @classNames="input-xlarge" @maxlength="255" />             
-                    </div>                    
-                  </div>
-            
-                  <div class="control-group pref-avatar">
-                    <label class="control-label">Your Avatar</label>
-                    <div aria-label={{this.currentUser.name}} class="avatar-img-wrapper">
-                      <UserProfileAvatar @user={{this.currentUser}} />
-                    </div>
-                    <DButton
-                      @class="btn-default pad-right"
-                      @icon="pencil-alt"
-                      @action={{"showAvatarSelector"}}
-                      @actionParam={{this.currentUser}}
-                      @translatedLabel="Change your Avatar" />
-                  </div>
-                  
-                  <div class="control-group pref-bio">
-                    <label class="control-label">Your personal bio <span class="instructions">(Let us know something about you)</span></label>
-                    <div class="controls bio-composer input-xxlarge">
-                      <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
-                    </div>
-                  </div>
-
+                  </div><!-- end row-wrap -->
               </div>
 
               <div class="next-button-wrapper">
