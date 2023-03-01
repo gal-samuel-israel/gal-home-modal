@@ -237,30 +237,31 @@
             {{/if}}            
           </div>      
         </div>  
-
-        <div class="modal-footer">
-            <div class="hide-this-wrapper">
-              <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Don't show this next time.
-            </div>
-            {{#if this.debugFooter}}  
-             <div class="break"></div> <!-- break -->      
-              <a href {{on "click" this.testAction}}>Some Link</a>
-              <div class="break"></div> <!-- break -->
-              <a href {{on "click" this.testAction}}>TestAction</a>               
+        {{#if this.showHideThisBox}} 
+          <div class="modal-footer">
+              <div class="hide-this-wrapper">
+                <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Don't show this next time.
+              </div>
+              {{#if this.debugFooter}}  
+              <div class="break"></div> <!-- break -->      
+                <a href {{on "click" this.testAction}}>Some Link</a>
                 <div class="break"></div> <!-- break -->
-                <div class="debug">
-                  hideModalNextTime: 
-                    {{#if this.hideModalNextTime}}
-                    True
-                    {{else}}
-                    False
-                    {{/if}}
-                    <div class="break"></div> <!-- break -->
-                    {{this.newBioRawInput}}
-                    <div class="break"></div> <!-- break -->
-                </div>
-            {{/if}}
-        </div>
+                <a href {{on "click" this.testAction}}>TestAction</a>               
+                  <div class="break"></div> <!-- break -->
+                  <div class="debug">
+                    hideModalNextTime: 
+                      {{#if this.hideModalNextTime}}
+                      True
+                      {{else}}
+                      False
+                      {{/if}}
+                      <div class="break"></div> <!-- break -->
+                      {{this.newBioRawInput}}
+                      <div class="break"></div> <!-- break -->
+                  </div>
+              {{/if}}
+          </div>
+        {{/if}}
       </div> 
     </div>
   </div>
