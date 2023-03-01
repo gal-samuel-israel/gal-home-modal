@@ -68,7 +68,7 @@
             text-align: center;
             margin: 0 auto .7em auto;
             border-radius: 50%;
-            background-color: white;
+            background-color: #9acd32;
             z-index: 1;
             color: var(--tertiary-hover);
             font-weight: bold;
@@ -91,6 +91,7 @@
           }
           .progress-steps li.active:before {
             border-color: $brand-color;
+            background-color: white;
           }
           .progress-steps li.active:after {
             background-color: $brand-color;
