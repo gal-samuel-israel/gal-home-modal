@@ -16,7 +16,7 @@
     .modal-pop {
       background-color: #fefefe;
       margin: 15% auto; /* 15% from the top and centered */      
-      border: 1px solid #888;
+      /*border: 1px solid #888;*/
       width: 800px;
       border-radius: 1em;
 
@@ -165,7 +165,23 @@
               margin-bottom: 1em;
             }
           }
+
           //step-2
+          .row-wrap-1 { display:grid; column-gap: 50px; grid-template-columns: 50% auto;}
+          .row-wrap-2 { display:grid; column-gap: 50px; grid-template-columns: 20% auto; margin-top:1em; padding-top:1em; border-top:1px solid #999;}
+          .col-wrap { display:block; }
+          .col-wrap .input-xxlarge{width:auto;}
+          .col-wrap .instructions {clear:both;display: block !important;margin-top: 0.4em !important;}
+          .col-wrap input { border-radius:2.2em}
+          .col-wrap label.control-label {font-weight:bold; margin-bottom:0.5em}
+          .col-wrap label.control-label span.instructions {font-weight:normal; padding-left:0.5em}
+          .col-wrap .btn-icon-text {border-radius:2.3em;width:2em;}
+          .col-wrap .btn-icon-text svg{margin:0;color: white;}
+          .col-wrap .btn-icon-text:hover svg{color: white !important;}
+          .col-wrap img.avatar {max-width: 108px; max-height: 108px;}
+          .col-wrap .control-group.pref-avatar {position:relative;}
+          .col-wrap .control-group.pref-avatar button {position:absolute;top: 108px;font-size: 0.9em !important;background-color: yellowgreen;}
+
           .control-group.user-name .form-horizontal {
             margin: 0;
             padding: 0;
