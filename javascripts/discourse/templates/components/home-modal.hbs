@@ -47,69 +47,70 @@
                   <div class="row-wrap-1">
                       <div class="col-wrap">
                         <div class="control-group user-name">
-                          <label class="control-label">Your Username</label>
-                          {{#if this.userNameEditing}}                  
-                            
-                            <form class="form-horizontal">
-                              <div class="row">
-                                <div class="col-username">
-                                  
-                                    <Input
-                                      {{on "input" this.onUsernameInput}}
-                                      @value={{this.newUsername}}
-                                      maxlength={{this.maxUsernameLength}}
-                                      class="input-xxlarge username-preference__input"
-                                    />
+                              <label class="control-label">Your Username</label>
+                              {{#if this.userNameEditing}}                  
+                                
+                                <form class="form-horizontal">
+                                  <div class="row">
+                                    <div class="col-username">
+                                      
+                                        <Input
+                                          {{on "input" this.onUsernameInput}}
+                                          @value={{this.newUsername}}
+                                          maxlength={{this.maxUsernameLength}}
+                                          class="input-xxlarge username-preference__input"
+                                        />
 
-                                    <div class="instructions" aria-live="polite">
-                                      <p>
-                                        {{#if this.userNameTaken}}
-                                          Username already taken!
-                                        {{/if}}
-                                        <span>{{this.errorMessage}}</span>
-                                      </p>
+                                        <div class="instructions" aria-live="polite">
+                                          <p>
+                                            {{#if this.userNameTaken}}
+                                              Username already taken!
+                                            {{/if}}
+                                            <span>{{this.errorMessage}}</span>
+                                          </p>
+                                        </div>
+                                      
                                     </div>
-                                  
-                                </div>
-                                <div class="col-username-controls">
-                                  
+                                    <div class="col-username-controls">
+                                      
+                                        <DButton
+                                          @action={{this.changeUsername}}
+                                          @type="submit"
+                                          @disabled={{this.saveDisabled}}                          
+                                          @translatedLabel="Save"
+                                          class="btn-primary username-preference__submit"
+                                        />
+
+                                        <DModalCancel @close={{this.toggleUsernameEditing}} />
+
+                                        {{#if this.saved}}Saved{{/if}}
+                                      
+                                    </div>
+                                  </div>
+                                </form>
+                              {{else}}
+                                
+                                  <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
+
+                                  {{#if this.currentUser.can_edit_username}}
                                     <DButton
-                                      @action={{this.changeUsername}}
-                                      @type="submit"
-                                      @disabled={{this.saveDisabled}}                          
-                                      @translatedLabel="Save"
-                                      class="btn-primary username-preference__submit"
+                                      @action={{"toggleUsernameEditing"}}
+                                      @actionParam={{this.currentUser}}
+                                      @icon="pencil-alt"
+                                      @translatedTitle="Edit"
+                                      @class="btn-default pad-right"
                                     />
+                                  {{/if}}
+                                
 
-                                    <DModalCancel @close={{this.toggleUsernameEditing}} />
-
-                                    {{#if this.saved}}Saved{{/if}}
-                                  
-                                </div>
-                              </div>
-                            </form>
-                          {{else}}
-                            
-                              <span class="static username-preference__current-username">{{this.currentUser.username}}</span>
-
-                              {{#if this.currentUser.can_edit_username}}
-                                <DButton
-                                  @action={{"toggleUsernameEditing"}}
-                                  @actionParam={{this.currentUser}}
-                                  @icon="pencil-alt"
-                                  @translatedTitle="Edit"
-                                  @class="btn-default pad-right"
-                                />
+                                  {{#if this.siteSettings.enable_mentions}}
+                                    <div class="instructions">
+                                      People can mention you as @{{this.currentUser.username}}
+                                    </div>
+                                  {{/if}}
+                              
                               {{/if}}
-                            
-
-                              {{#if this.siteSettings.enable_mentions}}
-                                <div class="instructions">
-                                  People can mention you as @{{this.currentUser.username}}
-                                </div>
-                              {{/if}}
-                          
-                          {{/if}}
+                          </div>
                       </div><!-- end col-wrap -->
 
                       <div class="col-wrap">
