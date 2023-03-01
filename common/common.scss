@@ -176,11 +176,12 @@
           .col-wrap label.control-label {font-weight:bold; margin-bottom:0.5em}
           .col-wrap label.control-label span.instructions {font-weight:normal; padding-left:0.5em}
           .col-wrap .btn-icon-text {border-radius:2.3em;width:2em;}
-          .col-wrap .btn-icon-text svg{margin:0;color: white !important;}
-          .col-wrap .btn-icon-text:hover svg{color: white !important;}
+          .col-wrap .btn-icon-text svg{margin:0;color: white !important;}          
+          .col-wrap .control-group.pref-avatar button svg {color:white;}
+          .col-wrap .control-group.pref-avatar button:hover svg {color:white !important;}
           .col-wrap img.avatar {max-width: 108px; max-height: 108px;}
           .col-wrap .control-group.pref-avatar {position:relative;}
-          .col-wrap .control-group.pref-avatar button {position:absolute;top: 108px;font-size: 0.9em !important;background-color: yellowgreen;}
+          .col-wrap .control-group.pref-avatar button {position:absolute;top: 103px;font-size: 0.9em !important;background-color: yellowgreen;}
 
           .control-group.user-name .form-horizontal {
             margin: 0;
