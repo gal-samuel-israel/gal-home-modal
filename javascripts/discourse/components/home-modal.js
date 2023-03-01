@@ -376,6 +376,9 @@ export default Component.extend({
   handleStep1NextButton(event){
     event?.preventDefault();
 
+    //agree in step 1 is now acting as the checkbox:
+    localStorage.setItem("homeModalHide", true);
+
     //prep user info in step 2
     this.set("newUsername", this.currentUser.username);
     this.set("userNameEditing", false);
