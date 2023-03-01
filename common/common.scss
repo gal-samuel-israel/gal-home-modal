@@ -153,8 +153,8 @@
               flex-basis: 380px;
             }
             .col-title {
-              color: var(--tertiary);
-              font-size: 1.1rem;
+              color: var(--primary);/*var(--tertiary);*/
+              font-size: 1rem;
               font-weight: bold;
             }
             .col-check-box{
