@@ -21,7 +21,7 @@
       border-radius: 1em;
 
       .modal-title {        
-        background-color: var(--tertiary-low);
+        background-color: var(--tertiary-hover);/*var(--tertiary-low); //light blue*/
         display: flex;
         justify-content: center;
         align-content: center;
@@ -30,12 +30,12 @@
         border-top-right-radius: 1em;
         border-top-left-radius: 1em;
 
-        $brand-color: var(--tertiary-hover);
+        $brand-color: #9acd32; /*var(--tertiary-hover)*/;
         $body-color: #999;
 
         h1{
           margin: 0.5em auto 0 auto;
-          color:var(--tertiary-hover);
+          color: white; /*var(--tertiary-hover) //dark blue*/;
         }
 
         .progress-container {
@@ -43,6 +43,7 @@
             margin: 0 auto 1em auto; 
           }
           .progress-steps {
+            margin: 1em 0 0 0;
             counter-reset: step;
           }
           .progress-steps li {
@@ -69,6 +70,8 @@
             border-radius: 50%;
             background-color: white;
             z-index: 1;
+            color: var(--tertiary-hover);
+            font-weight: bold;
           }
           .progress-steps li:after {
             width: 90%;
@@ -107,6 +110,7 @@
         overflow:auto;
         
         .btn-primary{
+          background: yellowgreen;
           padding: 0.5em 1em 0.65em 1em;
         }
         h2 {
@@ -126,9 +130,9 @@
           border-radius:1em;
           */
           h3 {
-            text-align:center;
-            color:var(--tertiary);
-            font-size: 1.5em;
+            text-align:left;
+            color:var(--tertiary-hover);/*var(--tertiary);*/
+            font-size: 1.3em;
             margin-bottom: 0.65em;
           }
           .btn-default{

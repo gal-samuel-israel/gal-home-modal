@@ -21,8 +21,8 @@
               <div id="step-1" class="step">
                   <h3>{{theme-i18n "steps_titles.step_1_title"}}</h3>
                   <p>Thanks for joining AlgoSec Community. We are so happy to have you here!</p>
-                  <p>This is the place where you can find solutions, share ideas, and discuss best practices.</p>
-                  <p>First, make sure to checkout the <a href="/t/algosec-community-guidelines" target="_blank">AlgoSec Community Guidelines</a> as it contains important information for getting started and help you set in this Community</p>
+                  <p>This is the place where you can find solutions, share ideas, and discuss best practices.<br/>
+                  First, make sure to checkout the <a href="/t/algosec-community-guidelines" target="_blank">AlgoSec Community Guidelines</a> as it contains important information for getting started and help you set in this Community</p>
                   <p>Have a question for AlgoSec? Use the search bar first, as a similar question and the answer may already be here.</p>
                   <p>To ask a new question, simply click the 
                     <DButton @class="btn-default" @translatedLabel="+ New Topic" @action={{action "openNewTopicLink"}}/>
@@ -32,7 +32,7 @@
                   AlgoSec Community <img class="as-ico-img" src={{theme-setting 'theme_uploads.img_ico_algosec_community'}} /></p>
 
                   <div class="next-button-wrapper">
-                    <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Next >>" />
+                    <DButton @class={{theme-setting "button_style"}} @action={{action "handleStep1NextButton"}} @translatedLabel="Agree & Continue" />
                   </div>
                   
               </div>
