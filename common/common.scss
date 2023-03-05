@@ -166,6 +166,13 @@
             }
           }
 
+          //step-1
+          div#step-1 { 
+            padding-left: 0.4em; 
+            p{width: 91%;}
+          }
+
+
           //step-2
           .row-wrap-1 { display:grid; column-gap: 50px; grid-template-columns: 50% auto;}
           .row-wrap-2 { display:grid; column-gap: 50px; grid-template-columns: 15% auto; margin-top:1em; padding-top:1em; border-top:1px solid #999;}
