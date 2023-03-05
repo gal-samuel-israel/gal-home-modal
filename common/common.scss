@@ -167,9 +167,9 @@
           }
 
           //step-1
-          div#step-1 { 
+          #step-1.step { 
             padding-left: 0.4em; 
-            p{width: 91%;}
+            p { width: 91% !important; }
           }
 
 
