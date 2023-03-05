@@ -164,14 +164,7 @@
               flex-basis: auto;
               margin-bottom: 1em;
             }
-          }
-
-          //step-1
-          #step-1.step { 
-            padding-left: 0.4em; 
-            p { width: 91% !important; }
-          }
-
+          }          
 
           //step-2
           .row-wrap-1 { display:grid; column-gap: 50px; grid-template-columns: 50% auto;}
@@ -255,6 +248,11 @@
             }
           
         }
+
+        //step-1
+        #step-1.step {padding-left: 0.4em;}
+        #step-1.step p{ width:90% !important }
+        
         .instructions {
           font-size: 0.8rem;
           color: #999;
