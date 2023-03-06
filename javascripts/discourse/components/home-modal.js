@@ -98,9 +98,7 @@ export default Component.extend({
     if(this.debug4All){ this.debug = true; }
 
     if(this.debug){
-      console.log('component init start:');
-      console.log('Mobile.isMobileDevice:', Mobile.isMobileDevice);
-      console.log('Mobile.mobileView:', Mobile.mobileView);
+      console.log('component init start:');      
     }
 
 
@@ -182,8 +180,11 @@ export default Component.extend({
       console.log('discourseComputed displayForRoute');
       console.log('currentRouteName: '+ currentRouteName);
       console.log('defaultHomepage: '+ defaultHomepage());
+      console.log('Mobile.isMobileDevice:', Mobile.isMobileDevice);
+      console.log('Mobile.mobileView:', Mobile.mobileView);
     }  
-    return currentRouteName === `discovery.${defaultHomepage()}`;    
+    var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
+    return !isMobile && (currentRouteName === `discovery.${defaultHomepage()}`);    
   },
 
   @discourseComputed("currentUser")
