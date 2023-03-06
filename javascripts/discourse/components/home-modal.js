@@ -61,6 +61,9 @@ export default Component.extend({
   currentStep3: null,
   currentStep4: null,
 
+  //step 3 email notifications checkbox
+  showEmailNotificationsCheckBox: null,
+
   currentFocusableElements: [],
 
   modalStateCheck(){
@@ -111,6 +114,7 @@ export default Component.extend({
       return false;
     }
 
+    this.showEmailNotificationsCheckBox = settings?.enable_email_notifications_check_box;
 
     this.saveAttrNamesProfile = [
       "name",
@@ -148,7 +152,9 @@ export default Component.extend({
         });
         
         //prep email prefs
-        this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
+        if(this.showEmailNotificationsCheckBox){
+          this.set("emailLevel", data.user.user_option.email_level === 0 ? true : false);
+        }
         this.set("emailDigests", data.user.user_option.email_digests);             
 
         this.currentUser.set("can_edit_username", true); 
@@ -500,11 +506,16 @@ export default Component.extend({
 
     this.set("saved", false);
     
-    this.currentUser.setProperties({
-      'user_option.email_level': (this.emailLevel) ? 0 : 2, //0 is always, 2 is never
+    this.currentUser.setProperties({     
       'user_option.email_digests': this.emailDigests,
       'user_option.digest_after_minutes': 10080, //weekly
     });
+
+    if(this.showEmailNotificationsCheckBox){
+      this.currentUser.setProperties({
+        'user_option.email_level': (this.emailLevel) ? 0 : 2, //0 is always, 2 is never        
+      });
+    }
 
     return this.currentUser
       .save(this.saveAttrNamesEmail)

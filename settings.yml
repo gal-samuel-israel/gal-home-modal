@@ -29,6 +29,10 @@ button_style:
   choices:
     - btn-default
   description: "btn-primary is a blue (tertiary). btn-default is a grey (primary-low)."
+enable_email_notifications_check_box:
+  type: bool
+  default: false
+  description: "Enable to show Email Notifications checkbox in Step 3 of modal"
 #button_icon:
   #type: string
   #default: "user"

@@ -167,17 +167,19 @@
               <h3>{{theme-i18n "steps_titles.step_3_title"}}</h3>
               <p>Email notifications are the best way to keep track of activity on the items you follow, and for getting Community Announcements.</p>
 
-              <div class="row">
-                    <div class="col-title">Email Notifications</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-check-box">
-                      <Input @type="checkbox" @checked={{this.emailLevel}} />
+                  {{#if this.showEmailNotificationsCheckBox}}
+                    <div class="row">
+                          <div class="col-title">Email Notifications</div>
                     </div>
-                    <div class="col-description">
-                      Email me when I am quoted, replied to, my @username is mentioned, or when there is new activity in my watched categories, tags or topics
+                    <div class="row">
+                      <div class="col-check-box">
+                        <Input @type="checkbox" @checked={{this.emailLevel}} />
+                      </div>
+                      <div class="col-description">
+                        Email me when I am quoted, replied to, my @username is mentioned, or when there is new activity in my watched categories, tags or topics
+                      </div>
                     </div>
-                  </div>
+                  {{/if}}
 
                   <div class="row">
                     <div class="col-title">Weekly Summery</div>
