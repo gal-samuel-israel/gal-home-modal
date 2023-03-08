@@ -51,7 +51,7 @@ export default apiInitializer("0.8", (api) => {
             href: "",
             className: "first-step-link",
             rawLabel: "First Step",
-            attributes: {"action": (e)=>{ console.log('action:', e); }}
+            attributes: {"onClick": `function(this){ console.log('onclick:', this); }`}
           }
         });
       }
