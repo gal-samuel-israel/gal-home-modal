@@ -47,7 +47,7 @@ export default apiInitializer("0.8", (api) => {
       //add hamburger custom link that will activate the modal
       if(debug){
         //did not work // mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
-        /*
+        
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
@@ -60,12 +60,14 @@ export default apiInitializer("0.8", (api) => {
           return {
             //href: "https://community.algosec.com/?force=1st-step",
             //route: `discovery.${defaultHomepage()}`,
-            route: 'firstStepModal',
+            //mapRoutes did not work//route: 'firstStepModal',
+            href: "",
             className: "first-step-link",
             rawLabel: "First Step",            
           }
         });
-        */
+        
+       /* NOT WORKING
         console.log('testing api.addCommunitySectionLink');
         api.addCommunitySectionLink(
           {
@@ -75,6 +77,7 @@ export default apiInitializer("0.8", (api) => {
             text: "First Step"
             }
         );
+        */
       }
 
     }
