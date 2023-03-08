@@ -47,6 +47,11 @@ export default apiInitializer("0.8", (api) => {
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
+          helper.widget.appEvents.on("page:changed", () => {
+            //helper.widget.scheduleRerender();
+            console.log('event page:changed');
+          });
+
           return {
             href: "/?force=1st-step",
             className: "first-step-link",
