@@ -1,4 +1,5 @@
 import { apiInitializer } from "discourse/lib/api";
+import { defaultHomepage } from "discourse/lib/utilities";
 
 export default apiInitializer("0.8", (api) => {
 
@@ -54,7 +55,8 @@ export default apiInitializer("0.8", (api) => {
           });
           */
           return {
-            href: "/?force=1st-step",
+            //href: "/?force=1st-step",
+            route: `discovery.${defaultHomepage()}/?force=1st-step`,
             className: "first-step-link",
             rawLabel: "First Step",            
           }
