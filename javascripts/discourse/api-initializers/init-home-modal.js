@@ -49,7 +49,7 @@ export default apiInitializer("0.8", (api) => {
           return {
             className: "first-step-link",
             rawLabel: "First Step",
-            click: () => { console.log('Hi'); },
+            action: () => { console.log('Hi'); },
           }
         });
       }
