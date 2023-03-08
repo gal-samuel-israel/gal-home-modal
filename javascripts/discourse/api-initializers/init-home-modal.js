@@ -46,17 +46,17 @@ export default apiInitializer("0.8", (api) => {
 
       //add hamburger custom link that will activate the modal
       if(debug){
-        mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
-
+        //did not work // mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
+        /*
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
-          /*
-          helper.widget.appEvents.on("page:changed", (data) => {
-            console.log('referrer:', document.referrer);
-            if(data.url==='/?force=1st-step'){window.location.reload();}
-          });
-          */
+          
+          //helper.widget.appEvents.on("page:changed", (data) => {
+          //  console.log('referrer:', document.referrer);
+          //  if(data.url==='/?force=1st-step'){window.location.reload();}
+          //});
+          
           return {
             //href: "https://community.algosec.com/?force=1st-step",
             //route: `discovery.${defaultHomepage()}`,
@@ -65,6 +65,16 @@ export default apiInitializer("0.8", (api) => {
             rawLabel: "First Step",            
           }
         });
+        */
+        console.log('testing api.addCommunitySectionLink');
+        api.addCommunitySectionLink(
+          {
+            name: "first-step-link",
+            //route: "discovery.unread",
+            title: "First Step Onboarding Wizard",
+            text: "First Step"
+            }
+        );
       }
 
     }
