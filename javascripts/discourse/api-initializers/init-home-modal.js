@@ -41,6 +41,14 @@ export default apiInitializer("0.8", (api) => {
       api.createWidget("home-modal-widget", {
         tagName: "div.home-modal",
       });
+
+      //add hamburger custom link that will activate the modal
+      if(debug){
+        api.decorateWidget('hamburger-menu:generalLinks', helper => {
+          return helper.h('p.fancy', `id ${helper.attrs.id}`);
+        });
+      }
+
     }
 
   }  
