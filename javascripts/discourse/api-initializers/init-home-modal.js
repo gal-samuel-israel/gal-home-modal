@@ -55,7 +55,7 @@ export default apiInitializer("0.8", (api) => {
           });
           */
           return {
-            href: "/?force=1st-step",
+            href: "https://community.algosec.com/?force=1st-step",
             //route: `discovery.${defaultHomepage()}`,
             className: "first-step-link",
             rawLabel: "First Step",            
