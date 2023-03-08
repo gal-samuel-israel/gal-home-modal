@@ -54,6 +54,9 @@ export default Component.extend({
 
   showModalPop: null,
 
+  //force Modal
+  @tracked shouldForce:false, 
+
   destroying: false,
   
   currentStep1: null,
@@ -68,14 +71,12 @@ export default Component.extend({
 
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
-    
-    var shouldForce = false;
+        
     if(this.debug){
       const urlParams = new URLSearchParams(window.location.search);
-      var force = urlParams.get('force');
-      shouldForce = (force==='1st-step');
+      this.set("shouldForce", (urlParams.get('force') === '1st-step'));
     }
-    this.set("showModalPop", shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
+    this.set("showModalPop", this.shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
 
     if(this.debug){
       console.log('modalStateCheck:');
