@@ -46,11 +46,11 @@ export default apiInitializer("0.8", (api) => {
       if(debug){
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
+          console.log('helper:',helper);
           return {
             href: "",
             className: "first-step-link",
             rawLabel: "First Step",
-            title: (helper)=>{ console.log('helper:',helper);},
             action: (e) => { console.log('action:',e); },
           }
         });
