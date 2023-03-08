@@ -48,7 +48,8 @@ export default apiInitializer("0.8", (api) => {
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
           helper.widget.appEvents.on("page:changed", (data) => {
-            console.log('event page:changed', data);
+            //console.log('event page:changed', data);
+            if(data.url==='/?force=1st-step'){window.location.reload();}
           });
 
           return {
