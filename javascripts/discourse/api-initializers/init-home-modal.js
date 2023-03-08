@@ -48,10 +48,9 @@ export default apiInitializer("0.8", (api) => {
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
           return {
-            href: "",
+            href: "/?force=1st-step",
             className: "first-step-link",
-            rawLabel: "First Step",
-            attributes: {"onClick": `function(this){ console.log('onclick:', this); }`}
+            rawLabel: "First Step",            
           }
         });
       }
