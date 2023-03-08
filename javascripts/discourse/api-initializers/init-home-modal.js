@@ -66,6 +66,10 @@ export default apiInitializer("0.8", (api) => {
             rawLabel: "First Step",            
           }
         });
+
+        api.attachWidgetAction('hamburger-menu:generalLinks','first-step-link-action',(element)=>{
+          console.log('action', element);
+        });
         
        /* NOT WORKING
         console.log('testing api.addCommunitySectionLink');
