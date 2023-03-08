@@ -68,10 +68,13 @@ export default Component.extend({
 
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
-     
-    const urlParams = new URLSearchParams(queryString);
-    var force = urlParams.get('force');
-    var shouldForce = (force==='1st-step');
+    
+    var shouldForce = false;
+    if(this.debug){
+      const urlParams = new URLSearchParams(queryString);
+      force = urlParams.get('force');
+      shouldForce = (force==='1st-step');
+    }
     this.set("showModalPop", shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
 
     if(this.debug){
