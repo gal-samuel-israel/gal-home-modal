@@ -44,7 +44,9 @@ export default apiInitializer("0.8", (api) => {
 
       //add hamburger custom link that will activate the modal
       if(debug){
+        console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', helper => {
+          console.log('helper.attrs:',helper.attrs); 
           return helper.h('p.fancy', `id ${helper.attrs.id}`);
         });
       }
