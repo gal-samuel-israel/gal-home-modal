@@ -72,7 +72,7 @@ export default Component.extend({
     var shouldForce = false;
     if(this.debug){
       const urlParams = new URLSearchParams(window.location.search);
-      force = urlParams.get('force');
+      var force = urlParams.get('force');
       shouldForce = (force==='1st-step');
     }
     this.set("showModalPop", shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
