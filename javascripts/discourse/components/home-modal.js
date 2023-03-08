@@ -68,7 +68,12 @@ export default Component.extend({
 
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
-    this.set("showModalPop", !this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)); 
+     
+    const urlParams = new URLSearchParams(queryString);
+    var force = urlParams.get('force');
+    var shouldForce = (force==='1st-step');
+    this.set("showModalPop", shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
+
     if(this.debug){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
@@ -190,7 +195,8 @@ export default Component.extend({
       console.log('Mobile.mobileView:', Mobile.mobileView);
     }  
     var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
-    return !isMobile && (currentRouteName === `discovery.${defaultHomepage()}`);    
+    var homeRoute = `discovery.${defaultHomepage()}`;    
+    return !isMobile && (currentRouteName === homeRoute);    
   },
 
   @discourseComputed("currentUser")
