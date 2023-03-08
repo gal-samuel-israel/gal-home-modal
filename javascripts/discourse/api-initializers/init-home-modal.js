@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 import { defaultHomepage } from "discourse/lib/utilities";
+import { mapRoutes } from "discourse/mapping-router";
 
 export default apiInitializer("0.8", (api) => {
 
@@ -45,6 +46,8 @@ export default apiInitializer("0.8", (api) => {
 
       //add hamburger custom link that will activate the modal
       if(debug){
+        mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
+
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
@@ -55,8 +58,9 @@ export default apiInitializer("0.8", (api) => {
           });
           */
           return {
-            href: "https://community.algosec.com/?force=1st-step",
+            //href: "https://community.algosec.com/?force=1st-step",
             //route: `discovery.${defaultHomepage()}`,
+            route: 'firstStepModal'
             className: "first-step-link",
             rawLabel: "First Step",            
           }
