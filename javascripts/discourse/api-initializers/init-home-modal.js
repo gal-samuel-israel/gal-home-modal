@@ -47,11 +47,12 @@ export default apiInitializer("0.8", (api) => {
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           //console.log('click', helper);
+          /*
           helper.widget.appEvents.on("page:changed", (data) => {
             console.log('referrer:', document.referrer);
             if(data.url==='/?force=1st-step'){window.location.reload();}
           });
-
+          */
           return {
             href: "/?force=1st-step",
             className: "first-step-link",
