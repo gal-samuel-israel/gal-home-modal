@@ -71,7 +71,7 @@ export default Component.extend({
     
     var shouldForce = false;
     if(this.debug){
-      const urlParams = new URLSearchParams(queryString);
+      const urlParams = new URLSearchParams(window.location.search);
       force = urlParams.get('force');
       shouldForce = (force==='1st-step');
     }
