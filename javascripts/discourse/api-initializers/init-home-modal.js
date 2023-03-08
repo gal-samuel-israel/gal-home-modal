@@ -45,13 +45,13 @@ export default apiInitializer("0.8", (api) => {
       //add hamburger custom link that will activate the modal
       if(debug){
         console.log('testing api.decorateWidget'); 
-        api.decorateWidget('hamburger-menu:generalLinks', () => {
+        api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           return {
             href: "",
             className: "first-step-link",
             rawLabel: "First Step",
+            title: (helper)=>{ console.log('helper:',helper);},
             action: (e) => { console.log('action:',e); },
-            contents: (e) => { console.log('contents:',e); }
           }
         });
       }
