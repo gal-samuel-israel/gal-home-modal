@@ -67,9 +67,11 @@ export default apiInitializer("0.8", (api) => {
           }
         });
 
+        /* //did not change anything
         api.attachWidgetAction('hamburger-menu:generalLinks','first-step-link-action',(element)=>{
           console.log('action', element);
         });
+        */
         
        /* NOT WORKING
         console.log('testing api.addCommunitySectionLink');
