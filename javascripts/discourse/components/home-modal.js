@@ -361,7 +361,9 @@ export default Component.extend({
     }
 
     this.displayChanged();
-    this.refreshTrapFocus();              
+    this.refreshTrapFocus();         
+    
+    this.queueRerender();     
   },
 
   didRender(){
