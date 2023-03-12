@@ -347,7 +347,9 @@ export default Component.extend({
       this.shouldDisplay
     );
 
-    this.modalStateCheck();    
+    this.modalStateCheck();  
+    
+    this.queueRerender();
 
   },
 
