@@ -195,7 +195,7 @@ export default Component.extend({
     if(this.debug){
       console.log('discourseComputed displayForRoute');
       console.log('currentRouteName: '+ currentRouteName);
-      console.log('defaultHomepage: '+ defaultHomepage());
+      //console.log('defaultHomepage: '+ defaultHomepage());
       console.log('Mobile.isMobileDevice:', Mobile.isMobileDevice);
       console.log('Mobile.mobileView:', Mobile.mobileView);
     }  
@@ -375,6 +375,12 @@ export default Component.extend({
     this.refreshTrapFocus();
     //this.progressBarUpdate();
 
+  },
+
+  willRender() {
+    if(this.debug){
+      console.log('willRender');
+    }   
   },
 
   willDestroyElement(element){
