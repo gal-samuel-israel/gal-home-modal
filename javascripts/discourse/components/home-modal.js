@@ -348,8 +348,6 @@ export default Component.extend({
     );
 
     this.modalStateCheck();  
-    
-    this.queueRerender();
 
   },
 
