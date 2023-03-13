@@ -52,7 +52,7 @@ export default apiInitializer("0.8", (api) => {
             }
           }); 
           
-          _firstStepClickHandler = function(event){
+          var _firstStepClickHandler = function(event){
             event.preventDefault();
             console.log('_firstStepClickHandler');
             //helper.widget.appEvents.on("page:changed", (data) => {
