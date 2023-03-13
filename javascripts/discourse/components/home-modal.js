@@ -89,6 +89,15 @@ export default Component.extend({
     
   },
 
+  _firstStepClickHandler: (event)=>{
+    event.preventDefault();
+    console.log('_firstStepClickHandler');
+    //helper.widget.appEvents.on("page:changed", (data) => {
+    //  console.log('referrer:', document.referrer);
+    //  if(data.url==='/?force=1st-step'){window.location.reload();}
+    //});
+  },
+  
   init() {
 
     this._super(...arguments);
@@ -176,6 +185,12 @@ export default Component.extend({
         //the current profile image:
         localStorage.setItem("homeModalCPI", xMD5(data.user.avatar_template));
 
+        if(this.debug){
+          // add click event to the hamburger menu 
+          document
+            .querySelector('.first-step-link')
+            .addEventListener("click", this._firstStepClickHandler);
+        }
         if(this.debug){     
           console.log('user info:');
           console.log(this.currentUser);          
@@ -349,16 +364,7 @@ export default Component.extend({
 
     this.modalStateCheck();  
 
-  },
-
-  _firstStepClickHandler: (event)=>{
-    event.preventDefault();
-    console.log('_firstStepClickHandler');
-    //helper.widget.appEvents.on("page:changed", (data) => {
-    //  console.log('referrer:', document.referrer);
-    //  if(data.url==='/?force=1st-step'){window.location.reload();}
-    //});
-  },
+  },  
 
   didInsertElement() {      
     this._super(...arguments);
@@ -366,10 +372,7 @@ export default Component.extend({
     if(this.destroying){return;}
 
     if(this.debug){
-      console.log('didInsertElement');
-      document
-      .querySelector('.first-step-link')
-      .addEventListener("click", this._firstStepClickHandler);
+      console.log('didInsertElement');      
     }
 
     this.displayChanged();
