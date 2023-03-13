@@ -283,8 +283,7 @@ export default Component.extend({
   },
   
   //focus trap
-  trapFocus(element) {
-    if(!element)
+  trapFocus(element) {    
     var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"]');
     var newSet = false;
     if(!this.nodeListsAreEqual(this.currentFocusableElements, focusableEls)){
