@@ -49,14 +49,14 @@ export default apiInitializer("0.8", (api) => {
         
         console.log('testing api.decorateWidget'); 
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
-          console.log('helper:', helper);                              
+          //console.log('helper:', helper);                              
           return {
             href: "//?force=1st-step",            
             //mapRoutes did not work//route: 'firstStepModal',
             //href: "",
             className: "first-step-link",
             rawLabel: "First Step",
-            attrs: {
+            attributes: {
               action: (event)=>{ console.log('event', event);},
             },          
           }
