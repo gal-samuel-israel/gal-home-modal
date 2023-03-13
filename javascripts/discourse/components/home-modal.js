@@ -389,10 +389,6 @@ export default Component.extend({
     if(this.debug){
       console.log('willDestroyElement:');
       console.log(element);
-
-      document
-      .querySelector('.first-step-link')
-      .removeEventListener("click", this._firstStepClickHandler);
     }  
     element.removeEventListener("keydown", this.handleTabKeyStrokes, true);
 
