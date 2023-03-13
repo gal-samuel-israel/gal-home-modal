@@ -51,7 +51,7 @@ export default apiInitializer("0.8", (api) => {
         api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
           console.log('helper:', helper);                              
           return {
-            href: "https://community.algosec.com/?force=1st-step#force",            
+            href: "//?force=1st-step",            
             //mapRoutes did not work//route: 'firstStepModal',
             //href: "",
             className: "first-step-link",
