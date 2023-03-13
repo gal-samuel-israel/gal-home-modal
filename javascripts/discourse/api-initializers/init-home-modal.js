@@ -55,7 +55,10 @@ export default apiInitializer("0.8", (api) => {
             //mapRoutes did not work//route: 'firstStepModal',
             //href: "",
             className: "first-step-link",
-            rawLabel: "First Step",            
+            rawLabel: "First Step",
+            attrs: {
+              action: (event)=>{ console.log('event', event);},
+            },          
           }
         });                         
         
