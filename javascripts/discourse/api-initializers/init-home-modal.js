@@ -34,6 +34,25 @@ export default apiInitializer("0.8", (api) => {
     blockModal = (showOnlyToAdmins && !isAdmin);
 
     if(!blockModal){
+
+      //add hamburger custom link that will be used force the modal appearance 
+      if(debug){
+        //did not work // mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
+        
+        console.log('testing api.decorateWidget'); 
+        api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
+          //console.log('click', helper);                              
+          return {
+            href: "https://community.algosec.com/?force=1st-step",
+            //route: `discovery.${defaultHomepage()}`,
+            //mapRoutes did not work//route: 'firstStepModal',
+            //href: "",
+            className: "first-step-link",
+            rawLabel: "First Step",            
+          }
+        });        
+      }
+
       api.registerConnectorClass("above-site-header", "home-modal", {
         shouldRender() {
           return true;
@@ -43,48 +62,7 @@ export default apiInitializer("0.8", (api) => {
       api.createWidget("home-modal-widget", {
         tagName: "div.home-modal",
       });
-
-      //add hamburger custom link that will activate the modal
-      if(debug){
-        //did not work // mapRoutes('firstStepModal', (params)=>{ console.log('shoot', params);});
-        
-        console.log('testing api.decorateWidget'); 
-        api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
-          //console.log('click', helper);
-          
-          //helper.widget.appEvents.on("page:changed", (data) => {
-          //  console.log('referrer:', document.referrer);
-          //  if(data.url==='/?force=1st-step'){window.location.reload();}
-          //});
-          
-          return {
-            href: "https://community.algosec.com/?force=1st-step",
-            //route: `discovery.${defaultHomepage()}`,
-            //mapRoutes did not work//route: 'firstStepModal',
-            //href: "",
-            className: "first-step-link",
-            rawLabel: "First Step",            
-          }
-        });
-
-        /* //did not change anything
-        api.attachWidgetAction('hamburger-menu:generalLinks','first-step-link-action',(element)=>{
-          console.log('action', element);
-        });
-        */
-        
-       /* NOT WORKING
-        console.log('testing api.addCommunitySectionLink');
-        api.addCommunitySectionLink(
-          {
-            name: "first-step-link",
-            //route: "discovery.unread",
-            title: "First Step Onboarding Wizard",
-            text: "First Step"
-            }
-        );
-        */
-      }
+      
 
     }
 

@@ -354,8 +354,12 @@ export default Component.extend({
   _firstStepClickHandler: (event)=>{
     event.preventDefault();
     console.log('_firstStepClickHandler');
+    //helper.widget.appEvents.on("page:changed", (data) => {
+    //  console.log('referrer:', document.referrer);
+    //  if(data.url==='/?force=1st-step'){window.location.reload();}
+    //});
   },
-  
+
   didInsertElement() {      
     this._super(...arguments);
 
