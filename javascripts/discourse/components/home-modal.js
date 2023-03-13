@@ -198,10 +198,9 @@ export default Component.extend({
     var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
     var homeRoute = `discovery.${defaultHomepage()}`;    
 
-    if(this.debug){
-      const urlParams = new URLSearchParams(window.location.search);
-      this.set("shouldForce", (urlParams.get('force') === '1st-step'));
-    }
+    //force modal on home + query param force=1st-step
+    const urlParams = new URLSearchParams(window.location.search);
+    this.set("shouldForce", (urlParams.get('force') === '1st-step'));    
 
     return !isMobile && (this.shouldForce || (currentRouteName === homeRoute));    
   },
@@ -225,15 +224,11 @@ export default Component.extend({
   @bind
   nodeListsAreEqual( list1, list2 ) {
     if ( list1.length !== list2.length ) {
-        if(this.debugFocusTrap){      
-          console.log('check: not same length');
-        }
+        if(this.debugFocusTrap){ console.log('check: not same length'); }
         return false;
     }
     var check = Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
-    if(this.debugFocusTrap){      
-      console.log('check: '+ check);
-    }
+    if(this.debugFocusTrap){ console.log('check: '+ check); }
 
     return Array.from( list1 ).every( ( node, index ) => node === list2[ index ] );
   },  
@@ -241,20 +236,12 @@ export default Component.extend({
   @bind
   handleTabKeyStrokes(e) {
 
-    if(this.debugFocusTrap){
-      console.log('handleTabKeyStrokes element:');
-      console.log(e);
-    }    
+    if(this.debugFocusTrap){ console.log('handleTabKeyStrokes element:', e); }    
     var KEYCODE_TAB = 9;
     var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-    if (!isTabPressed) { 
-      return; 
-    }
+    if (!isTabPressed) { return; }
 
-    if(this.debugFocusTrap){
-      console.log('document.activeElement:');
-      console.log(document.activeElement);
-    }
+    if(this.debugFocusTrap){ console.log('document.activeElement:', document.activeElement); }
     
     var arrFocusableElements = this.currentFocusableElements;
     var firstFocusableEl = arrFocusableElements[0];  
@@ -262,20 +249,18 @@ export default Component.extend({
 
     if(this.debugFocusTrap){
       console.log('Focusable count:' + arrFocusableElements.length);
-      console.log('firstFocusableEl:');
-      console.log(firstFocusableEl);
-      console.log('lastFocusableEl:');
-      console.log(lastFocusableEl);
+      console.log('firstFocusableEl:', firstFocusableEl);
+      console.log('lastFocusableEl:', lastFocusableEl);
     }
 
     if ( e.shiftKey )  { //shift + tab 
-      if (document.activeElement === firstFocusableEl) {
-        lastFocusableEl.focus();
+        if (document.activeElement === firstFocusableEl) {
+          lastFocusableEl.focus();
           e.preventDefault();
         }
       } else  { //tab 
-      if (document.activeElement === lastFocusableEl) {
-        firstFocusableEl.focus();
+        if (document.activeElement === lastFocusableEl) {
+          firstFocusableEl.focus();
           e.preventDefault();
         }
       }
@@ -294,11 +279,7 @@ export default Component.extend({
     if(newSet){
       element.addEventListener("keydown", this.handleTabKeyStrokes, true);
       focusableEls[0].focus();
-
-      if(this.debugFocusTrap){
-        console.log('trapFocus: trap + focus on 1st item of:'); 
-        console.log(this.currentFocusableElements);
-      } 
+      if(this.debugFocusTrap){ console.log('trapFocus: trap + focus on 1st item of:', this.currentFocusableElements); } 
     }
   },
 
@@ -312,9 +293,7 @@ export default Component.extend({
 
   @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
   stepUpdate(){
-    if(this.debug){
-      console.log('stepUpdate');      
-    }
+    if(this.debug){ console.log('stepUpdate'); }
     var element = document.querySelector('#welcome-modal');
     //var active = document.querySelector('#welcome-modal .progress-steps .active');
     var barNodes = document.querySelector('#welcome-modal .progress-steps');
@@ -338,9 +317,7 @@ export default Component.extend({
   @observes("shouldDisplay")
   displayChanged() { 
 
-    if(this.debug){
-      console.log('displayChanged');
-    }
+    if(this.debug){ console.log('displayChanged'); }
 
     document.documentElement.classList.toggle(
       "home-modal",
@@ -356,9 +333,7 @@ export default Component.extend({
 
     if(this.destroying){return;}
 
-    if(this.debug){
-      console.log('didInsertElement');      
-    }
+    if(this.debug){ console.log('didInsertElement'); }
 
     this.displayChanged();
     this.refreshTrapFocus();   
@@ -370,9 +345,7 @@ export default Component.extend({
     if(this.destroying){return;}
     
     //visual effects should not be done here as this is run many times
-    if(this.debug){
-      console.log('didRender');      
-    }    
+    if(this.debug){ console.log('didRender'); }    
     
     this.refreshTrapFocus();
     //this.progressBarUpdate();
@@ -380,16 +353,11 @@ export default Component.extend({
   },
 
   willRender() {
-    if(this.debug){
-      console.log('willRender');
-    }   
+    if(this.debug){ console.log('willRender'); }   
   },
 
   willDestroyElement(element){
-    if(this.debug){
-      console.log('willDestroyElement:');
-      console.log(element);
-    }  
+    if(this.debug){ console.log('willDestroyElement:', element); }  
     element.removeEventListener("keydown", this.handleTabKeyStrokes, true);
 
     this._super(...arguments);
@@ -486,18 +454,6 @@ export default Component.extend({
       title: "Are you absolutely sure you want to change your username?",
       didConfirm: async () => {
         this.set("saving", true);
-
-        /* NOT WORKING:
-        return this.currentUser
-        .save(["username"])
-        .then(() => {
-          if(this.debug){
-            console.log('username saved: '+ this.newUsername.toLowerCase());
-          }
-          this.set("saving", false);       
-        })
-        .catch(popupAjaxError);
-        */
 
         try {
           await this.currentUser.changeUsername(this.newUsername);
