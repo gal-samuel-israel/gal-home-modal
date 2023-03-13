@@ -351,13 +351,21 @@ export default Component.extend({
 
   },
 
+  _firstStepClickHandler: (event)=>{
+    event.preventDefault();
+    console.log('_firstStepClickHandler');
+  },
+  
   didInsertElement() {      
     this._super(...arguments);
 
     if(this.destroying){return;}
 
     if(this.debug){
-      console.log('didInsertElement');      
+      console.log('didInsertElement');
+      document
+      .querySelector('.first-step-link')
+      .addEventListener("click", this._firstStepClickHandler);
     }
 
     this.displayChanged();
@@ -389,6 +397,10 @@ export default Component.extend({
     if(this.debug){
       console.log('willDestroyElement:');
       console.log(element);
+
+      document
+      .querySelector('.first-step-link')
+      .removeEventListener("click", this._firstStepClickHandler);
     }  
     element.removeEventListener("keydown", this.handleTabKeyStrokes, true);
 
