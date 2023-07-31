@@ -109,7 +109,7 @@ export default Component.extend({
     }
 
 
-    if(!this.currentUser?.admin && this.showOnlyToAdmins){
+    if(!this.currentUser || (!this.currentUser?.admin && this.showOnlyToAdmins)){
       if(this.debug){
         console.log('destroy');
       }
@@ -206,7 +206,7 @@ export default Component.extend({
   @discourseComputed("currentUser")
   displayForUser(currentUser) {         
     var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
-    var isAdmin = (currentUser.admin)        
+    var isAdmin = (currentUser?.admin)        
     var blockDisplay = (showOnlyToAdmins && !isAdmin);
 
     if(this.debug){
