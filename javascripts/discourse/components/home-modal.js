@@ -109,7 +109,7 @@ export default Component.extend({
     }
 
 
-    if(!this.currentUser.admin && this.showOnlyToAdmins){
+    if(!this.currentUser?.admin && this.showOnlyToAdmins){
       if(this.debug){
         console.log('destroy');
       }
