@@ -136,7 +136,7 @@ export default Component.extend({
     this.modalStateCheck(); 
 
     //get user json
-    ajax(`/u/${this.currentUser.username}.json`)
+    ajax(`/u/${this.currentUser?.username}.json`)
     .then((data) => {        
         if(this.debug){     
           console.log('got user info:');
