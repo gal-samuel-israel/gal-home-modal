@@ -28,6 +28,7 @@ export default apiInitializer("0.8", (api) => {
         //console.log(currentUser.user_option);
         console.log('admin: ' + currentUser.admin); 
         console.log('id: ' + currentUser.id); 
+        console.log('API version', api.version);
       }
 
       var showOnlyToAdmins = settings.enable_modal_only_for_admins; //make this false to enable component all users
@@ -45,12 +46,9 @@ export default apiInitializer("0.8", (api) => {
               import Klass into this js (on top) like:
               import homeModal from "../components/home-modal ... "
               then replace the api.registerConnectorClass
-              with 
+              to : api.renderInOutlet(settingsOutlet, homeModal);
               make sure to define selectedOutlet from settings.yml
 
-              
-
-          
           api.registerConnectorClass("above-site-header", "home-modal", {
             shouldRender() {
               return true;
@@ -84,7 +82,7 @@ export default apiInitializer("0.8", (api) => {
             //route: "all",
             text: "First Step",
             //title: "First Step",
-            //icon: "wrench",
+            //icon: "wrench", // without setting of icon the link icon will be used
           },false);
       }
 
