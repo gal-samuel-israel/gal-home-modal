@@ -1,6 +1,11 @@
+#plugin_outlet:
+  #default: "above-site-header"
+  #type: string 
 plugin_outlet:
-  default: "above-site-header"
-  type: string 
+  default: "above-main-container"
+  type: enum
+  choices:
+    - above-main-container
 enable_debug_for_user_ids:   
   type: list
   default: "2|42"

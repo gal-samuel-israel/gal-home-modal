@@ -1,8 +1,11 @@
 import { apiInitializer } from "discourse/lib/api";
+import homeModal from "../components/home-modal";
 
 export default apiInitializer("0.8", (api) => {
 
     var blockModal;  
+
+    const settingsOutlet = settings.plugin_outlet;
 
     if (api.getCurrentUser()) {
       const currentUser = api.getCurrentUser()
@@ -33,6 +36,21 @@ export default apiInitializer("0.8", (api) => {
 
       if(!blockModal){
         
+        api.renderInOutlet(settingsOutlet, homeModal); 
+
+          /* TODO: #1
+            DEPRECTAED !!!
+            fix:
+              move the home-modal.hbs into the /components/ folder to be with home-modal.js
+              import Klass into this js (on top) like:
+              import homeModal from "../components/home-modal ... "
+              then replace the api.registerConnectorClass
+              with 
+              make sure to define selectedOutlet from settings.yml
+
+              
+
+          
           api.registerConnectorClass("above-site-header", "home-modal", {
             shouldRender() {
               return true;
@@ -42,13 +60,16 @@ export default apiInitializer("0.8", (api) => {
           api.createWidget("home-modal-widget", {
             tagName: "div.home-modal",
           });
+          */
 
           //add hamburger custom link that will be used force the modal appearance 
           //console.log('testing api.decorateWidget'); 
+          /*
+          DEPRECATED. need to use: api.addCommunitySectionLink
           api.decorateWidget('hamburger-menu:generalLinks', (helper) => {
             //console.log('helper:', helper);                              
             return {
-              href: "//?force=1st-step", /* The // is required to force a reload of home page if user is already in the home page */
+              href: "//?force=1st-step",  // is required to force a reload of home page if user is already in the home page 
               className: "first-step-link",
               rawLabel: "First Step",
               attributes: {
@@ -56,7 +77,15 @@ export default apiInitializer("0.8", (api) => {
               },          
             }
           });      
-
+          */
+          api.addCommunitySectionLink({
+            href: "//?force=1st-step",
+            name: "firstStep",
+            //route: "all",
+            text: "First Step",
+            //title: "First Step",
+            //icon: "wrench",
+          },false);
       }
 
     }  
