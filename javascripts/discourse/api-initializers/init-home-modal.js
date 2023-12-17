@@ -1,7 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import homeModal from "../components/home-modal";
 
-export default apiInitializer("0.8", (api) => {
+export default apiInitializer("1.6", (api) => {
 
     var blockModal;  
 
