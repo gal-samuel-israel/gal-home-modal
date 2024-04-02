@@ -84,6 +84,10 @@ export default apiInitializer("1.6", (api) => {
             //title: "First Step",
             //icon: "wrench", // without setting of icon the link icon will be used
           },false);
+
+          document.querySelector('a[data-name="firstStep"]').addEventListener('click', function(event) {
+              location.reload(true); // Reload the page when the link is clicked
+          });
       }
 
     }  
