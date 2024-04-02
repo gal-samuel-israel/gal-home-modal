@@ -77,7 +77,7 @@ export default apiInitializer("1.6", (api) => {
           });      
           */
           api.addCommunitySectionLink({
-            href: "//?force=1st-step",
+            href: window.location.pathname + "?force=1st-step",
             name: "firstStep",
             //route: "all",
             text: "First Step",
