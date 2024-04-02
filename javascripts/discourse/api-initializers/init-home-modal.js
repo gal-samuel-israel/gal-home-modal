@@ -40,23 +40,14 @@ export default apiInitializer("1.6", (api) => {
         api.renderInOutlet(settingsOutlet, homeModal); 
         
           api.addCommunitySectionLink({
-            href: window.location.origin + "?force=1st-step",
+            href: "https://community.algosec.com"+ window.location.path + "?force=1st-step",
             name: "firstStep",
             //route: "all",
             text: "First Step",
             //title: "First Step",
             //icon: "wrench", // without setting of icon the link icon will be used
           },false);
-          
-          // Handle click event to force page reload
-          var link = document.querySelector('a[data-name="firstStep"]');
-          if (link) {
-              link.addEventListener('click', function(event) {
-                  location.reload(true); // Reload the page when the link is clicked
-              });
-          } else {
-              console.error("Link element not found.");
-          }
+                    
       }
 
     }  
