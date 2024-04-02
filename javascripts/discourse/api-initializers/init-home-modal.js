@@ -40,9 +40,9 @@ export default apiInitializer("1.6", (api) => {
         api.renderInOutlet(settingsOutlet, homeModal); 
         
           api.addCommunitySectionLink({
-            href: "https://community.algosec.com"+ window.location.pathname + "?force=1st-step&t=" + Date.now(),
+            href: window.location.origin + "?force=1st-step",
             name: "firstStep",
-            //route: "all",
+            route: "",
             text: "First Step",
             //title: "First Step",
             //icon: "wrench", // without setting of icon the link icon will be used
