@@ -136,7 +136,7 @@
                               <DButton
                                 @class="btn-default pad-right"
                                 @icon="pencil-alt"
-                                @action={{"showAvatarSelector"}}
+                                @action={{(action "showAvatarSelector")}}
                                 @actionParam={{this.currentUser}}
                                 @translatedTitle="Change your Avatar"
                                 @translatedLabel="" />
@@ -147,7 +147,7 @@
                           <div class="control-group pref-bio">
                               <label class="control-label">Your personal bio <span class="instructions">(Let us know something about you)</span></label>
                               <div class="controls bio-composer input-xxlarge">
-                                <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{action "biosUpdate"}} />
+                                <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{(action "biosUpdate")}} />
                               </div>
                           </div>
                       </div><!-- end col-wrap -->
@@ -156,7 +156,7 @@
               </div>
 
               <div class="next-button-wrapper">
-                <DButton @class={{theme-setting "button_style"}} @action={{action "saveUserInfo"}} @translatedLabel="Next >>" />
+                <DButton @class={{theme-setting "button_style"}} @action={{(action "saveUserInfo")}} @translatedLabel="Next >>" />
               </div>
 
             </div>
