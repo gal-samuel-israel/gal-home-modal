@@ -254,7 +254,7 @@
             {{/if}}            
           </div>      
         </div>  
-        {{#if this.showHideThisBox}} 
+        {{#if this.showHideThisBox && this.currentStep4}} 
           <div class="modal-footer">
               <div class="hide-this-wrapper">
                 <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Don't show this next time.
