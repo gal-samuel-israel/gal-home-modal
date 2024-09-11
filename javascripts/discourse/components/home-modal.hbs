@@ -287,7 +287,9 @@
     <div role="dialog" id="welcome-modal" class="custom-home-modal">
       <div class="modal-background">
         <div class="modal-pop">
-            X
+            <div class="complete-button-wrapper">
+              <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep4FinishButton")}} @translatedLabel="Complete" />
+            </div>
         </div>
       </div>
     </div>
