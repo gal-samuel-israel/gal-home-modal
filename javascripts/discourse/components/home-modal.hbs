@@ -257,7 +257,7 @@
         {{#if (and this.showHideThisBox this.currentStep4)}} 
           <div class="modal-footer">
               <div class="hide-this-wrapper">
-                <Input @type="checkbox" @checked={{this.hideModalNextTime}} @change={{action "toggleHideNextTime"}}/> Don't show this next time.
+                <Input @type="checkbox" @checked={{this.hideModalNextTime}} {{on "change" this.toggleHideNextTime}} /> Don't show this next time.
               </div>
               {{#if this.debugFooter}}  
               <div class="break"></div> <!-- break -->      
