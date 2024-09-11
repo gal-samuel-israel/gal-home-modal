@@ -59,6 +59,7 @@ export default Component.extend({
   hideModalNextTime: null,
 
   showModalPop: null,
+  showPopupBanner:null, 
 
   //force Modal
   @tracked shouldForce:false, 
@@ -84,6 +85,9 @@ export default Component.extend({
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
+
+      this.set("showPopupBanner", !this.showModalPop);
+      
     }
         
     //reset to step 1
