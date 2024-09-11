@@ -55,7 +55,7 @@ export default Component.extend({
   newBioCooked: null,
 
   //modal hide next time checkbox
-  showHideThisBox: false, //enable disable the checkbox visibility
+  showHideThisBox: true, //enable disable the checkbox visibility
   hideModalNextTime: null,
 
   showModalPop: null,
