@@ -87,7 +87,7 @@ export default Component.extend({
       console.log('this.showModalPop:' + this.showModalPop);
 
       this.set("showPopupBanner", !this.showModalPop);
-      
+
     }
         
     //reset to step 1
@@ -520,6 +520,7 @@ export default Component.extend({
   handleStep4FinishButton(event){
     event?.preventDefault();
     this.set("showModalPop", false);
+    this.set("showPopupBanner", false);
   },
 
   @action
