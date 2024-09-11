@@ -337,8 +337,34 @@ export default Component.extend({
 
   },  
 
+  modalSelector: '#welcome-modal.custom-home-modal .modal-pop',
+
+  // Method to handle the ESC key press
+  handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.closeModal(); // Call your modal closing logic
+    }
+  },
+
+  // Method to handle clicking outside the modal
+  handleClickOutside(event) {
+    let modal = document.querySelector(this.modalSelector);
+    if (modal && !modal.contains(event.target)) {
+      this.closeModal(); // Call your modal closing logic
+    }
+  },
+
+  // Method to close the modal (add your actual logic here)
+  closeModal() {
+    // Your logic to close the modal
+    console.log('Modal closed');
+  },
+
   didInsertElement() {      
     this._super(...arguments);
+
+    document.addEventListener('keydown', this.handleKeyDown.bind(this));
+    document.addEventListener('click', this.handleClickOutside.bind(this));
 
     if(this.destroying){return;}
 
@@ -369,6 +395,9 @@ export default Component.extend({
     if(this.debug){ console.log('willDestroyElement:', element); }  
     element.removeEventListener("keydown", this.handleTabKeyStrokes, true);
 
+    document.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    document.removeEventListener('click', this.handleClickOutside.bind(this));
+    
     this._super(...arguments);
   },
 
