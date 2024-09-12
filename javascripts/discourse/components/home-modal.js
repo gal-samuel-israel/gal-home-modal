@@ -342,16 +342,18 @@ export default Component.extend({
 
   // Method to handle the ESC key press
   handleKeyDown(event) {
+    if (this.showModalPop){return;} //DO NOT Allow To Close Setup Modal
     if (event.key === 'Escape') {
-      this.closeModal(); // Call your modal closing logic
+      this.closeModal(); 
     }
   },
 
   // Method to handle clicking outside the modal
   handleClickOutside(event) {
+    if (this.showModalPop){return;} //DO NOT Allow To Close Setup Modal
     let modal = document.querySelector(this.modalSelector);
     if (modal && !modal.contains(event.target)) {
-      this.closeModal(); // Call your modal closing logic
+      this.closeModal(); 
     }
   },
 
