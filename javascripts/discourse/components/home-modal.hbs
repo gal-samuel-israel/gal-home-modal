@@ -294,9 +294,11 @@
             {{else}}
               <img src="{{this.bannerImageUrl}}" alt="{{this.bannerAltText}}" class="modal-banner" />
             {{/if}}
-            <!-- div class="complete-button-wrapper">
+            {{#if false}}
+            <div class="complete-button-wrapper">
               <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep4FinishButton")}} @translatedLabel="Complete" />
-            </!-->
+            </div>
+            {{/if}}
         </div>
       </div>
     </div>

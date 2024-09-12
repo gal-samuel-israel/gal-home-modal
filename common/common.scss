@@ -306,4 +306,14 @@
 /*optional modal-popup-banner*/
 #welcome-modal.custom-home-modal.modal-banner-container .modal-pop {
   width: max-content;
+
+  img.modal-banner { border-radius: 1em;}
+
+  @media (max-width: 680px) {
+      img.modal-banner {
+          width: 100%; /* Ensure the image is responsive and scales with its container */
+          height: auto; /* Maintain aspect ratio */
+      }
+  }
+
 }
