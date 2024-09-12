@@ -440,7 +440,7 @@ export default Component.extend({
 
       reader.readAsDataURL(file);
     }
-  }
+  },
 
   /* next buttons handlers */
   @action
