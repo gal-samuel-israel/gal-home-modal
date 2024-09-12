@@ -91,6 +91,7 @@ export default Component.extend({
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
       console.log('this.showModalPop:' + this.showModalPop);
 
+      this.updateBannerDetails();
       
     }
         
@@ -384,11 +385,7 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
-
-    if(this.debug){
-      console.log('didReceiveAttrs');
-      this.updateBannerDetails();
-    }
+    if(this.debug){ console.log('didReceiveAttrs'); }
   },
 
   didInsertElement() {      
