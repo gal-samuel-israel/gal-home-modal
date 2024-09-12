@@ -82,17 +82,13 @@ export default Component.extend({
   currentFocusableElements: [],
 
   modalStateCheck(){
-    this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));
-    
+    this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));    
     this.set("showModalPop", this.shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
-
+    this.updateBannerDetails();
     if(this.debug){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
-      console.log('this.showModalPop:' + this.showModalPop);
-
-      this.updateBannerDetails();
-
+      console.log('this.showModalPop:' + this.showModalPop);      
     }
         
     //reset to step 1
