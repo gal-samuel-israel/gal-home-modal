@@ -39,6 +39,23 @@ enable_email_notifications_check_box:
   type: bool
   default: false
   description: "Enable to show Email Notifications checkbox in Step 3 of modal"
+#OPTIONAL BANNER
+optional_banner_file:
+    type: file
+    label: 'Upload Image to be used as banner'
+    description: 'Choose an image file to upload'
+    required: false
+optional_banner_alt:
+  type: text
+  label: 'Banner Image Alt Text'
+  description: 'Provide alternative text for the banner image'
+  required: false
+optional_banner_link:
+  type: text
+  label: 'Banner Image Link'
+  description: 'URL to link the banner image to'
+  required: false
+
 #button_icon:
   #type: string
   #default: "user"

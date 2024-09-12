@@ -283,10 +283,17 @@
     </div>
   </div>
 {{else}}
-  {{#if this.showPopupBanner}}
+  {{#if (and this.showPopupBanner this.bannerImageUrl)}}
     <div role="dialog" id="welcome-modal" class="custom-home-modal">
       <div class="modal-background">
         <div class="modal-pop">
+            {{#if this.bannerLink}}
+              <a href="{{this.bannerLink}}" target="_blank">
+                <img src="{{this.bannerImageUrl}}" alt="{{this.bannerAltText}}" class="modal-banner" />
+              </a>
+            {{else}}
+              <img src="{{this.bannerImageUrl}}" alt="{{this.bannerAltText}}" class="modal-banner" />
+            {{/if}}
             <div class="complete-button-wrapper">
               <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep4FinishButton")}} @translatedLabel="Complete" />
             </div>

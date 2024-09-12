@@ -59,7 +59,12 @@ export default Component.extend({
   hideModalNextTime: null,
 
   showModalPop: null,
-  showPopupBanner:null, 
+
+  //The optional Banner
+  showPopupBanner:null,
+  bannerImageUrl: null,
+  bannerAltText: null,
+  bannerLink: null, 
 
   //force Modal
   @tracked shouldForce:false, 
@@ -360,6 +365,18 @@ export default Component.extend({
     console.log('Modal closed');
   },
 
+  updateBannerDetails() {
+    // Retrieve banner settings from the component or service
+    this.set('bannerImageUrl', this.get('settings.optional_banner_file') || null);
+    this.set('bannerAltText', this.get('settings.optional_banner_alt') || '');
+    this.set('bannerLink', this.get('settings.optional_banner_link') || '');
+  },
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+    this.updateBannerDetails();
+  },
+
   didInsertElement() {      
     this._super(...arguments);
 
@@ -405,6 +422,21 @@ export default Component.extend({
     document.documentElement.classList.remove("home-modal");
   },
  
+  /* get the optional banner file */
+  @action
+  handleFileChange(event) {
+    let file = event.target.files[0];
+    if (file) {
+      let reader = new FileReader();
+
+      reader.onloadend = () => {
+        this.set('bannerImageUrl', reader.result);
+        // Optionally, save the URL to settings or server
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
 
   /* next buttons handlers */
   @action
