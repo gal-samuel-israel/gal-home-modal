@@ -374,7 +374,11 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
-    this.updateBannerDetails();
+
+    if(this.debug){
+      console.log('didReceiveAttrs');
+      this.updateBannerDetails();
+    }
   },
 
   didInsertElement() {      
