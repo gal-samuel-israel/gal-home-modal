@@ -370,9 +370,9 @@ export default Component.extend({
     }
     this.set("showPopupBanner", !this.showModalPop);
     // Retrieve banner settings from the component or service
-    this.set('bannerImageUrl', this.get('settings.optional_banner_file') || null);
-    this.set('bannerAltText', this.get('settings.optional_banner_alt') || '');
-    this.set('bannerLink', this.get('settings.optional_banner_link') || '');
+    this.set('bannerImageUrl', settings.optional_banner_file || null);
+    this.set('bannerAltText', settings.optional_banner_alt || '');
+    this.set('bannerLink', settings.optional_banner_link || '');
 
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
