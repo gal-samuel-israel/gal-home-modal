@@ -307,7 +307,7 @@
 #welcome-modal.custom-home-modal.modal-banner-container .modal-pop {
   width: max-content;
 
-  img.modal-banner { border-radius: 1em;}
+  img.modal-banner { border-radius: 1em; max-width: 1200px;}
 
   @media (max-width: 680px) {
       img.modal-banner {

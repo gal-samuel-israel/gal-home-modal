@@ -43,7 +43,7 @@ enable_email_notifications_check_box:
 optional_banner_file:
     type: upload
     label: 'Upload Image to be used as banner'
-    description: 'Choose an image file to upload'
+    description: 'Choose an image file to upload (width: 600px to 1200px / height: up to 500px)'
     required: false
     default: ""
 
