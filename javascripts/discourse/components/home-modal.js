@@ -92,7 +92,7 @@ export default Component.extend({
       console.log('this.showModalPop:' + this.showModalPop);
 
       this.updateBannerDetails();
-      
+
     }
         
     //reset to step 1
@@ -362,13 +362,13 @@ export default Component.extend({
   // Method to close the modal (add your actual logic here)
   closeModal() {
     // Your logic to close the modal
-    console.log('Modal closed');
+    this.set("showModalPop", false);
+    this.set("showPopupBanner", false);
+    if(this.debug){console.log('Modal closed');}
   },
 
   updateBannerDetails() {
-    if(this.debug){
-      console.log('updateBannerDetails');
-    }
+    if(this.debug){  console.log('updateBannerDetails'); }
     this.set("showPopupBanner", !this.showModalPop);
     // Retrieve banner settings from the component or service
     this.set('bannerImageUrl', settings.optional_banner_file || null);
@@ -576,8 +576,9 @@ export default Component.extend({
   @action
   handleStep4FinishButton(event){
     event?.preventDefault();
-    this.set("showModalPop", false);
-    this.set("showPopupBanner", false);
+    this.closeModal();
+    //this.set("showModalPop", false);
+    //this.set("showPopupBanner", false);
   },
 
   @action
