@@ -394,12 +394,14 @@ export default Component.extend({
     document.addEventListener('click', this.handleClickOutside.bind(this));
 
     // Ensure that the element exists before adding the event listener
-    const closeButton = this.element.querySelector('.close-btn');
-    if (closeButton) {
-      // Bind and save the reference to the event listener
-      this._closeModalListener = this.closeModal.bind(this);
-      // Attach the event listener
-      closeButton.addEventListener('click', this._closeModalListener);
+    if(this.showPopupBanner){
+      const closeButton = this.element.querySelector('.close-btn');
+      if (closeButton) {
+        // Bind and save the reference to the event listener
+        this._closeModalListener = this.closeModal.bind(this);
+        // Attach the event listener
+        closeButton.addEventListener('click', this._closeModalListener);
+      }
     }
 
     if(this.destroying){return;}
