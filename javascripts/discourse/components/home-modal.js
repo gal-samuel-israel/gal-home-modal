@@ -386,11 +386,18 @@ export default Component.extend({
     if(this.debug){ console.log('didReceiveAttrs'); }
   },
 
+  _closeModalListener: null,
   didInsertElement() {      
     this._super(...arguments);
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));
+
+    // Save the reference to the bound event listener
+    this._closeModalListener = this.closeModal.bind(this);
+    this.element.querySelector('.close-btn').addEventListener('click', () => {
+      this.closeModal(); 
+    });
 
     if(this.destroying){return;}
 
@@ -424,6 +431,8 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
+    this.element.querySelector('.close-btn').removeEventListener('click', this._closeModalListener);
+
     this._super(...arguments);
   },
 

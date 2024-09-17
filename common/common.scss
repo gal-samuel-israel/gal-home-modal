@@ -306,7 +306,7 @@
 /*optional modal-popup-banner*/
 #welcome-modal.custom-home-modal.modal-banner-container .modal-pop {
   width: max-content;
-
+  position:relative;
   img.modal-banner { border-radius: 1em; max-width: 1200px;}
 
   @media (max-width: 680px) {
@@ -315,5 +315,23 @@
           height: auto; /* Maintain aspect ratio */
       }
   }
+
+  .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      background-color: black;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+  }
+
 
 }
