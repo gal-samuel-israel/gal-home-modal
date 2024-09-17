@@ -405,7 +405,8 @@ export default Component.extend({
       scheduleOnce('afterRender', this, function() {
         // Ensure banner exists before adding the event listener
         console.log('afterRender');  
-        let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+        //let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+        let closeButton = this.element.querySelector('.close-btn')
         if (closeButton) {            
           console.log('close button here');
           // Bind the function and ensure proper context
