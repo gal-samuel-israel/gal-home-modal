@@ -13,6 +13,7 @@ import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
+import { scheduleOnce } from '@ember/runloop';
 
 //2408 - new avatar editor
 import AvatarSelectorModal from "discourse/components/modal/avatar-selector";
@@ -400,7 +401,7 @@ export default Component.extend({
 
     if (!this._listenerAdded) { 
       // Schedule the DOM query after the rendering is completed
-      Ember.run.scheduleOnce('afterRender', this, function() {
+      scheduleOnce('afterRender', this, function() {
         // Ensure banner exists before adding the event listener
         console.log('qs', document.querySelector('.modal-banner-container .modal-pop .close-btn'));  
         let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
