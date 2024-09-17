@@ -433,6 +433,16 @@ export default Component.extend({
     this.refreshTrapFocus();
     //this.progressBarUpdate();
 
+    let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+    //let closeButton = this.element.querySelector('.close-btn')
+    if (closeButton && !this._listenerAdded) {            
+      console.log('didRender: close button found');
+      // Bind the function and ensure proper context
+      this._closeModalListener = this.closeModal.bind(this);
+      closeButton.addEventListener('click', this._closeModalListener);
+      this._listenerAdded = true;
+    }
+
   },
 
   willRender() {
