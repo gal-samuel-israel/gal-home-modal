@@ -386,8 +386,7 @@ export default Component.extend({
     this._super(...arguments);
     if(this.debug){ console.log('didReceiveAttrs'); }
   },
-
-  _closeModalListener: null,
+  
   didInsertElement() {      
     this._super(...arguments);
 
@@ -399,11 +398,9 @@ export default Component.extend({
 
     // Ensure banner exists before adding the event listener    
     const closeButton = document.querySelector('#welcome-modal .modal-pop .close-btn');
-    if (closeButton) {
-      // Bind and save the reference to the event listener
-      this._closeModalListener = this.closeModal.bind(this);
+    if (closeButton) {            
       // Attach the event listener
-      closeButton.addEventListener('click', this._closeModalListener);
+      closeButton.addEventListener('click', this.closeModal.bind(this));
     }
 
     this.displayChanged();
@@ -434,7 +431,7 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('#welcome-modal .modal-pop .close-btn').removeEventListener('click', this._closeModalListener);
+    document.querySelector('#welcome-modal .modal-pop .close-btn').removeEventListener('click', this.closeModal.bind(this));
 
     this._super(...arguments);
   },
