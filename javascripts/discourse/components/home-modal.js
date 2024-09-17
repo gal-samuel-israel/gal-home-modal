@@ -327,16 +327,12 @@ export default Component.extend({
   // but we need it for backwards compatibility
   @observes("shouldDisplay")
   displayChanged() { 
-
     if(this.debug){ console.log('displayChanged'); }
-
     document.documentElement.classList.toggle(
       "home-modal",
       this.shouldDisplay
     );
-
     this.modalStateCheck();  
-
   },  
 
   modalSelector: '#welcome-modal.custom-home-modal .modal-pop',
@@ -386,8 +382,6 @@ export default Component.extend({
     if(this.debug){ console.log('didReceiveAttrs'); }
   },
   
-  _closeModalListener: null,
-  _listenerAdded: false,      // Flag to prevent multiple event listeners
   didInsertElement() {      
     this._super(...arguments);
 
@@ -403,6 +397,8 @@ export default Component.extend({
     this.refreshTrapFocus();   
   },
 
+  _closeModalListener: null,  // Context helper
+  _listenerAdded: false,      // Flag to prevent multiple event listeners
   didRender(){
     this._super(...arguments);
 
