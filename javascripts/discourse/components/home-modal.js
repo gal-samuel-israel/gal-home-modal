@@ -387,6 +387,7 @@ export default Component.extend({
     if(this.debug){ console.log('didReceiveAttrs'); }
   },
   
+  _closeModalListener: null,
   _listenerAdded: false,      // Flag to prevent multiple event listeners
   didInsertElement() {      
     this._super(...arguments);
@@ -403,13 +404,17 @@ export default Component.extend({
       // Schedule the DOM query after the rendering is completed
       scheduleOnce('afterRender', this, function() {
         // Ensure banner exists before adding the event listener
-        console.log('qs', document.querySelector('.modal-banner-container .modal-pop .close-btn'));  
+        console.log('afterRender', document.querySelector('.modal-banner-container .modal-pop .close-btn'));  
         let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
         if (closeButton) {            
           console.log('close button here');
-          closeButton.addEventListener('click', this.closeModal.bind(this));
-        }
-        this._listenerAdded = true;        
+          // Bind the function and ensure proper context
+          this._closeModalListener = this.closeModal.bind(this);
+          closeButton.addEventListener('click', this._closeModalListener);
+          this._listenerAdded = true;
+        } else {
+          console.error('Close button not found');
+        }      
       });
     }
     this.displayChanged();
@@ -440,7 +445,7 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('.modal-banner-container .modal-pop .close-btn').removeEventListener('click', this.closeModal.bind(this));
+    document.querySelector('.modal-banner-container .modal-pop .close-btn').removeEventListener('click', this._closeModalListener);
 
     this._super(...arguments);
   },
