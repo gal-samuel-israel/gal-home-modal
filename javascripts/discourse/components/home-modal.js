@@ -386,26 +386,31 @@ export default Component.extend({
     if(this.debug){ console.log('didReceiveAttrs'); }
   },
   
+  _listenerAdded: false,      // Flag to prevent multiple event listeners
   didInsertElement() {      
     this._super(...arguments);
 
     if(this.destroying){return;}
     if(this.debug){ 
-      console.log('didInsertElement'); 
-
-      console.log('qs', document.querySelector('.modal-banner-container .modal-pop .close-btn'));
+      console.log('didInsertElement');      
     }
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
 
-    // Ensure banner exists before adding the event listener    
-    let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
-    if (closeButton) {            
-      console.log('close button here');
-      closeButton.addEventListener('click', this.closeModal.bind(this));
+    if (!this._listenerAdded) { 
+      // Schedule the DOM query after the rendering is completed
+      Ember.run.scheduleOnce('afterRender', this, function() {
+        // Ensure banner exists before adding the event listener
+        console.log('qs', document.querySelector('.modal-banner-container .modal-pop .close-btn'));  
+        let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+        if (closeButton) {            
+          console.log('close button here');
+          closeButton.addEventListener('click', this.closeModal.bind(this));
+        }
+        this._listenerAdded = true;        
+      });
     }
-
     this.displayChanged();
     this.refreshTrapFocus();   
   },
