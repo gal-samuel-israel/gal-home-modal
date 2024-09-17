@@ -378,6 +378,8 @@ export default Component.extend({
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
       console.log('bannerLink:', this.bannerLink);
+
+      console.log ('qs:', document.querySelector('.modal-banner-container .modal-pop .close-btn'));
     }
 
         // Ensure banner exists before adding the event listener    
