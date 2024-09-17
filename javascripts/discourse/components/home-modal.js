@@ -378,17 +378,7 @@ export default Component.extend({
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
       console.log('bannerLink:', this.bannerLink);
-
-      console.log ('qs:', document.querySelector('.modal-banner-container .modal-pop .close-btn'));
     }
-
-        // Ensure banner exists before adding the event listener    
-        let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
-        if (closeButton) {            
-          console.log('close button here');
-          closeButton.addEventListener('click', this.closeModal.bind(this));
-        }
-
   },
 
   didReceiveAttrs() {
@@ -400,10 +390,21 @@ export default Component.extend({
     this._super(...arguments);
 
     if(this.destroying){return;}
-    if(this.debug){ console.log('didInsertElement'); }
+    if(this.debug){ 
+      console.log('didInsertElement'); 
+
+      console.log('qs', document.querySelector('.modal-banner-container .modal-pop .close-btn'));
+    }
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
+
+    // Ensure banner exists before adding the event listener    
+    let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+    if (closeButton) {            
+      console.log('close button here');
+      closeButton.addEventListener('click', this.closeModal.bind(this));
+    }
 
     this.displayChanged();
     this.refreshTrapFocus();   
