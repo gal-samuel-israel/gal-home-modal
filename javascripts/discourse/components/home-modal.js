@@ -399,7 +399,7 @@ export default Component.extend({
     // Ensure banner exists before adding the event listener    
     const closeButton = document.querySelector('#welcome-modal .modal-pop .close-btn');
     if (closeButton) {            
-      // Attach the event listener
+      console.log('close button here');
       closeButton.addEventListener('click', this.closeModal.bind(this));
     }
 
