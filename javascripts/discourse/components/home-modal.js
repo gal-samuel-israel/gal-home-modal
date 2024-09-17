@@ -393,11 +393,14 @@ export default Component.extend({
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));
 
-    // Save the reference to the bound event listener
-    this._closeModalListener = this.closeModal.bind(this);
-    this.element.querySelector('.close-btn').addEventListener('click', () => {
-      this.closeModal(); 
-    });
+    // Ensure that the element exists before adding the event listener
+    const closeButton = this.element.querySelector('.close-btn');
+    if (closeButton) {
+      // Bind and save the reference to the event listener
+      this._closeModalListener = this.closeModal.bind(this);
+      // Attach the event listener
+      closeButton.addEventListener('click', this._closeModalListener);
+    }
 
     if(this.destroying){return;}
 
