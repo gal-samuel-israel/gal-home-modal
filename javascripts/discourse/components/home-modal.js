@@ -84,7 +84,8 @@ export default Component.extend({
   modalStateCheck(){
     this.set("hideModalNextTime", (JSON.parse(localStorage.getItem("homeModalHide"))));    
     this.set("showModalPop", this.shouldForce || (!this.hideModalNextTime && (this.router.currentRouteName === `discovery.${defaultHomepage()}`)));
-    this.updateBannerDetails();
+    this.updateBannerDetails();    
+
     if(this.debug){
       console.log('modalStateCheck:');
       console.log('this.hideModalNextTime:' + this.hideModalNextTime);
@@ -373,6 +374,17 @@ export default Component.extend({
     this.set('bannerAltText', settings.optional_banner_alt || '');
     this.set('bannerLink', settings.optional_banner_link || '');
 
+    // Ensure banner exists before adding the event listener
+    if(this.showPopupBanner){
+      const closeButton = this.element.querySelector('.close-btn');
+      if (closeButton) {
+        // Bind and save the reference to the event listener
+        this._closeModalListener = this.closeModal.bind(this);
+        // Attach the event listener
+        closeButton.addEventListener('click', this._closeModalListener);
+      }
+    }
+    
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
@@ -391,18 +403,7 @@ export default Component.extend({
     this._super(...arguments);
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
-    document.addEventListener('click', this.handleClickOutside.bind(this));
-
-    // Ensure that the element exists before adding the event listener
-    if(this.showPopupBanner){
-      const closeButton = this.element.querySelector('.close-btn');
-      if (closeButton) {
-        // Bind and save the reference to the event listener
-        this._closeModalListener = this.closeModal.bind(this);
-        // Attach the event listener
-        closeButton.addEventListener('click', this._closeModalListener);
-      }
-    }
+    document.addEventListener('click', this.handleClickOutside.bind(this));    
 
     if(this.destroying){return;}
 
