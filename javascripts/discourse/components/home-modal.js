@@ -374,18 +374,18 @@ export default Component.extend({
     this.set('bannerAltText', settings.optional_banner_alt || '');
     this.set('bannerLink', settings.optional_banner_link || '');        
 
-    // Ensure banner exists before adding the event listener    
-    const closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
-    if (closeButton) {            
-      console.log('close button here');
-      closeButton.addEventListener('click', this.closeModal.bind(this));
-    }
-
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
       console.log('bannerLink:', this.bannerLink);
     }
+
+        // Ensure banner exists before adding the event listener    
+        let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+        if (closeButton) {            
+          console.log('close button here');
+          closeButton.addEventListener('click', this.closeModal.bind(this));
+        }
 
   },
 
