@@ -404,7 +404,7 @@ export default Component.extend({
       // Schedule the DOM query after the rendering is completed
       scheduleOnce('afterRender', this, function() {
         // Ensure banner exists before adding the event listener
-        console.log('afterRender', document.querySelector('.modal-banner-container .modal-pop .close-btn'));  
+        console.log('afterRender');  
         let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
         if (closeButton) {            
           console.log('close button here');
