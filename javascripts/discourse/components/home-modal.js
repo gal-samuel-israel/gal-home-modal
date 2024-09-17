@@ -374,6 +374,13 @@ export default Component.extend({
     this.set('bannerAltText', settings.optional_banner_alt || '');
     this.set('bannerLink', settings.optional_banner_link || '');        
 
+    // Ensure banner exists before adding the event listener    
+    const closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
+    if (closeButton) {            
+      console.log('close button here');
+      closeButton.addEventListener('click', this.closeModal.bind(this));
+    }
+
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
@@ -395,13 +402,6 @@ export default Component.extend({
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
-
-    // Ensure banner exists before adding the event listener    
-    const closeButton = document.querySelector('#welcome-modal .modal-pop .close-btn');
-    if (closeButton) {            
-      console.log('close button here');
-      closeButton.addEventListener('click', this.closeModal.bind(this));
-    }
 
     this.displayChanged();
     this.refreshTrapFocus();   
@@ -431,7 +431,7 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('#welcome-modal .modal-pop .close-btn').removeEventListener('click', this.closeModal.bind(this));
+    document.querySelector('.modal-banner-container .modal-pop .close-btn').removeEventListener('click', this.closeModal.bind(this));
 
     this._super(...arguments);
   },
