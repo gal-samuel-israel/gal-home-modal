@@ -376,7 +376,7 @@ export default Component.extend({
 
     // Ensure banner exists before adding the event listener
     if(this.showPopupBanner){
-      const closeButton = this.element.querySelector('.close-btn');
+      const closeButton = document.querySelector('.close-btn');
       if (closeButton) {
         // Bind and save the reference to the event listener
         this._closeModalListener = this.closeModal.bind(this);
@@ -384,7 +384,7 @@ export default Component.extend({
         closeButton.addEventListener('click', this._closeModalListener);
       }
     }
-    
+
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
       console.log('bannerAltText:', this.bannerAltText);
@@ -437,7 +437,7 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    this.element.querySelector('.close-btn').removeEventListener('click', this._closeModalListener);
+    document.querySelector('.close-btn').removeEventListener('click', this._closeModalListener);
 
     this._super(...arguments);
   },
