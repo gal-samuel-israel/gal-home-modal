@@ -445,7 +445,10 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('.modal-banner-container .modal-pop .close-btn').removeEventListener('click', this._closeModalListener);
+    const closeButton = this.element.querySelector('.modal-banner-container .modal-pop .close-btn');
+    if (closeButton && this._closeModalListener) {
+      closeButton.removeEventListener('click', this._closeModalListener);
+    }
 
     this._super(...arguments);
   },
