@@ -396,13 +396,6 @@ export default Component.extend({
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
 
-    // Ensure banner exists before adding the event listener    
-    const closeButton = document.querySelector('#welcome-modal .modal-pop .close-btn');
-    if (closeButton) {            
-      // Attach the event listener
-      closeButton.addEventListener('click', this.closeModal.bind(this));
-    }
-
     this.displayChanged();
     this.refreshTrapFocus();   
   },
@@ -431,8 +424,6 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('#welcome-modal .modal-pop .close-btn').removeEventListener('click', this.closeModal.bind(this));
-
     this._super(...arguments);
   },
 
