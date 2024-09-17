@@ -13,7 +13,6 @@ import { inject as service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
-import { scheduleOnce } from '@ember/runloop';
 
 //2408 - new avatar editor
 import AvatarSelectorModal from "discourse/components/modal/avatar-selector";
@@ -399,25 +398,7 @@ export default Component.extend({
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
-
-    if (!this._listenerAdded) { 
-      // Schedule the DOM query after the rendering is completed
-      scheduleOnce('afterRender', this, function() {
-        // Ensure banner exists before adding the event listener
-        console.log('afterRender');  
-        let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
-        //let closeButton = this.element.querySelector('.close-btn')
-        if (closeButton) {            
-          console.log('close button here');
-          // Bind the function and ensure proper context
-          this._closeModalListener = this.closeModal.bind(this);
-          closeButton.addEventListener('click', this._closeModalListener);
-          this._listenerAdded = true;
-        } else {
-          console.error('Close button not found');
-        }      
-      });
-    }
+    
     this.displayChanged();
     this.refreshTrapFocus();   
   },
@@ -436,7 +417,7 @@ export default Component.extend({
     let closeButton = document.querySelector('.modal-banner-container .modal-pop .close-btn');
     //let closeButton = this.element.querySelector('.close-btn')
     if (closeButton && !this._listenerAdded) {            
-      console.log('didRender: close button found');
+      if(this.debug){ console.log('didRender: close button found');}
       // Bind the function and ensure proper context
       this._closeModalListener = this.closeModal.bind(this);
       closeButton.addEventListener('click', this._closeModalListener);
