@@ -372,18 +372,7 @@ export default Component.extend({
     // Retrieve banner settings from the component or service
     this.set('bannerImageUrl', settings.optional_banner_file || null);
     this.set('bannerAltText', settings.optional_banner_alt || '');
-    this.set('bannerLink', settings.optional_banner_link || '');
-
-    // Ensure banner exists before adding the event listener
-    if(this.showPopupBanner){
-      const closeButton = document.querySelector('.close-btn');
-      if (closeButton) {
-        // Bind and save the reference to the event listener
-        this._closeModalListener = this.closeModal.bind(this);
-        // Attach the event listener
-        closeButton.addEventListener('click', this._closeModalListener);
-      }
-    }
+    this.set('bannerLink', settings.optional_banner_link || '');        
 
     if(this.debug){
       console.log('bannerImageUrl:', this.bannerImageUrl);
@@ -402,12 +391,20 @@ export default Component.extend({
   didInsertElement() {      
     this._super(...arguments);
 
+    if(this.destroying){return;}
+    if(this.debug){ console.log('didInsertElement'); }
+
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('click', this.handleClickOutside.bind(this));    
 
-    if(this.destroying){return;}
-
-    if(this.debug){ console.log('didInsertElement'); }
+    // Ensure banner exists before adding the event listener    
+    const closeButton = document.querySelector('#welcome-modal .modal-pop .close-btn');
+    if (closeButton) {
+      // Bind and save the reference to the event listener
+      this._closeModalListener = this.closeModal.bind(this);
+      // Attach the event listener
+      closeButton.addEventListener('click', this._closeModalListener);
+    }
 
     this.displayChanged();
     this.refreshTrapFocus();   
@@ -437,7 +434,7 @@ export default Component.extend({
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
     document.removeEventListener('click', this.handleClickOutside.bind(this));
     
-    document.querySelector('.close-btn').removeEventListener('click', this._closeModalListener);
+    document.querySelector('#welcome-modal .modal-pop .close-btn').removeEventListener('click', this._closeModalListener);
 
     this._super(...arguments);
   },
