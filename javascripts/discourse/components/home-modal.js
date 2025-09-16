@@ -207,10 +207,9 @@ export default Component.extend({
       //250916 - DEPRECATED : Mobile.isMobileDevice
       console.log('capabilities.isMobileDevice:', this.site.isMobileDevice);
       //250916 - DEPRECATED : Mobile.mobileView;
-      console.log('site.mobileView', this.site.mobileView);
     }  
     //var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
-    const isMobile = this.site.isMobileDevice || this.site.mobileView;
+    const isMobile = this.site.mobileView;
     const homeRoute = `discovery.${defaultHomepage()}`;    
 
     //force modal on home + query param force=1st-step
