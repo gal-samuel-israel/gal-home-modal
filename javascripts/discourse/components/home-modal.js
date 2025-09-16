@@ -9,7 +9,7 @@ import { observes } from"@ember-decorators/object";
 //bad//import { bind } from "@ember-decorators/object/computed";
 import { action } from "@ember/object";
 import Component from "@ember/component";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
