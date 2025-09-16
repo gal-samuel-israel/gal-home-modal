@@ -2,7 +2,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
 import showModal from "discourse/lib/show-modal";
 import { defaultHomepage } from "discourse/lib/utilities";
-import Mobile from "discourse/lib/mobile";
+//250916 DEPRECATED// import Mobile from "discourse/lib/mobile";
 import User from "discourse/models/user";
 import discourseComputed, { bind } from "discourse-common/utils/decorators";
 import { observes } from"@ember-decorators/object";
@@ -10,6 +10,7 @@ import { observes } from"@ember-decorators/object";
 import { action } from "@ember/object";
 import Component from "@ember/component";
 import { service } from "@ember/service";
+import { capabilities } from "discourse-common/lib/capabilities"; //instead of Mobile
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
@@ -22,6 +23,7 @@ const xMD5=function($){function _($,_){return $<<_|$>>>32-_}function x($,_){var 
 export default Component.extend({
 
   router: service(),  
+  site: service(),
   tagName: "",
 
   /* Object local params */
@@ -203,11 +205,14 @@ export default Component.extend({
       console.log('discourseComputed displayForRoute');
       console.log('currentRouteName: '+ currentRouteName);
       //console.log('defaultHomepage: '+ defaultHomepage());
-      console.log('Mobile.isMobileDevice:', Mobile.isMobileDevice);
-      console.log('Mobile.mobileView:', Mobile.mobileView);
+      //250916 - DEPRECATED : Mobile.isMobileDevice
+      console.log('capabilities.isMobileDevice:', capabilities.isMobileDevice);
+      //250916 - DEPRECATED : Mobile.mobileView;
+      console.log('site.mobileView', this.site.mobileView);
     }  
-    var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
-    var homeRoute = `discovery.${defaultHomepage()}`;    
+    //var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
+    const isMobile = capabilities.isMobileDevice || this.site.mobileView;
+    const homeRoute = `discovery.${defaultHomepage()}`;    
 
     //force modal on home + query param force=1st-step
     const urlParams = new URLSearchParams(window.location.search);
