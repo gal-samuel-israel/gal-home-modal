@@ -27,14 +27,14 @@
                     This document contains important information to help you get started and ensure that you have the best experience.</p>
                   <p>If you have a question for the Community, use the search bar first. You may find that a similar question has already been answered. 
                     But if you can't find what you're looking for, feel free to ask a new question by clicking the                      
-                    <DButton @class="btn-default" @translatedLabel="+ New Topic" @action={{action "openNewTopicLink"}}/>
+                    <DButton @class="btn-default" @translatedLabel="+ New Topic" @action={{this.openNewTopicLink}}/>
                     button on the Community Home Page.</p>
 
                   <p>Enjoy,<br/>
                   AlgoSec Community <img class="as-ico-img" src={{theme-setting 'theme_uploads.img_ico_algosec_community'}} /></p>
 
                   <div class="next-button-wrapper">
-                    <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep1NextButton")}} @translatedLabel="Agree & Continue" />
+                    <DButton @class={{theme-setting "button_style"}} @action={{this.handleStep1NextButton}} @translatedLabel="Agree & Continue" />
                   </div>
                   
               </div>
@@ -76,7 +76,7 @@
                                     <div class="col-username-controls">
                                       
                                         <DButton
-                                          @action={{(action this.changeUsername)}}
+                                          @action={{this.changeUsername}}
                                           @type="submit"
                                           @disabled={{this.saveDisabled}}                          
                                           @translatedLabel="Save"
@@ -96,7 +96,7 @@
 
                                   {{#if this.currentUser.can_edit_username}}
                                     <DButton
-                                      @action={{(action "toggleUsernameEditing")}}
+                                      @action={{this.toggleUsernameEditing}}
                                       @actionParam={{this.currentUser}}
                                       @icon="pencil"
                                       @translatedTitle="Edit"
@@ -136,7 +136,7 @@
                               <DButton
                                 @class="btn-default pad-right"
                                 @icon="pencil"
-                                @action={{(action "showAvatarSelector")}}
+                                @action={{this.showAvatarSelector}}
                                 @actionParam={{this.currentUser}}
                                 @translatedTitle="Change your Avatar"
                                 @translatedLabel="" />
@@ -147,7 +147,7 @@
                           <div class="control-group pref-bio">
                               <label class="control-label">Your personal bio <span class="instructions">(Let us know something about you)</span></label>
                               <div class="controls bio-composer input-xxlarge">
-                                <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{(action "biosUpdate")}} />
+                                <DEditor id='user-profile' @value={{this.newBioRawInput}} @loading={{this.composer.loading}} @change={{this.biosUpdate}} />
                               </div>
                           </div>
                       </div><!-- end col-wrap -->
@@ -156,7 +156,7 @@
               </div>
 
               <div class="next-button-wrapper">
-                <DButton @class={{theme-setting "button_style"}} @action={{(action "saveUserInfo")}} @translatedLabel="Next >>" />
+                <DButton @class={{theme-setting "button_style"}} @action={{this.saveUserInfo}} @translatedLabel="Next >>" />
               </div>
 
             </div>
@@ -194,7 +194,7 @@
                   </div>
 
               <div class="next-button-wrapper">
-                <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep3NextButton")}} @translatedLabel="Next >>" />
+                <DButton @class={{theme-setting "button_style"}} @action={{this.handleStep3NextButton}} @translatedLabel="Next >>" />
               </div>
 
             </div>
@@ -247,7 +247,7 @@
                 </div>
 
                 <div class="complete-button-wrapper">
-                  <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep4FinishButton")}} @translatedLabel="Complete" />
+                  <DButton @class={{theme-setting "button_style"}} @action={{this.handleStep4FinishButton}} @translatedLabel="Complete" />
                 </div>
                 
               </div>
@@ -297,7 +297,7 @@
             <span class="close-btn">&times;</span>
             {{#if false}}
             <div class="complete-button-wrapper">
-              <DButton @class={{theme-setting "button_style"}} @action={{(action "handleStep4FinishButton")}} @translatedLabel="Complete" />
+              <DButton @class={{theme-setting "button_style"}} @action={{this.handleStep4FinishButton}} @translatedLabel="Complete" />
             </div>
             {{/if}}
         </div>
