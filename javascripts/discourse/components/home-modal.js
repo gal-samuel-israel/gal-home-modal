@@ -10,7 +10,6 @@ import { observes } from"@ember-decorators/object";
 import { action } from "@ember/object";
 import Component from "@ember/component";
 import { service } from "@ember/service";
-import { capabilities } from "discourse-common/lib/capabilities"; //instead of Mobile
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
@@ -206,12 +205,12 @@ export default Component.extend({
       console.log('currentRouteName: '+ currentRouteName);
       //console.log('defaultHomepage: '+ defaultHomepage());
       //250916 - DEPRECATED : Mobile.isMobileDevice
-      console.log('capabilities.isMobileDevice:', capabilities.isMobileDevice);
+      console.log('capabilities.isMobileDevice:', this.site.isMobileDevice);
       //250916 - DEPRECATED : Mobile.mobileView;
       console.log('site.mobileView', this.site.mobileView);
     }  
     //var isMobile = (Mobile.isMobileDevice || Mobile.mobileView);
-    const isMobile = capabilities.isMobileDevice || this.site.mobileView;
+    const isMobile = this.site.isMobileDevice || this.site.mobileView;
     const homeRoute = `discovery.${defaultHomepage()}`;    
 
     //force modal on home + query param force=1st-step
