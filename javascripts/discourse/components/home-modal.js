@@ -13,6 +13,7 @@ import { service } from "@ember/service";
 import { and, equal } from "@ember/object/computed";
 import { tracked } from "@glimmer/tracking";
 import { isEmpty } from "@ember/utils";
+import { observer } from '@ember/object';
 
 //2408 - new avatar editor
 import AvatarSelectorModal from "discourse/components/modal/avatar-selector";
@@ -305,6 +306,7 @@ export default Component.extend({
     }
   },
 
+  /*
   @observes("currentStep1", "currentStep2", "currentStep3", "currentStep4")
   stepUpdate(){
     if(this.debug){ console.log('stepUpdate'); }
@@ -325,6 +327,27 @@ export default Component.extend({
            
     }
   },
+  */
+
+  stepUpdate: observer("currentStep1", "currentStep2", "currentStep3", "currentStep4", function() {
+    if (this.debug) { console.log("stepUpdate"); }
+
+    let element = document.querySelector("#welcome-modal");
+    let barNodes = document.querySelector("#welcome-modal .progress-steps");
+
+    if (element !== undefined && this.shouldDisplay && this.showModalPop) {
+      if (this.currentStep1) {
+        barNodes?.children[0]?.classList.add("active");
+      } else if (this.currentStep2) {
+        barNodes?.children[1]?.classList.add("active");
+      } else if (this.currentStep3) {
+        barNodes?.children[2]?.classList.add("active");
+      } else {
+        barNodes?.children[3]?.classList.add("active");
+      }
+    }
+  }),
+
 
   // Setting a class on <html> from a component is not great
   // but we need it for backwards compatibility
