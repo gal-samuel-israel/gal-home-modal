@@ -452,7 +452,9 @@ export default Component.extend({
   /* next buttons handlers */
   @action
   handleStep1NextButton(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
 
     //agree in step 1 is now acting as the checkbox:
     if(!this.debug){localStorage.setItem("homeModalHide", true);}
@@ -488,7 +490,9 @@ export default Component.extend({
 
   @action
   async onUsernameInput(event) {
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     this.newUsername = event.target.value;
     this.userNameTaken = false;
     this.errorMessage = null;
@@ -530,7 +534,9 @@ export default Component.extend({
 
   @action
   changeUsername(event) {
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     return this.dialog.yesNoConfirm({
       title: "Are you absolutely sure you want to change your username?",
       didConfirm: async () => {
@@ -558,7 +564,9 @@ export default Component.extend({
 
   @action
   handleStep3NextButton(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
 
     this.set("saved", false);
     
@@ -590,7 +598,9 @@ export default Component.extend({
 
   @action
   handleStep4FinishButton(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     this.closeModal();
     //this.set("showModalPop", false);
     //this.set("showPopupBanner", false);
@@ -598,7 +608,9 @@ export default Component.extend({
 
   @action
   navigateToProfile(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     window.location = `/u/${this.currentUser.username}/preferences/profile`;
   },
 
@@ -613,7 +625,9 @@ export default Component.extend({
 
   @action
   saveUserInfo() {
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     this.set("saved", false);
 
     this.currentUser.setProperties({
@@ -635,7 +649,10 @@ export default Component.extend({
   },
   @action
   biosUpdate(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
+
     if(this.debug){ 
       console.log('target value:');
       console.log(event.target.value);
@@ -649,7 +666,9 @@ export default Component.extend({
   /* Hide Modal actions */
   @action
   toggleHideNextTime(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     if(this.debug){
       console.log('toggleHideNextTime:');
       console.log('was : ' + this.hideModalNextTime);
@@ -663,14 +682,18 @@ export default Component.extend({
 
   @action
   openNewTopicLink(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     window.open('/new-topic?category=ask-the-community', '_blank');    
   },
 
   /* Test actions */
   @action
   testAction(event){
-    event?.preventDefault();
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
     if(this.debug){
       console.log('testAction');
       console.log(event);
